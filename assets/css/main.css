@@ -1,0 +1,10 @@
+body {
+	font-family: helvetica;
+}
+
+.heading {
+	font-size:30px;
+    width:100px;
+    height:50px;
+    position:absolute;
+}
