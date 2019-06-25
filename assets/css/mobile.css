@@ -1,7 +1,3 @@
-body {
-	font-family: helvetica;
-}
-
 .heading {
 	font-size:80px;
 	width:100px;
@@ -9,8 +5,22 @@ body {
 	position:absolute;
 }
 
-.container {
-	padding:20px;
+#container {
+	overflow-x: scroll;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.page {
+	padding: 20px;
+	width: 100vw;
+    height: 100vh;
+  	float:left;
+  	position: relative;
+  	display: inline;
+  	flex-basis: 0;
+    flex-grow: 1;
+/*  	display: inline-block;*/
 }
 
 .gridElement{
