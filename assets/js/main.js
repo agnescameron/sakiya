@@ -1,46 +1,88 @@
-var headings = ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Community"]
+var gridSquares, xnum, ynum;
 
-function makeDiv(name){
+function generateGrid(){
+    //subdivide the document into 10x10 squares to use as co-ordinate system
+    squareSize = 150;
+
+    xnum = Math.floor($(document).width()/squareSize)
+    ynum = Math.floor($(document).height()/squareSize)
+
+    console.log('xnum ', xnum, 'ynum  ', ynum)
+    leftMargin = ($(document).width() - Math.floor($(document).width()/squareSize)*squareSize)/2;
+    topMargin = ($(document).height() - Math.floor($(document).height()/squareSize)*squareSize)/2;
+
+    for(j=0; j<ynum; j++){
+        for(i=0; i<xnum; i++){
+            $('<div/>', {
+                id: i+xnum*j,
+                class: "gridElement"
+            }).css({
+            'width': squareSize,
+            'height': squareSize,
+            'left':squareSize*i+leftMargin+'px',
+            'top':squareSize*j+topMargin+'px',
+            'position':'fixed',
+            }).appendTo( 'body' );
+        }
+    }
+    gridSquares = xnum*ynum;
+    console.log(gridSquares);
+}
+
+function generateMap(){
+    var headings = ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Community"]
+    var filledBoxes = [];
+    for(i=0; i<headings.length; i++){
+        makeDiv(headings[i], filledBoxes);
+  }
+}
+
+function makeDiv(name, filledBoxes){
     // vary size for fun
     $newdiv = $('<div/>', {
         id: name,
         class: "heading"
     })
 
-    var posx, posy;
+    var gridBox, top;
 
     if(name === "SAKIYA"){
-        posx = ($(document).width()-100)/2;
-        posy = ($(document).height()+150)/2;
+        gridx = Math.floor(xnum/2);
+        gridy = Math.ceil(ynum/2);
+        gridBox = gridx + xnum*gridy;
+        titleLine = xnum*gridy;
+        top = 0;
     }
 
     else{
-        var chosen = false    
+        var chosen = false; 
         while(chosen === false){
             // make position sensitive to size and document's width
-            posx = (Math.random() * ($(document).width() - 100)).toFixed();
-            posy = (Math.random() * ($(document).height() - 50)).toFixed();
-
-            //in the forbidden zone?
-            if(posx < $(document).width()/2 - 100 && posx > $(document).width()/2 + 100)
-                chosen = true
+            gridBox = Math.floor(Math.random()*xnum*ynum);
             
-            if(posy < $(document).height()/2)
-                chosen = true
+            var intersection = false;
+            console.log(filledBoxes)
+            for(i=0; i<filledBoxes.length; i++){
+                if (gridBox === filledBoxes[i])
+                    intersection = true;
+            }
+
+            if(gridBox < titleLine && intersection === false)
+                chosen = true;
         }
+        top = Math.random()*100;
     }
 
     $newdiv.css({
-        'left':posx+'px',
-        'top':posy+'px',
+        'top': top+'px',
         // 'display':'none'
-    }).appendTo( 'body' );
+    }).appendTo( '#'+gridBox );
 
+    filledBoxes.push(gridBox);
     $newdiv.html(name);
 }
 
 window.onload = function() {
-  for(i=0; i<headings.length; i++){
-    makeDiv(headings[i]);
-  }
+    generateGrid();
+    generateMap();
 }
