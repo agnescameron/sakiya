@@ -32,7 +32,7 @@ var menus = {
     "Curriculum": {
         "level": 1,
         "type":"text",        
-        "contents":["The Sakiya curriculum is..."],        
+        "contents":[`The Sakiya <br>curriculum is...`],        
     },
     "Community": {
         "level": 1,

@@ -29,66 +29,38 @@ function generateGrid(){
     console.log(gridSquares);
 }
 
-function generateMap(){
-    var filledBoxes = [];
-    var headings = menus["main"].contents;
-    for(i=0; i<headings.length; i++){
-        makeDiv(headings[i], filledBoxes);
-  }
-}
+function generateFrames(menu){
+    for(i=0; i<menus[menu].contents.length; i++){
+        $frame = $('<div/>', {
+            id: 'frame' + i,
+            class: "frame"
+        }).appendTo( 'body' );
 
-function makeDiv(name, filledBoxes){
-    // vary size for fun
-    $newdiv = $('<div/>', {
-        id: name,
-        class: "heading"
-    })
-
-    var gridBox, top;
-
-    if(name === "SAKIYA"){
-        gridx = Math.floor(xnum/2);
-        gridy = Math.ceil(ynum/2)+4;
-        gridBox = gridx + xnum*gridy;
-        titleLine = xnum*gridy;
-        top = 0;
-    }
-
-    else{
-        var chosen = false; 
-        while(chosen === false){
-            // make position sensitive to size and document's width
-            gridBox = Math.floor(Math.random()*xnum*ynum);
-            
-            var zone1 = [10];
-
-            var intersection = false;
-            console.log(filledBoxes)
-            for(i=0; i<filledBoxes.length; i++){
-                if (gridBox === filledBoxes[i])
-                    intersection = true;
-                else if (gridBox > filledBoxes[i]-5 && gridBox < filledBoxes[i]+5)
-                    intersection = true;
-                else if (gridBox%xnum === filledBoxes[i]%xnum)
-                    intersection = true;
-            }
-
-            if(gridBox < (titleLine-5*xnum) && intersection === false)
-                chosen = true;
+        var top, left;
+        if (menus[menu].contents[i] === 'SAKIYA'){
+            top = ($(document).width()/25);
+            left = 20;
         }
-        top = Math.random()*100;
-    }
 
-    $newdiv.css({
+        else {
+            top = Math.random()*100;
+            left = Math.random()*100;
+        }
+
+        $('<div/>', {
+            id: menus[menu].contents[i],
+            class: "heading"
+        })
+        .html( menus[menu].contents[i] )
+        .css({
         'top': top+'px',
-        // 'display':'none'
-    }).appendTo( '#'+gridBox );
-
-    filledBoxes.push(gridBox);
-    $newdiv.html(name);
+        'left': left+'px',        
+        }).appendTo( $frame );
+    }
 }
+
 
 window.onload = function() {
+    generateFrames("main");
     generateGrid();
-    generateMap();
 }

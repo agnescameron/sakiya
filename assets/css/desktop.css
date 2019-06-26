@@ -8,5 +8,46 @@
 .gridElement{
 /*	border-style: solid;
 	border-width: 1px;*/
-/*	position: absolute,*/
+}
+
+.frame {
+	height: 20vh;
+	width: 15vw;
+/*	background-color: green;*/
+	position: absolute;
+}
+
+#frame0 {
+	top:60vh;
+	left: 42.5vw;
+}
+
+#frame1 {
+	top: 65vh;
+ 	left: 15vw;
+}
+
+#frame2 {
+	top: 40vh;
+ 	left: 10vw;
+}
+
+#frame3 {
+	top: 20vh;
+	left: 30vw;
+}
+
+#frame4 {
+	top: 20vh;
+	left: 55vw;
+}
+
+#frame5 {
+	top: 40vh;	
+	left: 75vw;
+}
+
+#frame6 {
+	top: 65vh;
+	left: 70vw;
 }
