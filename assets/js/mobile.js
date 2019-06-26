@@ -38,12 +38,8 @@ function generateList(headings, page){
 
 function makePage(name){
     pageDepth=menus[name+'Menu'].level;
-    console.log("pageDepth")
-    //make room for next page
-    console.log('page 0 width ', $('#page0').width())
 
     $('#container').css({
-        // 'width': (pageDepth+1)*initialWidth+'px',
         'overflow-x': 'scroll'
     })
     //generate the next page
@@ -52,26 +48,38 @@ function makePage(name){
         class: "page",
     }).appendTo( '#container' );
 
-    $offset = $('<div/>', {
+
+    offset = ($('#'+name).offset()).top - parseInt($('#page'+pageDepth).css('padding-top'));
+
+    $offsetDiv = $('<div/>', {
         id: 'offset'+pageDepth,
         class: "offset",
     }).css({
-        height: ($('#'+name).offset()).top,
+        height: offset,
     });
 
-    $( '#page'+pageDepth ).html($offset);
+    $( '#page'+pageDepth ).html($offsetDiv);
 
     generateList( menus[name+'Menu'].menu , '#page'+pageDepth)
 
-    $('html, body').animate({
+    $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
     }, 1000);
-
-    console.log("scroll left is ", $('html, body').scrollLeft())
-
+    console.log("scrolleft is now ", $('html, body').scrollLeft())
 }
 
 window.onload = function() {
+        $('#container').css({
+        'overflow-x': 'hidden'
+    })
     generateList(menus["mainMenu"].menu, '#page0');
     
+    //v weird fix, to reset scroll position on load
+    //
+    $('body').animate({
+        scrollLeft: 0
+    }, 1);
+
+    console.log("scrolleft is now ", $('body').scrollLeft())
+
 }

@@ -1,3 +1,7 @@
+body{
+	overflow: scroll;
+}
+
 .heading {
 	font-size:9vh;
 	height:9vh;
