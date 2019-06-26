@@ -1,11 +1,23 @@
 var pageDepth = 0;
+var menus = {
+    "mainMenu":["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Friends", "Community"],
+    "BoardMenu": ["Sahar Qawasmi", "Nida Sinnokrot"],
+    "EventsMenu": ["current", "past"],
+    "ProjectsMenu": ["current", "past"],
+    "FriendsMenu": ["friend1", "friend2"],
+}
+
 var initialWidth = $(window).width();
 var initialHeight = $(window).height();
 
-function generateList(){
-    var headings = ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Community"]
+function generateList(headings, page){
     for(i=0; i<headings.length; i++){
-        makeDiv(headings[i], i);
+        $newheading = $('<div/>', {
+        id: headings[i],
+        class: "heading",
+        click: function(){ makePage(this.id) }
+    }).appendTo( page );
+    $newheading.html(headings[i]);
   }
 }
 
@@ -18,19 +30,20 @@ function makePage(name){
         // 'width': (pageDepth+1)*initialWidth+'px',
         'overflow-x': 'scroll'
     })
-
-    console.log('initial width is ', initialWidth, 'calculated width is ', (pageDepth+1)*initialWidth,
-        'new width is ', $('#container').width(), 'document width is ', $(window).width())
-
     //generate the next page
     $newpage = $('<div/>', {
         id: 'page' + pageDepth,
         class: "page",
-    });
-
-    $newpage.css({
-        'background-color': 'yellow',
     }).appendTo( '#container' );
+
+    $('<div/>', {
+        id: 'offset'+pageDepth,
+        class: "offset",
+    }).css({
+        height: ($('#'+name).offset()).top,
+    }).appendTo( '#page'+pageDepth );
+
+    generateList( menus[name+'Menu'] , '#page'+pageDepth)
 
     $('html, body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
@@ -40,20 +53,7 @@ function makePage(name){
 
 }
 
-function makeDiv(name, number){
-    // vary size for fun
-    $newheading = $('<div/>', {
-        id: name,
-        class: "heading",
-        click: function(){ makePage(name); }
-    });
-
-    $newheading.css({
-        'top': i*90 + 'px',
-    }).appendTo( '#page0' );
-    $newheading.html(name);
-}
-
 window.onload = function() {
-    generateList();
+    generateList(menus["mainMenu"], '#page0');
+    
 }

@@ -1,8 +1,7 @@
 .heading {
-	font-size:80px;
-	width:100px;
-	height:50px;
-	position:absolute;
+	font-size:9vh;
+	height:9vh;
+	position:relative;
 }
 
 #container {
@@ -14,6 +13,7 @@
 }
 
 .page {
+	padding: 20px;
   	float:left;
     width: 99vw;
     height: 99vh;
