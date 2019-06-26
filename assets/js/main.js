@@ -2,7 +2,7 @@ var gridSquares, xnum, ynum;
 
 function generateGrid(){
     //subdivide the document into 10x10 squares to use as co-ordinate system
-    squareSize = 150;
+    squareSize = 25;
 
     xnum = Math.floor($(document).width()/squareSize)
     ynum = Math.floor($(document).height()/squareSize)
@@ -30,8 +30,8 @@ function generateGrid(){
 }
 
 function generateMap(){
-    var headings = ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Community"]
     var filledBoxes = [];
+    var headings = menus["main"].contents;
     for(i=0; i<headings.length; i++){
         makeDiv(headings[i], filledBoxes);
   }
@@ -48,7 +48,7 @@ function makeDiv(name, filledBoxes){
 
     if(name === "SAKIYA"){
         gridx = Math.floor(xnum/2);
-        gridy = Math.ceil(ynum/2);
+        gridy = Math.ceil(ynum/2)+4;
         gridBox = gridx + xnum*gridy;
         titleLine = xnum*gridy;
         top = 0;
@@ -60,14 +60,20 @@ function makeDiv(name, filledBoxes){
             // make position sensitive to size and document's width
             gridBox = Math.floor(Math.random()*xnum*ynum);
             
+            var zone1 = [10];
+
             var intersection = false;
             console.log(filledBoxes)
             for(i=0; i<filledBoxes.length; i++){
                 if (gridBox === filledBoxes[i])
                     intersection = true;
+                else if (gridBox > filledBoxes[i]-5 && gridBox < filledBoxes[i]+5)
+                    intersection = true;
+                else if (gridBox%xnum === filledBoxes[i]%xnum)
+                    intersection = true;
             }
 
-            if(gridBox < titleLine && intersection === false)
+            if(gridBox < (titleLine-5*xnum) && intersection === false)
                 chosen = true;
         }
         top = Math.random()*100;
