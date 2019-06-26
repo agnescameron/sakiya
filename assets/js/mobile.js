@@ -1,5 +1,6 @@
 var pageDepth = 0;
-var initialWidth = $(document).width();
+var initialWidth = $(window).width();
+var initialHeight = $(window).height();
 
 function generateList(){
     var headings = ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Community"]
@@ -8,12 +9,18 @@ function generateList(){
   }
 }
 
-function nextPage(name){
+function makePage(name){
     pageDepth+=1;
     //make room for next page
+    console.log('page 0 width ', $('#page0').width())
+
     $('#container').css({
-        'width': (pageDepth+1)*initialWidth+'px',
+        // 'width': (pageDepth+1)*initialWidth+'px',
+        'overflow-x': 'scroll'
     })
+
+    console.log('initial width is ', initialWidth, 'calculated width is ', (pageDepth+1)*initialWidth,
+        'new width is ', $('#container').width(), 'document width is ', $(window).width())
 
     //generate the next page
     $newpage = $('<div/>', {
@@ -26,7 +33,7 @@ function nextPage(name){
     }).appendTo( '#container' );
 
     $('html, body').animate({
-        scrollLeft: $('#page'+pageDepth).offset().left
+        scrollLeft: ($('#page'+pageDepth).offset()).left
     }, 1000);
 
     console.log("scroll left is ", $('html, body').scrollLeft())
@@ -38,7 +45,7 @@ function makeDiv(name, number){
     $newheading = $('<div/>', {
         id: name,
         class: "heading",
-        click: function(){ nextPage(name); }
+        click: function(){ makePage(name); }
     });
 
     $newheading.css({

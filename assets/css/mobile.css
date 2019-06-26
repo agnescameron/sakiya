@@ -6,25 +6,15 @@
 }
 
 #container {
-	overflow-x: scroll;
+	overflow-x: hidden;
 	display: inline-block;
 	white-space: nowrap;
+	width: 10000;
+    height: 100vh;	
 }
 
 .page {
-	padding: 20px;
-	width: 100vw;
-    height: 100vh;
   	float:left;
-  	position: relative;
-  	display: inline;
-  	flex-basis: 0;
-    flex-grow: 1;
-/*  	display: inline-block;*/
-}
-
-.gridElement{
-/*	border-style: solid;
-	border-width: 1px;*/
-/*	position: absolute,*/
+    width: 99vw;
+    height: 99vh;
 }
