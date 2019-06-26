@@ -1,10 +1,25 @@
 var pageDepth = 0;
 var menus = {
-    "mainMenu":["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Friends", "Community"],
-    "BoardMenu": ["Sahar Qawasmi", "Nida Sinnokrot"],
-    "EventsMenu": ["current", "past"],
-    "ProjectsMenu": ["current", "past"],
-    "FriendsMenu": ["friend1", "friend2"],
+    "mainMenu":{
+        "level":0,
+        "menu": ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Friends", "Community"],
+    },
+    "BoardMenu": {
+        "level": 1,
+        "menu": ["Sahar Qawasmi", "Nida Sinnokrot"],
+    },
+    "EventsMenu": {
+        "level": 1,
+        "menu":["current", "past"]
+    },
+    "ProjectsMenu": {
+        "level": 1,
+        "menu":["current", "past"],
+    },
+    "FriendsMenu": {
+        "level": 1,
+        "menu":["friend1", "friend2"],
+    }
 }
 
 var initialWidth = $(window).width();
@@ -22,7 +37,8 @@ function generateList(headings, page){
 }
 
 function makePage(name){
-    pageDepth+=1;
+    pageDepth=menus[name+'Menu'].level;
+    console.log("pageDepth")
     //make room for next page
     console.log('page 0 width ', $('#page0').width())
 
@@ -36,14 +52,16 @@ function makePage(name){
         class: "page",
     }).appendTo( '#container' );
 
-    $('<div/>', {
+    $offset = $('<div/>', {
         id: 'offset'+pageDepth,
         class: "offset",
     }).css({
         height: ($('#'+name).offset()).top,
-    }).appendTo( '#page'+pageDepth );
+    });
 
-    generateList( menus[name+'Menu'] , '#page'+pageDepth)
+    $( '#page'+pageDepth ).html($offset);
+
+    generateList( menus[name+'Menu'].menu , '#page'+pageDepth)
 
     $('html, body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
@@ -54,6 +72,6 @@ function makePage(name){
 }
 
 window.onload = function() {
-    generateList(menus["mainMenu"], '#page0');
+    generateList(menus["mainMenu"].menu, '#page0');
     
 }
