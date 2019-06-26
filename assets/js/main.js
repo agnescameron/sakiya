@@ -29,6 +29,59 @@ function generateGrid(){
     console.log(gridSquares);
 }
 
+function newBranch(root) {
+
+    parent = $('#' + root).parent();
+    parentNum = parseInt(parent.attr('id').slice(-1));
+    console.log(parent);
+
+    //how many?
+    numBranches = menus[root].contents.length;
+
+    //mark out a space and divide between them
+    var leftOffset, topOffset;
+
+    //sort out left offset first
+    if(parentNum < 4 && parentNum !== 0){
+        leftOffset = -50;
+    }
+
+    //then top offset
+    else if(parentNum > 3 && parentNum !== 0){
+        leftOffset = 50 + $('#' + root).width();
+    }
+
+    else leftOffset = 0;
+
+    //now deal with the top offset
+    if(parentNum === 3 || parentNum === 4){
+        topOffset = -50;
+    }
+
+    else if(parentNum === 1 || parentNum === 6){
+        topOffset = -25;
+    }
+
+    else if(parentNum === 0){
+        topOffset = 50 + $('#' + root).height();
+    }
+
+    for(i=0; i<numBranches; i++){
+        $('<div/>', {
+            id: menus[root].contents[i],
+            class: "subheading",
+            click: function(){ console.log("wwwww") }
+        })
+        .html( menus[root].contents[i] )
+        .css({
+        'z-index': 3,
+        'top': topOffset+(i*100)+'px',
+        'left': leftOffset+(i*100)+'px',        
+        }).appendTo( $('#' + root) );
+    }
+
+}
+
 function generateFrames(menu){
     for(i=0; i<menus[menu].contents.length; i++){
         $frame = $('<div/>', {
@@ -49,10 +102,12 @@ function generateFrames(menu){
 
         $('<div/>', {
             id: menus[menu].contents[i],
-            class: "heading"
+            class: "heading",
+            click: function(){ newBranch(this.id) }
         })
         .html( menus[menu].contents[i] )
         .css({
+        'z-index': 3,
         'top': top+'px',
         'left': left+'px',        
         }).appendTo( $frame );
@@ -62,5 +117,5 @@ function generateFrames(menu){
 
 window.onload = function() {
     generateFrames("main");
-    generateGrid();
+    // generateGrid();
 }
