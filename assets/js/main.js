@@ -33,38 +33,9 @@ function newBranch(root) {
 
     parent = $('#' + root).parent();
     parentNum = parseInt(parent.attr('id').slice(-1));
-    console.log(parent);
 
     //how many?
     numBranches = menus[root].contents.length;
-
-    //mark out a space and divide between them
-    var leftOffset, topOffset;
-
-    //sort out left offset first
-    if(parentNum < 4 && parentNum !== 0){
-        leftOffset = -50;
-    }
-
-    //then top offset
-    else if(parentNum > 3 && parentNum !== 0){
-        leftOffset = 50 + $('#' + root).width();
-    }
-
-    else leftOffset = 0;
-
-    //now deal with the top offset
-    if(parentNum === 3 || parentNum === 4){
-        topOffset = -50;
-    }
-
-    else if(parentNum === 1 || parentNum === 6){
-        topOffset = -25;
-    }
-
-    else if(parentNum === 0){
-        topOffset = 50 + $('#' + root).height();
-    }
 
     for(i=0; i<numBranches; i++){
         $('<div/>', {
@@ -75,19 +46,37 @@ function newBranch(root) {
         .html( menus[root].contents[i] )
         .css({
         'z-index': 3,
-        'top': topOffset+(i*100)+'px',
-        'left': leftOffset+(i*100)+'px',        
-        }).appendTo( $('#' + root) );
+        'top': Math.random()*50+'px',
+        'left': Math.random()*50+'px',        
+        }).appendTo( $(parent+i) );
     }
 
 }
 
 function generateFrames(menu){
+//class, css etc defined by type
+
     for(i=0; i<menus[menu].contents.length; i++){
+        
+        if(menu !== "main"){
+            parent = $('#' + menu).parent();
+            parentNum = parseInt(parent.attr('id').slice(-1));
+        }
+
+        else
+            parentNum = ''
+
+        console.log("menu level is", menus[menu].level)
+
+        var frameType = (menus[menu].level > 0) ? "subframe" : "frame";
+        var headingType = (menus[menu].level > 0) ? "subheading" : "heading";
+
         $frame = $('<div/>', {
-            id: 'frame' + i,
-            class: "frame"
+            id: 'frame' + parentNum + i,
+            class: frameType,
         }).appendTo( 'body' );
+
+        console.log('new frame id is', 'frame' + parentNum + i, " parentnum is ", parentNum)
 
         var top, left;
         if (menus[menu].contents[i] === 'SAKIYA'){
@@ -96,14 +85,14 @@ function generateFrames(menu){
         }
 
         else {
-            top = Math.random()*100;
-            left = Math.random()*100;
+            top = Math.random()*50;
+            left = Math.random()*50;
         }
 
         $('<div/>', {
             id: menus[menu].contents[i],
-            class: "heading",
-            click: function(){ newBranch(this.id) }
+            class: headingType,
+            click: function(){ generateFrames(this.id), i }
         })
         .html( menus[menu].contents[i] )
         .css({
