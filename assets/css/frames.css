@@ -3,19 +3,24 @@
 	left: 42.5vw;
 }
 
+#frame00 {
+	top:84vh;
+	left: 46vw;
+}
+
 #frame1 {
 	top: 65vh;
  	left: 25vw;
 }
 
 #frame10 {
-	top: 63vh;
- 	left: 21vw;
+	top: 72vh;
+ 	left: 16vw;
 }
 
 #frame11 {
-	top: 60vh;
- 	left: 24vw;
+	top: 62vh;
+ 	left: 12vw;
 }
 
 #frame2 {
@@ -24,18 +29,28 @@
 }
 
 #frame20 {
-	top: 43vh;
- 	left: 15vw;
+	top: 40vh;
+ 	left: 7vw;
 }
 
 #frame21 {
-	top: 43vh;
+	top: 31vh;
  	left: 15vw;
 }
 
 #frame3 {
 	top: 30vh;
 	left: 30vw;
+}
+
+#frame30 {
+	top: 17vh;
+	left: 25vw;
+}
+
+#frame31 {
+	top: 17vh;
+	left: 35vw;
 }
 
 #frame4 {
@@ -46,6 +61,26 @@
 #frame5 {
 	top: 43vh;	
 	left: 65vw;
+}
+
+#frame50 {
+	top: 30vh;	
+	left: 65vw;
+}
+
+#frame51 {
+	top: 17vh;	
+	left: 72vw;
+}
+
+#frame52 {
+	top: 30vh;	
+	left: 76vw;
+}
+
+#frame53 {
+	top: 43vh;	
+	left: 80vw;
 }
 
 #frame6 {

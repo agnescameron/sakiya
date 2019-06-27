@@ -29,30 +29,6 @@ function generateGrid(){
     console.log(gridSquares);
 }
 
-function newBranch(root) {
-
-    parent = $('#' + root).parent();
-    parentNum = parseInt(parent.attr('id').slice(-1));
-
-    //how many?
-    numBranches = menus[root].contents.length;
-
-    for(i=0; i<numBranches; i++){
-        $('<div/>', {
-            id: menus[root].contents[i],
-            class: "subheading",
-            click: function(){ console.log("wwwww") }
-        })
-        .html( menus[root].contents[i] )
-        .css({
-        'z-index': 3,
-        'top': Math.random()*50+'px',
-        'left': Math.random()*50+'px',        
-        }).appendTo( $(parent+i) );
-    }
-
-}
-
 function generateFrames(menu){
 //class, css etc defined by type
 

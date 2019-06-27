@@ -27,7 +27,7 @@ var menus = {
     "Friends": {
         "level": 1,
         "type":"menu",        
-        "contents":[`<a href="http://google.com">friend1</a>`, "friend2"],
+        "contents":[`<a href="http://google.com">friend1</a>`, "friend2", "friend3", "friend4"],
     },
     "Curriculum": {
         "level": 1,
