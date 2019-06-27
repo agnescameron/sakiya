@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Canela';
+  src: url('../fonts/Canela-Light.ttf') format('truetype'); 
+}  
+
 body {
-	font-family: helvetica;
+	font-family: 'Canela';
+	color: white;
+	background-color: #309937;
 }

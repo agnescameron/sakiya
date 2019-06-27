@@ -38,16 +38,15 @@ function generateMenus() {
 function showPage(title) {
     //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
+        var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
+
         $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 1000);
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': '20px'}, 1000);
-        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 80*i + 'px'}, 1000);
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 1000);
+        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 1000);
         $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 1000);        
     }
-
-    console.log('offset is ', $( '#' + title).offset(), "title is ", title)
     //render a box with the information
 
-    console.log('making box', menus[title].contents)
     $('<div/>', {
         id: title,
         class: 'textbox',
