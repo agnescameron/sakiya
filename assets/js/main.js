@@ -38,10 +38,10 @@ function generateMenus() {
 function showPage(title) {
     //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
-        $( '#' + menus["main"].contents[i]).css({'left': '10px'});
-        $( '#' + menus["main"].contents[i]).parent().css({'left': '20px'});
-        $( '#' + menus["main"].contents[i]).css({'top': 100 + 80*i + 'px'});
-        $( '#' + menus["main"].contents[i]).parent().css({'top': '20px'});        
+        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 1000);
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': '20px'}, 1000);
+        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 80*i + 'px'}, 1000);
+        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 1000);        
     }
 
     console.log('offset is ', $( '#' + title).offset(), "title is ", title)
