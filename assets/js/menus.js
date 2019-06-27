@@ -2,7 +2,7 @@ var menus = {
     "main":{
         "level":0,
         "type":"menu",
-        "contents": ["SAKIYA", "Board", "Events", "Projects", "Curriculum", "Friends", "Community"],
+        "contents": ["SAKIYA", "Board", "Events", "Programs", "Curriculum", "Friends", "Community"],
     },
     "SAKIYA": {
         "level": 1,
@@ -19,10 +19,10 @@ var menus = {
         "type":"menu",        
         "contents":["current events", "past events"],
     },
-    "Projects": {
+    "Programs": {
         "level": 1,
         "type":"menu",        
-        "contents":["current projects", "past projects"],
+        "contents":["current", "past"],
     },
     "Friends": {
         "level": 1,
