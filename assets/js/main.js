@@ -37,6 +37,10 @@ function generateMenus() {
 function showFrames(root) {
     console.log('show', root);
 
+    for(i=0; i<menus[root].contents.length; i++){
+        $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
+    }
+
 }
 
 function generateFrames(menu){
@@ -60,8 +64,6 @@ function generateFrames(menu){
             class: frameType,
         }).appendTo( 'body' );
 
-        console.log('new frame id is', 'frame' + parentNum + i, " parentnum is ", parentNum)
-
         var top, left;
         if (menus[menu].contents[i] === 'SAKIYA'){
             top = ($(document).width()/25);
@@ -74,7 +76,7 @@ function generateFrames(menu){
         }
 
         $('<div/>', {
-            id: menus[menu].contents[i],
+            id: menus[menu].contents[i].replace(/\s/g, ''),
             class: headingType,
             click: function(){ showFrames(this.id) }
         })

@@ -17,17 +17,17 @@ var menus = {
     "Events": {
         "level": 1,
         "type":"menu",        
-        "contents":["current", "past"],
+        "contents":["current events", "past events"],
     },
     "Projects": {
         "level": 1,
         "type":"menu",        
-        "contents":["current", "past"],
+        "contents":["current projects", "past projects"],
     },
     "Friends": {
         "level": 1,
         "type":"menu",        
-        "contents":[`<a href="http://google.com">friend1</a>`, "friend2", "friend3", "friend4"],
+        "contents":[`friend1`, "friend2", "friend3", "friend4"],
     },
     "Curriculum": {
         "level": 1,
