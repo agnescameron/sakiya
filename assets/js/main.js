@@ -26,12 +26,21 @@ function generateGrid(){
         }
     }
     gridSquares = xnum*ynum;
-    console.log(gridSquares);
+}
+
+function generateMenus() {
+    for (j=0; j<Object.keys(menus).length; j++){
+        generateFrames(Object.keys(menus)[j]);
+    }
+}
+
+function showFrames(root) {
+    console.log('show', root);
+
 }
 
 function generateFrames(menu){
 //class, css etc defined by type
-
     for(i=0; i<menus[menu].contents.length; i++){
         
         if(menu !== "main"){
@@ -42,10 +51,9 @@ function generateFrames(menu){
         else
             parentNum = ''
 
-        console.log("menu level is", menus[menu].level)
-
         var frameType = (menus[menu].level > 0) ? "subframe" : "frame";
         var headingType = (menus[menu].level > 0) ? "subheading" : "heading";
+        var display = (menus[menu].level > 0) ? "none" : "block";
 
         $frame = $('<div/>', {
             id: 'frame' + parentNum + i,
@@ -68,19 +76,20 @@ function generateFrames(menu){
         $('<div/>', {
             id: menus[menu].contents[i],
             class: headingType,
-            click: function(){ generateFrames(this.id), i }
+            click: function(){ showFrames(this.id) }
         })
         .html( menus[menu].contents[i] )
         .css({
         'z-index': 3,
         'top': top+'px',
-        'left': left+'px',        
+        'left': left+'px',
+        'display': display,        
         }).appendTo( $frame );
     }
 }
 
 
 window.onload = function() {
-    generateFrames("main");
+    generateMenus();
     // generateGrid();
 }
