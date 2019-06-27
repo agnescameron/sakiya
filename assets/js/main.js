@@ -34,13 +34,32 @@ function generateMenus() {
     }
 }
 
+
+function showPage(title) {
+    //put the tree to the side
+    for(i=0; i<menus["main"].contents.length; i++){
+        $( '#' + menus["main"].contents[i]).css({'left': '10px'});
+        $( '#' + menus["main"].contents[i]).parent().css({'left': '20px'});
+        $( '#' + menus["main"].contents[i]).css({'top': 100 + 80*i + 'px'});
+        $( '#' + menus["main"].contents[i]).parent().css({'top': '20px'});        
+    }
+
+    console.log('offset is ', $( '#' + title).offset(), "title is ", title)
+    //render a box with the information
+
+    console.log('making box', menus[title].contents)
+    $('<div/>', {
+        id: title,
+        class: 'textbox',
+    }).html(menus[title].contents)
+    .appendTo( 'body' );
+}
+
 function showFrames(root) {
     console.log('show', root);
-
     for(i=0; i<menus[root].contents.length; i++){
         $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
     }
-
 }
 
 function generateFrames(menu){
@@ -78,7 +97,7 @@ function generateFrames(menu){
         $('<div/>', {
             id: menus[menu].contents[i].replace(/\s/g, ''),
             class: headingType,
-            click: function(){ showFrames(this.id) }
+            click: (menus[menu].type === "menu") ? function(){ showPage(this.id) } : function(){ showFrames(this.id) }
         })
         .html( menus[menu].contents[i] )
         .css({

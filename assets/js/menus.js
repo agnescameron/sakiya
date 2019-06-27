@@ -16,7 +16,7 @@ var menus = {
     },
     "Events": {
         "level": 1,
-        "type":"menu",        
+        "type":"menu",
         "contents":["current events", "past events"],
     },
     "Programs": {
@@ -32,7 +32,7 @@ var menus = {
     "Curriculum": {
         "level": 1,
         "type":"text",        
-        "contents":[`The Sakiya <br>curriculum is...`],        
+        "contents":[curriculum["contents"][0]],        
     },
     "Community": {
         "level": 1,

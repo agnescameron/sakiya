@@ -34,4 +34,15 @@ canvas[resize] {
     height: 100%;
 }
 
-
+.textbox {
+  width: 40vw;
+  z-index: 5;
+  border: 2px solid #309937;
+  position: absolute;
+  background-color: white;
+  opacity: 80%;
+  top: 10vh;
+  left: 20vw;
+  padding:20px 20px 20px 20px;
+  box-shadow:2px 2px 5px rgba(0,0,0,0.3);
+}
