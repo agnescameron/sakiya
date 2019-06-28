@@ -68,6 +68,9 @@ function showPage(title) {
         i++;   
     });   
 
+    //else
+    $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
+
     //render a box with the information
 
     $('<div/>', {
