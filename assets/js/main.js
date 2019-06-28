@@ -41,15 +41,33 @@ function showPage(title) {
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
 
-        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 1000);
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 1000);
-        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 1000);
-        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 1000);        
+        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 800);
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 800);
+        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 800);
+        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 800);        
     }
 
     //handle submenus: if you clicked from a submenu 
+    parentFrame = $('#'+title).parent().attr('id').charAt(5);
 
-    
+    var i = 0;
+    $(`*[id^=frame${parentFrame}].subframe`).each(function() {
+        var topOffset = 110 + 70*parentFrame;
+
+        $div = $('#' + $(this).attr('id'))
+        $div.children().attr('id')
+        //console.log("first child is ", $( '#frame30:first-child').attr('id'));
+
+        $div.animate({'left': '180px'}, 800)
+        $div.children().animate({'left': '20px'}, 800)
+        $div.animate({'top': topOffset + 30*i + 'px'}, 800)
+        $div.children().animate({'top': '10px'}, 800)     
+
+        $('#' + title).css({"color":"yellow"})
+
+        i++;   
+    });   
+
     //render a box with the information
 
     $('<div/>', {
@@ -74,7 +92,7 @@ function generateFrames(menu){
         
         if(menu !== "main"){
             parent = $('#' + menu).parent();
-            parentNum = parseInt(parent.attr('id').slice(-1));
+            parentNum = parseInt(parent.attr('id').slice(5));
         }
 
         else
@@ -107,7 +125,7 @@ function generateFrames(menu){
         })
         .html( menus[menu].contents[i] );
 
-        if(menus[menu].type === "text") {
+        if(menus[menu].level === 1) {
             $heading.unbind('click');
             $heading.click(function(){ showPage(this.id) });
         }
