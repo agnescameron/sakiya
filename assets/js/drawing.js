@@ -5,13 +5,14 @@ function drawBranch() {
 
 function drawMainTree() {
 	var base = $( '#SAKIYA' ).offset();
-	console.log(menus["main"].contents.length);
-
+	console.log($( '#SAKIYA' ).offset());
+	// offset outputs e.g. { top: 451.20001220703125, left: 632 }
 	base.left = base.left + $( '#SAKIYA' ).width()/2;
 	base.top = base.top - $( '#SAKIYA' ).height()/2;
-
+	// repositions base.left and base.top to the center of "$SAKIYA"
 	var basePoint = new Point(base.left, base.top)
-
+	
+	
 	for(i=0; i<menus["main"].contents.length; i++){
 		var branch = new Path();
 		branch.strokeColor = 'black';
@@ -25,7 +26,7 @@ function drawMainTree() {
 
 		branch.moveTo(basePoint)
 		branch.lineTo(goalPoint);
-		console.log(basePoint, goalPoint)
+		// console.log(basePoint, goalPoint)
 	}
 }
 
