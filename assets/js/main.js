@@ -7,7 +7,6 @@ function generateGrid(){
     xnum = Math.floor($(document).width()/squareSize)
     ynum = Math.floor($(document).height()/squareSize)
 
-    console.log('xnum ', xnum, 'ynum  ', ynum)
     leftMargin = ($(document).width() - Math.floor($(document).width()/squareSize)*squareSize)/2;
     topMargin = ($(document).height() - Math.floor($(document).height()/squareSize)*squareSize)/2;
 
@@ -47,17 +46,23 @@ function showPage(title) {
         $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 1000);
         $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 1000);        
     }
+
+    //handle submenus: if you clicked from a submenu 
+
+    
     //render a box with the information
 
     $('<div/>', {
         id: title,
         class: 'textbox',
-    }).html(menus[title].contents)
+    }).html(pages[title][0])
     .appendTo( 'body' );
+
+    $('#logo').animate({"width": "15vw", "height": "15vw"});    
 }
 
 function showFrames(root) {
-    console.log('show', root);
+    console.log('show frames', root);
     for(i=0; i<menus[root].contents.length; i++){
         $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
     }
@@ -102,8 +107,12 @@ function generateFrames(menu){
         })
         .html( menus[menu].contents[i] );
 
-        if(menus[menu].contents.length === 1) {
-            console.log("menu is", menu)
+        if(menus[menu].type === "text") {
+            $heading.unbind('click');
+            $heading.click(function(){ showPage(this.id) });
+        }
+
+        if(menus[menu].contents.length === 1 ) {
             $('#' + menu).unbind('click');
             $('#' + menu).click(function(){ showPage(this.id) });
         }

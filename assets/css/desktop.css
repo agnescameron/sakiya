@@ -34,16 +34,26 @@ canvas[resize] {
     height: 100%;
 }
 
+#logo {
+	width: 7vw;
+	height: 7vw;
+	right: 20px;
+	top: 20px;
+	position: absolute;
+	background-size: cover;
+	background-image: url("../img/logo.png");
+}
+
 .textbox {
-  width: 40vw;
-  color: black;
+  width: 50vw;
+/*  color: black;*/
   z-index: 5;
-  border: 2px solid #309937;
+/*  border: 2px solid #309937;*/
   position: absolute;
-  background-color: white;
+/*  background-color: white;*/
   opacity: 80%;
   top: 10vh;
   left: 20vw;
-  padding:20px 20px 20px 20px;
-  box-shadow:2px 2px 5px rgba(0,0,0,0.3);
+  padding:20px 40px 20px 40px;
+/*  box-shadow:2px 2px 5px rgba(0,0,0,0.3);*/
 }

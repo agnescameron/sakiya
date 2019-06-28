@@ -7,7 +7,8 @@ var menus = {
     "SAKIYA": {
         "level": 1,
         "type":"text",        
-        "contents": ["about sakiya"],
+        "contents": [''],
+        // "contents": ["heritage farm", "counter-culture residency", "re-rooting culture"],
     },
     "Board": {
         "level": 1,
@@ -17,12 +18,12 @@ var menus = {
     "Events": {
         "level": 1,
         "type":"menu",
-        "contents":["current events", "past events"],
+        "contents":["upcoming", "past events"],
     },
     "Programs": {
         "level": 1,
         "type":"menu",        
-        "contents":["current", "past"],
+        "contents":["current", "archive"],
     },
     "Friends": {
         "level": 1,
@@ -32,11 +33,11 @@ var menus = {
     "Curriculum": {
         "level": 1,
         "type":"text",        
-        "contents":[curriculum["contents"][0]],        
+        "contents":[''],        
     },
     "Community": {
         "level": 1,
         "type":"text",        
-        "contents":[`The village of <br> Ein Qinyya...`],        
+        "contents":[''],        
     },    
 }
