@@ -37,6 +37,8 @@ function generateMenus() {
 
 function showPage(title) {
     //put the tree to the side
+    console.log("showing page ", title);
+
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
 
@@ -93,13 +95,20 @@ function generateFrames(menu){
             left = Math.random()*50;
         }
 
-        $('<div/>', {
+        $heading = $('<div/>', {
             id: menus[menu].contents[i].replace(/\s/g, ''),
             class: headingType,
-            click: (menus[menu].type === "menu") ? function(){ showPage(this.id) } : function(){ showFrames(this.id) }
+            click: (function(){ showFrames(this.id) } ),
         })
-        .html( menus[menu].contents[i] )
-        .css({
+        .html( menus[menu].contents[i] );
+
+        if(menus[menu].contents.length === 1) {
+            console.log("menu is", menu)
+            $('#' + menu).unbind('click');
+            $('#' + menu).click(function(){ showPage(this.id) });
+        }
+
+        $heading.css({
         'z-index': 3,
         'top': top+'px',
         'left': left+'px',
