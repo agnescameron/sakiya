@@ -25,15 +25,15 @@ var menus = {
         "type":"menu",        
         "contents":["current", "archive"],
     },
-    "Friends": {
-        "level": 1,
-        "type":"menu",        
-        "contents":[`friend1`, "friend2", "friend3", "friend4"],
-    },
     "Curriculum": {
         "level": 1,
         "type":"text",        
         "contents":[''],        
+    },    
+    "Friends": {
+        "level": 1,
+        "type":"menu",        
+        "contents":[`friend1`, "friend2", "friend3", "friend4"],
     },
     "Community": {
         "level": 1,

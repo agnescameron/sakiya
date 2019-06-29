@@ -27,13 +27,6 @@ function generateGrid(){
     gridSquares = xnum*ynum;
 }
 
-function generateMenus() {
-    for (j=0; j<Object.keys(menus).length; j++){
-        generateFrames(Object.keys(menus)[j]);
-    }
-}
-
-
 function showPage(title) {
     //put the tree to the side
     console.log("showing page ", title);
@@ -86,6 +79,12 @@ function showFrames(root) {
     console.log('show frames', root);
     for(i=0; i<menus[root].contents.length; i++){
         $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
+    }
+}
+
+function generateMenus() {
+    for (j=0; j<Object.keys(menus).length; j++){
+        generateFrames(Object.keys(menus)[j]);
     }
 }
 
@@ -151,4 +150,8 @@ function generateFrames(menu){
 window.onload = function() {
     generateMenus();
     // generateGrid();
+    //gets script so we can call drawings
+    $.getScript("assets/js/drawing.js", function() {
+       console.log("Script loaded but not necessarily executed.");
+    });    
 }
