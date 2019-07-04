@@ -29,7 +29,6 @@ function generateGrid(){
 
 function showPage(title) {
     //put the tree to the side
-    console.log("showing page ", title);
 
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
@@ -49,7 +48,6 @@ function showPage(title) {
 
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
-        //console.log("first child is ", $( '#frame30:first-child').attr('id'));
 
         $div.animate({'left': '180px'}, 800)
         $div.children().animate({'left': '20px'}, 800)
@@ -76,7 +74,6 @@ function showPage(title) {
 }
 
 function showFrames(root) {
-    console.log('show frames', root);
     for(i=0; i<menus[root].contents.length; i++){
         $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
     }
@@ -150,8 +147,4 @@ function generateFrames(menu){
 window.onload = function() {
     generateMenus();
     // generateGrid();
-    //gets script so we can call drawings
-    $.getScript("assets/js/drawing.js", function() {
-       console.log("Script loaded but not necessarily executed.");
-    });    
 }
