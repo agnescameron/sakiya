@@ -53,7 +53,7 @@ function showPage(title) {
 
         $div.animate({'left': '180px'}, 800)
         $div.children().animate({'left': '20px'}, 800)
-        $div.animate({'top': topOffset + 30*i + 'px'}, 800)
+        $div.animate({'top': topOffset + 50*i + 'px'}, 800)
         $div.children().animate({'top': '10px'}, 800)     
 
         $('#' + title).css({"color":"yellow"})
