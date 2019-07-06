@@ -1,10 +1,22 @@
 @font-face {
   font-family: 'Canela';
-  src: url('../fonts/Canela-Light.ttf') format('truetype'); 
+  src: url('../fonts/Canela/Canela-Light.ttf') format('truetype'); 
 }  
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('../fonts/Apercu/Apercu-Regular.ttf') format('truetype'); 
+}  
+
 
 body {
 	font-family: 'Canela';
+	color: white;
+	background-color: #309937;
+}
+
+p {
+	font-family: 'Apercu';
 	color: white;
 	background-color: #309937;
 }

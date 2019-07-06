@@ -56,7 +56,6 @@ function makeTextPage(title, parentLevel){
     })
     .css({
         width: initialWidth,
-        height: initialHeight,
     })
     .html(pages[title][0])
     .appendTo( page );
