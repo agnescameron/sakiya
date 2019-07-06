@@ -22,3 +22,11 @@ body{
     width: 99vw;
     height: 99vh;
 }
+
+
+.textbox {
+	padding: 20px;
+	font-size: 50px;
+  	float:left;
+  	white-space:normal;
+}
