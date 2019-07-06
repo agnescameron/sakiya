@@ -4,6 +4,7 @@
   <script src="assets/js/frameworks/jquery.js"></script>
   <script src="assets/js/static/pages.js"></script>  
   <script src="assets/js/static/menus.js"></script>
+  <script src="assets/js/static/dictionary.js"></script>
   <title>sakiya</title>
   <meta name="description" content="sakiya foundation website">
   <meta name="author" content="sakiya foundation">
@@ -19,15 +20,18 @@ document.location = "mobile.html";
 }
 //-->
 </script>
-
-
 </head>
 
 <body>
   <div id="logo"></div>
+
+
   <script src="assets/js/desktop/desktop.js"></script>	
+  <script src="assets/js/translate.js"></script>
   <script type="text/javascript" src="assets/js/frameworks/paper.js"></script>
   <script type="text/paperscript" src="assets/js/desktop/drawing.js" canvas="mainCanvas"></script>	
+  <div id="translate" onclick="translateText()">en/ar</div>  
   <canvas id="mainCanvas" resize></canvas>
 </body>
+
 </html>
