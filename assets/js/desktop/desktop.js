@@ -64,10 +64,12 @@ function showPage(title) {
 
     //render a box with the information
 
+    console.log('makin page for ', title)
+
     $('<div/>', {
         id: title,
         class: 'textbox',
-    }).html(pages[title][0])
+    }).html(pages[title].contents)
     .appendTo( 'body' );
 
     $('#logo').animate({"width": "15vw", "height": "15vw"});    

@@ -9,7 +9,7 @@ function generateList(menu, page){
         for(i=0; i<menu.contents.length; i++){
             console.log('i is ', i)
             $newheading = $('<div/>', {
-            id: menu.contents[i],
+            id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
             click: function(){ makeTextPage(this.id, menu.level) }
         }).appendTo( page );
@@ -22,7 +22,7 @@ function generateList(menu, page){
         console.log('else')
         for(i=0; i<menu.contents.length; i++){
             $newheading = $('<div/>', {
-            id: menu.contents[i],
+            id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
             click: function(){ makeMenuPage(this.id) }
         }).appendTo( page );
