@@ -2,7 +2,7 @@ var menus = {
     "main":{
         "level":0,
         "type":"menu",
-        "contents": ["SAKIYA", "Board", "Events", "Programs", "Curriculum", "Friends", "Community"],
+        "contents": ["SAKIYA", "Team", "Events", "Programs", "Curriculum", "Friends", "Community"],
     },
     "SAKIYA": {
         "level": 1,
@@ -10,10 +10,10 @@ var menus = {
         "contents": [''],
         // "contents": ["heritage farm", "counter-culture residency", "re-rooting culture"],
     },
-    "Board": {
+    "Team": {
         "level": 1,
         "type":"menu",        
-        "contents": ["Sahar Qawasmi", "Nida Sinnokrot"],
+        "contents": ["Sahar Qawasmi", "Nida Sinnokrot", "Anan Quzmar", "Naji AlSlaibi"],
     },
     "Events": {
         "level": 1,
