@@ -33,4 +33,6 @@ body{
 
 .pageTitle {
 	font-size: 7vh;
+	float:left;
+  	white-space:normal;
 }

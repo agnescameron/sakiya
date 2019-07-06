@@ -33,8 +33,6 @@ function generateList(menu, page){
 }
 
 function makeTextPage(title, parentLevel){
-    console.log('making text page for', title, "page is ", pages[title][0])
-    
     // parent level + 1
     pageDepth=parentLevel+1;
 
@@ -49,15 +47,26 @@ function makeTextPage(title, parentLevel){
 
     page = '#page'+pageDepth;
 
-    $newpage = $('<div/>', {
+    $(page).empty();
+
+    $('<div/>', {
         id: title,
-        class: 'textbox',
-        click: function(){ makeTextPage(this.id, menu.level) }
+        class: 'pageTitle'    
     })
     .css({
         width: initialWidth,
     })
-    .html(pages[title][0])
+    .html(pages[title].title)
+    .appendTo( page );
+
+    $('<p/>', {
+        id: title,
+        class: 'textbox'
+    })
+    .css({
+        width: initialWidth,
+    })
+    .html(pages[title].contents)
     .appendTo( page );
 
     $('body').animate({
