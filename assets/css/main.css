@@ -13,18 +13,25 @@
 
 @font-face {
 	font-family: 'aljazeera';
-	src: url('../fonts/aljazeera/.ttf') format('truetype'); 
+	src: url('../fonts/aljazeera/Aljazeera-bold.ttf') format('truetype'); 
 	unicode-range: U+0600–06FF;
 }
 
+@font-face {
+	font-family: 'Barabics';
+	src: url('../fonts/Barabic/Barabics.ttf') format('truetype'); 
+	unicode-range: U+0600–06FF;
+}
+
+
 body {
-	font-family: 'Canela';
+	font-family: Canela, aljazeera;
 	color: white;
 	background-color: #309937;
 }
 
 p {
-	font-family: 'Apercu';
+	font-family: Apercu, Barabics;
 	color: white;
 	background-color: #309937;
 }
