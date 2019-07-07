@@ -28,6 +28,7 @@ body {
 	font-family: Canela, aljazeera;
 	color: white;
 	background-color: #309937;
+	line-height: 1;
 /*	unicode-bidi: bidi-override !important;
 	direction: unset !important;*/
 }
@@ -36,6 +37,7 @@ p {
 	font-family: Apercu, Barabics;
 	color: white;
 	background-color: #309937;
+	line-height: 1;
 /*	unicode-bidi: bidi-override !important;
 	direction: unset !important;*/
 }

@@ -38,15 +38,11 @@ canvas[resize] {
 
 .textbox {
   width: 40vw;
-/*  color: black;*/
   z-index: 5;
   text-align: justify;
-/*  border: 2px solid #309937;*/
   position: absolute;
-/*  background-color: white;*/
   opacity: 80%;
   top: 12vh;
   left: 25vw;
   padding:20px 40px 20px 40px;
-/*  box-shadow:2px 2px 5px rgba(0,0,0,0.3);*/
 }
