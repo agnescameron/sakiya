@@ -1,38 +1,34 @@
 var dictionary = {
  	"SAKIYA": {
             'en': 'SAKIYA',
-            'ar': 'ﺔﻴﻗﺎﺳ',
+            'ar': 'ﺳﺎﻗﻴﺔ',
  	},
  	"Team": {
             'en': 'Team',
-            'ar': 'ﻖﻳﺮﻓ',
+            'ar': 'ﻓﺮﻳﻖ',
  	},
  	"Events": {
             'en': 'Events',
-            'ar': 'ﺙاﺪﺣﺃ',
+            'ar': 'ﺃﺣﺪاﺙ',
  	},
  	"Programs": {
             'en': 'Programs',
-            'ar': 'ﺞﻣاﺮﺑ',
+            'ar': 'ﺑﺮاﻣﺞ',
  	},
  	"Curriculum": {
             'en': 'Curriculum',
-            'ar': 'ﺓءاﺮﻗ',
+            'ar': 'ﻗﺮاءﺓ',
  	},
  	"Friends": {
             'en': 'Friends',
-            'ar': 'ﺏﺎﺤﺻا',
+            'ar': 'اﺻﺤﺎﺏ',
  	},
  	"Community": {
             'en': 'Community',
-            'ar': 'ﺔﻋﺎﻤﺟ',
+            'ar': 'ﺟﻤﺎﻋﺔ',
  	},
  	"NidaSinnokrot": {
  			'en': 'Nida Sinnokrot',
- 			'ar': 'ﻁﺮﻘﻨﺳ اﺪﻴﻧ',
- 	},
- 	"NidaSinnokrotPage": {
- 			'en': 'Nida Sinnokrot',
- 			'ar': 'ﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧ',
+ 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
  	},
 }

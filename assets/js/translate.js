@@ -11,10 +11,12 @@ function translateText() {
 		key = Object.keys(dictionary)[i];
 		
 		if(lang === 'ar')
-			$('#'+key).html(dictionary[key].ar)
+			$('#'+key).html(`<bdi dir=rtl lang=ar> ${dictionary[key].ar } </bdi>`)
+			.css({direction: 'rtl'})
+			.attr({lang: 'ar', dir: 'rtl'})
 
 		else
-			$('#'+key).html(dictionary[key].en)
+			$('#'+key).html(dictionary[key].en).css({direction: 'ltr', lang: 'en'})
 		//replace contents with arabic
 		window.lang = lang;
 	}

@@ -70,11 +70,13 @@ function showPage(title) {
     });
 
     if(lang === 'en'){
-        $pageDiv.html(dictionary[title + 'Page'].en)
+        $pageDiv.html(pages[title + 'Page'].en.contents)
+            .css({direction: 'ltr'})
     }
 
     else{
-        $pageDiv.html(dictionary[title + 'Page'].ar)
+        $pageDiv.html(pages[title + 'Page'].ar.contents)
+            .css({direction: 'rtl'})
     }
 
 
