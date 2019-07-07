@@ -27,4 +27,12 @@ var dictionary = {
             'en': 'Community',
             'ar': 'ﺔﻋﺎﻤﺟ',
  	},
+ 	"NidaSinnokrot": {
+ 			'en': 'Nida Sinnokrot',
+ 			'ar': 'ﻁﺮﻘﻨﺳ اﺪﻴﻧ',
+ 	},
+ 	"NidaSinnokrotPage": {
+ 			'en': 'Nida Sinnokrot',
+ 			'ar': 'ﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧﻁﺮﻘﻨﺳ اﺪﻴﻧ',
+ 	},
 }

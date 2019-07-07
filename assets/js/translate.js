@@ -1,4 +1,5 @@
-var lang = 'en'
+var lang = 'en';
+window.lang = lang;
 
 function translateText() {
 	lang = (lang === 'ar') ? 'en' : 'ar';
@@ -15,6 +16,7 @@ function translateText() {
 		else
 			$('#'+key).html(dictionary[key].en)
 		//replace contents with arabic
+		window.lang = lang;
 	}
 
 	drawTree();

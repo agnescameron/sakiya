@@ -62,16 +62,23 @@ function showPage(title) {
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
 
-    //render a box with the information
+    console.log('lang is ', lang)
 
-    console.log('makin page for ', title)
-
-    $('<div/>', {
-        id: title,
+    $pageDiv = $('<div/>', {
+        id: title + 'Page',
         class: 'textbox',
-    }).html(pages[title].contents)
-    .appendTo( 'body' );
+    });
 
+    if(lang === 'en'){
+        $pageDiv.html(dictionary[title + 'Page'].en)
+    }
+
+    else{
+        $pageDiv.html(dictionary[title + 'Page'].ar)
+    }
+
+
+    $pageDiv.appendTo( 'body' );
     $('#logo').animate({"width": "15vw", "height": "15vw"});    
 }
 
