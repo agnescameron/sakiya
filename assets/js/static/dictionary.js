@@ -1,4 +1,8 @@
 var dictionary = {
+ 	"translate": {
+            'ar': 'english',
+            'en': 'اﻟﻌﺮﺑﻴﺔ',
+ 	},
  	"SAKIYA": {
             'en': 'SAKIYA',
             'ar': 'ﺳﺎﻗﻴﺔ',
