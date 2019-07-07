@@ -34,7 +34,7 @@ function drawBranch(menu) {
 			}
 			var goal = $('#' + goalDiv).offset();
 			goal.left =	goal.left + $( '#' + goalDiv ).width()/2;
-			goal.top =	goal.top + $( '#' + goalDiv ).height()/2;
+			goal.top =	goal.top - $( '#' + goalDiv ).height()/2;
 
 			var goalPoint = new Point(goal.left, goal.top)
 
