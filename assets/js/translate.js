@@ -16,4 +16,6 @@ function translateText() {
 			$('#'+key).html(dictionary[key].en)
 		//replace contents with arabic
 	}
+
+	drawTree();
 }

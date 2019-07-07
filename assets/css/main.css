@@ -1,13 +1,21 @@
 @font-face {
-  font-family: 'Canela';
-  src: url('../fonts/Canela/Canela-Light.ttf') format('truetype'); 
+	font-family: 'Canela';
+	src: url('../fonts/Canela/Canela-Light.ttf') format('truetype'); 
+	unicode-range: U+0025-00FF;
 }  
 
 @font-face {
-  font-family: 'Apercu';
-  src: url('../fonts/Apercu/Apercu-Regular.ttf') format('truetype'); 
+	font-family: 'Apercu';
+	src: url('../fonts/Apercu/Apercu-Regular.ttf') format('truetype'); 
+	unicode-range: U+0025-00FF;
 }  
 
+
+@font-face {
+	font-family: 'aljazeera';
+	src: url('../fonts/aljazeera/.ttf') format('truetype'); 
+	unicode-range: U+0600–06FF;
+}
 
 body {
 	font-family: 'Canela';

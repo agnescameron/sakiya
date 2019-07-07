@@ -1,14 +1,19 @@
+window.drawTree = drawTree;
+var group = new Group();
+
 function drawTree() {
+	group.removeChildren();
 	for (j=0; j<Object.keys(menus).length; j++){
         drawBranch(Object.keys(menus)[j]);
     }
 }
 
 function drawBranch(menu) {
+
 	$baseDiv = (menus[menu].contents[0] === "SAKIYA") ? $( '#SAKIYA' ) : $('#' + menu)
 	
 	var base = $baseDiv.offset();
-	
+
 	base.left = base.left + $baseDiv.width()/2;
 	base.top = base.top - $baseDiv.height()/2;
 
@@ -35,6 +40,8 @@ function drawBranch(menu) {
 
 			branch.moveTo(basePoint)
 			branch.lineTo(goalPoint);
+
+			group.addChild(branch)
 
 			if(wasHidden===true) $('#' + goalDiv).css({'display': 'none'})
 		}
