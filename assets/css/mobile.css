@@ -36,3 +36,11 @@ body{
 	float:left;
   	white-space:normal;
 }
+
+#translate {
+	padding: 20px;
+	bottom: 3vh;
+  	left: 2vw;
+  	font-size: 7vh;
+  	float: left;
+}

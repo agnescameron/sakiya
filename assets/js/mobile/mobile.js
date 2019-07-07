@@ -11,10 +11,13 @@ function generateList(menu, page){
             $newheading = $('<div/>', {
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
-            click: function(){ makeTextPage(this.id, menu.level) }
+            click: function(){ makeTextPage(this.id + 'Page', menu.level) }
         }).appendTo( page );
 
-        $newheading.html(menu.contents[i]);
+        if(lang === 'ar')
+            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+        else
+            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
         }
     }
 
@@ -27,13 +30,18 @@ function generateList(menu, page){
             click: function(){ makeMenuPage(this.id) }
         }).appendTo( page );
 
-        $newheading.html(menu.contents[i]);
+        if(lang === 'ar')
+            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+        else
+            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
         }
     }
 }
 
 function makeTextPage(title, parentLevel){
     // parent level + 1
+    console.log('making text page for ', title)
+
     pageDepth=parentLevel+1;
 
     $('#container').css({
@@ -49,25 +57,35 @@ function makeTextPage(title, parentLevel){
 
     $(page).empty();
 
-    $('<div/>', {
+    $divTitle = $('<div/>', {
         id: title,
         class: 'pageTitle'    
     })
     .css({
         width: initialWidth,
     })
-    .html(pages[title].title)
+    .html(pages[title].en.title)
     .appendTo( page );
 
-    $('<p/>', {
+    $divContents = $('<p/>', {
         id: title,
         class: 'textbox'
     })
     .css({
         width: initialWidth,
     })
-    .html(pages[title].contents)
+    
     .appendTo( page );
+
+    if(lang === 'en'){
+        $divTitle.html(pages[title].en.contents)
+        $divContents.html(pages[title].en.contents)
+    }
+
+    else{
+        $divTitle.html(pages[title].ar.contents)
+        $divContents.html(pages[title].ar.contents)
+    }
 
     $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left

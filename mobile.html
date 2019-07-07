@@ -4,6 +4,7 @@
   <script src="assets/js/frameworks/jquery.js"></script>
   <script src="assets/js/static/pages.js"></script>  
   <script src="assets/js/static/menus.js"></script>
+  <script src="assets/js/static/dictionary.js"></script>  
   <title>sakiya</title>
   <meta name="description" content="sakiya foundation website">
   <meta name="author" content="sakiya foundation">
@@ -18,15 +19,20 @@
 <script type="text/javascript">
 <!--
 if (screen.width > 699) {
-document.location = "index.html";
+  document.location = "index.html";
+  window.desktop = true;
+}
+else {
+  window.desktop = false;
 }
 //-->
 </script>
 
-
+  <script src="assets/js/translate.js"></script>
 <div id="container">
-	<div id="page0" class="page"></div>
+	<div id="page0" class="page"></div>   
 </div>
+  <div id="translate" onclick="translateText()">en/ar</div> 
   <script src="assets/js/mobile/mobile.js"></script>
 </body>
 </html>

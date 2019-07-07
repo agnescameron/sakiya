@@ -31,4 +31,16 @@ var dictionary = {
  			'en': 'Nida Sinnokrot',
  			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
  	},
+ 	"SaharQawasmi": {
+ 			'en': 'Sahar Qawasmi',
+ 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 	},
+ 	"AnanQuzmar": {
+ 			'en': 'Anan Quzmar',
+ 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 	},
+ 	"NajiAlSlaibi": {
+ 			'en': 'Naji AlSlaibi',
+ 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 	},
 }

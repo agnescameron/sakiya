@@ -14,11 +14,16 @@
   <link rel="stylesheet" href="assets/css/frames.css">  
 
 <script type="text/javascript">
-<!--
+window.desktop = false;
+
 if (screen.width <= 699) {
 document.location = "mobile.html";
+  window.desktop = false;
 }
-//-->
+else {
+  window.desktop = true;
+}
+
 </script>
 </head>
 
