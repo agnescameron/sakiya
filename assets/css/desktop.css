@@ -30,6 +30,12 @@ canvas[resize] {
 	background-image: url("../img/logo.png");
 }
 
+#translate {
+	width: 3vw;
+	height: 3vw;
+	left: 20px;
+}
+
 .textbox {
   width: 40vw;
 /*  color: black;*/
