@@ -1,4 +1,5 @@
 var gridSquares, xnum, ynum;
+window.pageMode = false;
 
 function generateGrid(){
     //subdivide the document into 10x10 squares to use as co-ordinate system
@@ -29,6 +30,7 @@ function generateGrid(){
 
 function showPage(title) {
     //put the tree to the side
+    window.pageMode = true;
 
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";

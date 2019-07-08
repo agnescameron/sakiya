@@ -5,9 +5,11 @@ window.removeBranch = removeBranch;
 var mainGroup = new Group();
 
 function drawTree() {
-	mainGroup.removeChildren();
-	for (j=0; j<Object.keys(menus).length; j++){
-        drawBranch(Object.keys(menus)[j]);
+	if(pageMode === false){
+		mainGroup.removeChildren();
+		for (j=0; j<Object.keys(menus).length; j++){
+	        drawBranch(Object.keys(menus)[j]);
+    	}
     }
 }
 
