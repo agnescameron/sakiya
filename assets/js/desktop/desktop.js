@@ -114,7 +114,7 @@ function showPage(title) {
     $pageDiv.appendTo( 'body' );
     
     if(window.pageMode === false){
-        $('#logo').animate({"width": "15vw", "height": "15vw"});   
+        //$('#logo').animate({"width": "15vw", "height": "15vw"});   
         rotate($('#logo'), -90);
     }
 
