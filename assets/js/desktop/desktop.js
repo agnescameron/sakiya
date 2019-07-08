@@ -28,10 +28,51 @@ function generateGrid(){
     gridSquares = xnum*ynum;
 }
 
+function toggleSideMenu(title) {
+    parentFrame = $('#'+title).parent().attr('id').charAt(5);
+
+    console.log('parent frame is ', parentFrame)
+    
+    for(i=0; i<menus["main"].contents.length; i++){
+    var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
+    var color = (menus["main"].contents[i] === title) ? 'yellow' : 'white';
+
+        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 800);
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 800);
+        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 800);
+        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 800);      
+        $( '#' + menus["main"].contents[i]).css({"color": color })  
+    }
+
+    var i = 0;
+    $(`*[id^=frame${parentFrame}].subframe`).each(function() {
+
+        var topOffset = 110 + 70*parentFrame;
+        console.log('i is ', i)
+        $div = $('#' + $(this).attr('id'))
+        $div.children().attr('id')
+
+        $div.css({'left': '180px'})
+        $div.children().css({'left': '20px'})
+        $div.css({'top': topOffset + 50*i + 'px'})
+        $div.children().css({'top': '10px'})     
+
+        $div.show()
+        $div.children().show()
+        $('#' + title).css({"color": color})
+
+        i++;
+    });   
+
+    //else
+    $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
+}
+
 function showPage(title) {
-    //put the tree to the side
     window.pageMode = true;
 
+    console.log('showpage!!')
+    //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
 
@@ -48,6 +89,8 @@ function showPage(title) {
     $(`*[id^=frame${parentFrame}].subframe`).each(function() {
         var topOffset = 110 + 70*parentFrame;
 
+        var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
+
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
@@ -56,7 +99,7 @@ function showPage(title) {
         $div.animate({'top': topOffset + 50*i + 'px'}, 800)
         $div.children().animate({'top': '10px'}, 800)     
 
-        $('#' + title).css({"color":"yellow"})
+        $div.css({"color": color })
 
         i++;   
     });   
@@ -81,17 +124,23 @@ function showPage(title) {
             .css({direction: 'rtl'})
     }
 
-
     $pageDiv.appendTo( 'body' );
     $('#logo').animate({"width": "15vw", "height": "15vw"});    
 }
 
 function showFrames(root) {
-    for(i=0; i<menus[root].contents.length; i++){
-        $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
+    if(pageMode === false){
+        for(i=0; i<menus[root].contents.length; i++){
+            console.log('drawing?')
+            $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
+        }
+        //if divs are now hidden, remove the branch
+        $('#' + menus[root].contents[0].replace(/\s/g, '')).is(":hidden") ? removeBranch(root) : drawBranch(root)
     }
-    //if divs are now hidden, remove the branch
-    $('#' + menus[root].contents[0].replace(/\s/g, '')).is(":hidden") ? removeBranch(root) : drawBranch(root)    
+
+    else {
+        toggleSideMenu(root);
+    }
 }
 
 function generateMenus() {

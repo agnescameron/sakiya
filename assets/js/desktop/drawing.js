@@ -14,8 +14,8 @@ function drawTree() {
 }
 
 function removeBranch(menu) {
-	groupName = menu + 'Branch';
-	mainGroup.children[groupName].remove();
+	if(pageMode === false)
+		mainGroup.children[menu + 'Branch'].remove();
 }
 
 function drawBranch(menu) {
