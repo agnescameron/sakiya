@@ -8,11 +8,24 @@ function translateText() {
 
 		key = Object.keys(dictionary)[i];
 		
-		if(lang === 'ar')
-			$('#'+key).html(dictionary[key].ar).css({direction: 'rtl'})
+		if(dictionary[key].type === 'heading'){
+			if(lang === 'ar')
+				$('#'+key).html(dictionary[key].ar).css({direction: 'rtl'})
 
-		else
-			$('#'+key).html(dictionary[key].en).css({direction: 'ltr', lang: 'en'})
+			else
+				$('#'+key).html(dictionary[key].en).css({direction: 'ltr', lang: 'en'})
+		}
+
+		else {
+			if(lang === 'ar'){
+				$('#'+key).html(dictionary[key].ar.title).css({direction: 'rtl'})
+				$('#'+key).html(dictionary[key].ar.contents).css({direction: 'rtl'})
+			}
+			else{
+				$('#'+key).html(dictionary[key].en.title).css({direction: 'ltr', lang: 'en'})
+				$('#'+key).html(dictionary[key].en.contents).css({direction: 'ltr', lang: 'en'})
+			}
+		}
 
 		window.lang = lang;
 	}
