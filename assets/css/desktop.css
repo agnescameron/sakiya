@@ -21,13 +21,16 @@ canvas[resize] {
 }
 
 #logo {
-	width: 7vw;
-	height: 7vw;
+	width: 90px;
+	height: 90px;
 	right: 20px;
 	top: 20px;
-	position: absolute;
 	background-size: cover;
 	background-image: url("../img/logo.png");
+	-moz-transition: all 2s ease;
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+	position: absolute;	
 }
 
 #translate {
@@ -36,20 +39,21 @@ canvas[resize] {
 	left: 20px;
 }
 
-.textbox {
-  width: 40vw;
-  z-index: 5;
+.pageContainer {
+  width: 60vw;
+  z-index: 4;
   text-align: justify;
   position: absolute;
-  opacity: 80%;
+  opacity: 100%;
   top: 12vh;
-  left: 25vw;
-  padding:20px 40px 20px 40px;
+  left: 300px;
+  min-width: 500px;
 }
 
-
-#logo{
-    -moz-transition: all 2s ease;
-    -webkit-transition: all 2s ease;
-    transition: all 2s ease;
+.textbox {
+  width: 66%;
+  z-index: 5;
+  text-align: justify;
+  position: relative;
+  padding:20px 40px 20px 40px;
 }

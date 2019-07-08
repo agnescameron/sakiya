@@ -31,7 +31,7 @@ function toggleSideMenu(title) {
         i++;
     });  
 
-    $('.textbox').remove();
+    $('.pageContainer').remove();
 
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
@@ -96,7 +96,14 @@ function showPage(title) {
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
 
     //remove other page divs (of class textbox?)
-    $('.textbox').remove();
+    // $('.textbox').remove();
+    $('.pageContainer').remove();
+
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'pageContainer',
+    });
+
 
     $pageDiv = $('<div/>', {
         id: title + 'Page',
@@ -113,7 +120,8 @@ function showPage(title) {
             .css({direction: 'rtl'})
     }
 
-    $pageDiv.appendTo( 'body' );
+    $pageContainer.appendTo( 'body' );
+    $pageDiv.appendTo( $pageContainer );
     
     if(window.pageMode === false){
         //$('#logo').animate({"width": "15vw", "height": "15vw"});   
