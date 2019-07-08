@@ -1,17 +1,27 @@
 window.drawTree = drawTree;
-var group = new Group();
+window.drawBranch = drawBranch;
+window.removeBranch = removeBranch;
+
+var mainGroup = new Group();
 
 function drawTree() {
-	group.removeChildren();
+	mainGroup.removeChildren();
 	for (j=0; j<Object.keys(menus).length; j++){
         drawBranch(Object.keys(menus)[j]);
     }
+}
+
+function removeBranch(menu) {
+	groupName = menu + 'Branch';
+	mainGroup.children[groupName].remove();
 }
 
 function drawBranch(menu) {
 
 	$baseDiv = (menus[menu].contents[0] === "SAKIYA") ? $( '#SAKIYA' ) : $('#' + menu)
 	
+	var subGroup = new Group({ name: menu+'Branch'});
+
 	var base = $baseDiv.offset();
 
 	base.left = base.left + $baseDiv.width()/2;
@@ -27,25 +37,22 @@ function drawBranch(menu) {
 			branch.strokeColor = 'black';
 			goalDiv = menus[menu].contents[i].replace(/\s/g, '');
 
-			var wasHidden = false;
-			if ($('#' + goalDiv).is(':hidden')){
-				$('#' + goalDiv).toggle();
-				wasHidden = true;
+			
+			if ($('#' + goalDiv).is(':visible')){
+				var goal = $('#' + goalDiv).offset();
+				goal.left =	goal.left + $( '#' + goalDiv ).width()/2;
+				goal.top =	goal.top - $( '#' + goalDiv ).height()/2;
+
+				var goalPoint = new Point(goal.left, goal.top)
+
+				branch.moveTo(basePoint)
+				branch.lineTo(goalPoint);
+
+				subGroup.addChild(branch);	
+				mainGroup.addChild(subGroup);
 			}
-			var goal = $('#' + goalDiv).offset();
-			goal.left =	goal.left + $( '#' + goalDiv ).width()/2;
-			goal.top =	goal.top - $( '#' + goalDiv ).height()/2;
-
-			var goalPoint = new Point(goal.left, goal.top)
-
-			branch.moveTo(basePoint)
-			branch.lineTo(goalPoint);
-
-			group.addChild(branch)
-
-			if(wasHidden===true) $('#' + goalDiv).css({'display': 'none'})
 		}
 	}
 }
 
-drawTree();
+drawBranch("main");

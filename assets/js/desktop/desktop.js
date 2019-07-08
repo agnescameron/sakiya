@@ -88,6 +88,8 @@ function showFrames(root) {
     for(i=0; i<menus[root].contents.length; i++){
         $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
     }
+    //if divs are now hidden, remove the branch
+    $('#' + menus[root].contents[0].replace(/\s/g, '')).is(":hidden") ? removeBranch(root) : drawBranch(root)    
 }
 
 function generateMenus() {
