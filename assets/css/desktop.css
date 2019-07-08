@@ -44,6 +44,7 @@ canvas[resize] {
   z-index: 4;
   text-align: justify;
   position: absolute;
+  display: inline-block;
   opacity: 100%;
   top: 12vh;
   left: 300px;
@@ -56,4 +57,17 @@ canvas[resize] {
   text-align: justify;
   position: relative;
   padding:20px 40px 20px 40px;
+}
+
+#backButton {
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  top: 0px;
+  right: 18%;
+  background-image: url("../img/close.png");
+  background-size: cover;
+  text-align: justify;
+  position: absolute;
+  float: right;
 }

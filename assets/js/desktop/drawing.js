@@ -1,6 +1,7 @@
 window.drawTree = drawTree;
 window.drawBranch = drawBranch;
 window.removeBranch = removeBranch;
+window.removeAllBranches = removeAllBranches;
 
 var mainGroup = new Group();
 
@@ -14,8 +15,14 @@ function drawTree() {
 }
 
 function removeBranch(menu) {
+	console.log('removin brancj', menu)
 	if(pageMode === false)
 		mainGroup.children[menu + 'Branch'].remove();
+}
+
+function removeAllBranches() {
+	if(pageMode === false)
+		mainGroup.removeChildren();
 }
 
 function drawBranch(menu) {

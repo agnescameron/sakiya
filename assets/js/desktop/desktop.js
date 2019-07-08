@@ -1,5 +1,53 @@
 window.pageMode = false;
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function returnToMain () {
+    $('.pageContainer').remove();
+
+    var styleSheet;
+    for (var i = 0; i < document.styleSheets.length; i++){
+        var sheet = document.styleSheets[i]
+        if(sheet.href === "file:///Users/agnes/Documents/SAKIYA/sakiya%20website/assets/css/frames.css")
+            styleSheet = sheet;
+    }
+    $('.subframe').hide();
+
+    //for all divs with class "frame"
+     $('.frame').each(function(){
+        var frameRules = styleSheet.rules;
+
+        frame = '#' + this.id;
+
+        for (var j = 0; j < frameRules.length; j++){
+            if (frameRules[j].selectorText && frameRules[j].selectorText.toLowerCase() === frame){
+                $('#' + this.id).animate({
+                    "top":frameRules[j].style.top,
+                    "left":frameRules[j].style.left,
+                    "position":'absolute'
+                }, 1000);
+                $('#' + this.id).children().animate({
+                    "left": Math.random()*50 + 'px',
+                    "top":Math.random()*50 + 'px',
+                }, 1000);
+
+            }
+        }
+
+    });
+
+    if(window.pageMode === true){  
+        rotate($('#logo'), 90);
+    }
+    
+    window.pageMode = false;
+    await sleep(1000);
+    drawTree();
+
+}
+
 function toggleSideMenu(title) {
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
     
@@ -31,7 +79,7 @@ function toggleSideMenu(title) {
         i++;
     });  
 
-    $('.pageContainer').remove();
+    $('.textbox').remove();
 
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
@@ -122,7 +170,11 @@ function showPage(title) {
 
     $pageContainer.appendTo( 'body' );
     $pageDiv.appendTo( $pageContainer );
-    
+    $('<div/>', {
+        id: 'backButton',
+        click: (function(){ returnToMain() } ),
+    }).appendTo( $pageContainer );
+
     if(window.pageMode === false){
         //$('#logo').animate({"width": "15vw", "height": "15vw"});   
         rotate($('#logo'), -90);
