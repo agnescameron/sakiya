@@ -64,7 +64,7 @@ function makeTextPage(title, parentLevel){
     .css({
         width: initialWidth,
     })
-    .html(pages[title].en.title)
+    .html(dictionary[title].en.title)
     .appendTo( page );
 
     $divContents = $('<p/>', {
@@ -78,13 +78,13 @@ function makeTextPage(title, parentLevel){
     .appendTo( page );
 
     if(lang === 'en'){
-        $divTitle.html(pages[title].en.contents)
-        $divContents.html(pages[title].en.contents)
+        $divTitle.html(dictionary[title].en.contents)
+        $divContents.html(dictionary[title].en.contents)
     }
 
     else{
-        $divTitle.html(pages[title].ar.contents)
-        $divContents.html(pages[title].ar.contents)
+        $divTitle.html(dictionary[title].ar.contents)
+        $divContents.html(dictionary[title].ar.contents)
     }
 
     $('body').animate({

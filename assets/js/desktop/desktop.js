@@ -72,12 +72,12 @@ function showPage(title) {
     });
 
     if(lang === 'en'){
-        $pageDiv.html(pages[title + 'Page'].en.contents)
+        $pageDiv.html(dictionary[title + 'Page'].en.contents)
             .css({direction: 'ltr'})
     }
 
     else{
-        $pageDiv.html(pages[title + 'Page'].ar.contents)
+        $pageDiv.html(dictionary[title + 'Page'].ar.contents)
             .css({direction: 'rtl'})
     }
 
