@@ -7,7 +7,7 @@ function toggleSideMenu(title) {
     var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
     var color = (menus["main"].contents[i] === title) ? 'yellow' : 'white';
 
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 600);  
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 500);  
         $( '#' + menus["main"].contents[i]).css({"color": color })  
     }
 
@@ -29,7 +29,9 @@ function toggleSideMenu(title) {
         $('#' + title).css({"color": color})
 
         i++;
-    });   
+    });  
+
+    $('.textbox').remove();
 
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
