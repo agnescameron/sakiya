@@ -46,3 +46,10 @@ canvas[resize] {
   left: 25vw;
   padding:20px 40px 20px 40px;
 }
+
+
+#logo{
+    -moz-transition: all 2s ease;
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+}

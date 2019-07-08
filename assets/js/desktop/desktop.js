@@ -35,9 +35,28 @@ function toggleSideMenu(title) {
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
 }
 
-function showPage(title) {
-    window.pageMode = true;
+function rotate(div, rotate){
+    var elem = div;
 
+    //get the current degree
+    var currentDegree = 0;
+    if(typeof(elem.attr('data-degree')) != 'undefined') {
+        currentDegree += parseInt(elem.attr('data-degree'), 10);
+    }
+
+    //calculate the new degree
+    var newDegree = currentDegree + rotate;
+
+    //modify the elem css
+    elem.css({ WebkitTransform: 'rotate(' + newDegree + 'deg)'});  
+    elem.css({ '-moz-transform': 'rotate(' + newDegree + 'deg)'});
+    elem.css('transform','rotate(' + newDegree + 'deg)');
+
+    //store the degree for next time
+    elem.attr('data-degree', newDegree);
+}
+
+function showPage(title) {
    //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title ||
@@ -93,7 +112,14 @@ function showPage(title) {
     }
 
     $pageDiv.appendTo( 'body' );
-    $('#logo').animate({"width": "15vw", "height": "15vw"});    
+    
+    if(window.pageMode === false){
+        $('#logo').animate({"width": "15vw", "height": "15vw"});   
+        rotate($('#logo'), -90);
+    }
+
+    window.pageMode = true;
+    
 }
 
 function showFrames(root) {
