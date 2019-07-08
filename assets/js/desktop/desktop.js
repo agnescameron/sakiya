@@ -2,12 +2,6 @@ window.pageMode = false;
 
 function toggleSideMenu(title) {
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
-
-
-    console.log("class is ", $('#'+title).attr('class'), "id is", $('#'+title).attr('id'));
-    //need to find if it's a menu or submenu
-
-    console.log('parent frame is ', parentFrame)
     
     for(i=0; i<menus["main"].contents.length; i++){
     var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
@@ -44,8 +38,7 @@ function toggleSideMenu(title) {
 function showPage(title) {
     window.pageMode = true;
 
-    console.log('show page: title is', title, "parent is", $('#' + title).parent().attr('id').slice(0, -1), "menu contents is", $( '#' + menus["main"].contents[3]).parent().attr("id"))
-    //put the tree to the side
+   //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
         var leftIndent = (menus["main"].contents[i] === title ||
             $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + menus["main"].contents[i]).parent().attr("id")) ? "50" : "20";
@@ -81,8 +74,6 @@ function showPage(title) {
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
 
-    console.log('lang is ', lang)
-
     //remove other page divs (of class textbox?)
     $('.textbox').remove();
 
@@ -108,7 +99,7 @@ function showPage(title) {
 function showFrames(root) {
     if(pageMode === false){
         for(i=0; i<menus[root].contents.length; i++){
-            console.log('drawing?')
+
             $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
         }
         //if divs are now hidden, remove the branch
