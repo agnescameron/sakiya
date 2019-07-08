@@ -3,24 +3,25 @@ window.pageMode = false;
 function toggleSideMenu(title) {
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
 
+
+    console.log("class is ", $('#'+title).attr('class'), "id is", $('#'+title).attr('id'));
+    //need to find if it's a menu or submenu
+
     console.log('parent frame is ', parentFrame)
     
     for(i=0; i<menus["main"].contents.length; i++){
     var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
     var color = (menus["main"].contents[i] === title) ? 'yellow' : 'white';
 
-        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 800);
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 800);
-        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 800);
-        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 800);      
+        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 600);  
         $( '#' + menus["main"].contents[i]).css({"color": color })  
     }
 
     var i = 0;
     $(`*[id^=frame${parentFrame}].subframe`).each(function() {
+        var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
 
         var topOffset = 110 + 70*parentFrame;
-        console.log('i is ', i)
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
@@ -43,10 +44,11 @@ function toggleSideMenu(title) {
 function showPage(title) {
     window.pageMode = true;
 
-    console.log('showpage!!')
+    console.log('show page: title is', title, "parent is", $('#' + title).parent().attr('id').slice(0, -1), "menu contents is", $( '#' + menus["main"].contents[3]).parent().attr("id"))
     //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
-        var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
+        var leftIndent = (menus["main"].contents[i] === title ||
+            $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + menus["main"].contents[i]).parent().attr("id")) ? "50" : "20";
 
         $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 800);
         $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 800);

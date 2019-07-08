@@ -42,23 +42,63 @@ var dictionary = {
  	"NidaSinnokrot": {
  			'type': 'heading',
  			'en': 'Nida Sinnokrot',
- 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
  	},
  	"SaharQawasmi": {
  			'type': 'heading',
  			'en': 'Sahar Qawasmi',
- 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
  	},
  	"AnanQuzmar": {
  			'type': 'heading',
  			'en': 'Anan Quzmar',
- 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
  	},
  	"NajiAlSlaibi": {
  			'type': 'heading',
  			'en': 'Naji AlSlaibi',
- 			'ar': 'ﻧﻴﺪا ﺳﻨﻘﺮﻁ',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
  	},
+ 	 "upcoming": {
+ 			'type': 'heading',
+ 			'en': 'upcoming',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
+ 	},
+ 	 "pastevents": {
+ 			'type': 'heading',
+ 			'en': 'past events',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
+ 	},
+ 	 "current": {
+ 			'type': 'heading',
+ 			'en': 'current',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
+ 	},
+ 	 "archive": {
+ 			'type': 'heading',
+ 			'en': 'archive',
+ 			'ar': 'اﻟﻌﺮﺑﻴﺔ',
+ 	},
+ 	 "friend1": {
+ 			'type': 'heading',
+ 			'en': 'friend1',
+ 			'ar': 'صديق',
+ 	},
+ 	 "friend2": {
+ 			'type': 'heading',
+ 			'en': 'friend2',
+ 			'ar': 'صديق',
+ 	},  		
+ 	 "friend3": {
+ 			'type': 'heading',
+ 			'en': 'friend3',
+ 			'ar': 'صديق',
+ 	}, 
+  	 "friend4": {
+ 			'type': 'heading',
+ 			'en': 'friend4',
+ 			'ar': 'صديق',
+ 	},  			 	 	 	 	
  "SaharQawasmiPage": {
   'type': 'page',
   'en':{  
@@ -68,10 +108,10 @@ var dictionary = {
     Municipality’s exhibition for Qalandiya International III. She was an architecture fellow at Akademie Schloss Solitude in Stuttgart, Germany in 2014-2015. Sahar received her BA 
     in Architecture from Birzeit University and her Master in Architecture from Miami University.`
    },
-  'ar':{
-   'title': 'اﻟﻌﺮﺑﻴﺔ',
-   'contents': 'اﻟﻌﺮﺑﻴﺔ'
-  }
+	  'ar':{
+	   'title': 'اﻟﻌﺮﺑﻴﺔ',
+	   'contents': 'اﻟﻌﺮﺑﻴﺔ'
+	  }
    }, 
  "NidaSinnokrotPage": {
   'type': 'page',
@@ -97,6 +137,17 @@ var dictionary = {
    'title': 'اﻟﻌﺮﺑﻴﺔ',
    'contents': 'اﻟﻌﺮﺑﻴﺔ'}
    },
+ "NajiAlSlaibiPage": {
+ 'type': 'heading',
+  'en':{  
+   'title': 'Program Archive',
+   'contents': `<b>event 1</b> <br><br><br> event 2 <br><br><br>`
+  },
+  'ar':{
+   'title': 'اﻟﻌﺮﺑﻴﺔ',
+   'contents': 'اﻟﻌﺮﺑﻴﺔ'
+	}
+  },
  "CurriculumPage": {
   'type': 'page',
   'en':{  
@@ -161,5 +212,5 @@ var dictionary = {
    'title': 'اﻟﻌﺮﺑﻴﺔ',
    'contents': 'اﻟﻌﺮﺑﻴﺔ'
   }
- }
+ }	 
 }
