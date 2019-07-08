@@ -1,23 +1,28 @@
 body{
-	overflow: scroll;
+/*	overflow: hidden;*/
+	max-height: 700px;
+    width: 100000px;	
 }
 
 .heading {
-	font-size:9vh;
-	height:9vh;
+	font-size:5vh;
+	height:5vh;
 	position:relative;
 }
 
 #container {
-	overflow-x: hidden;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	z-index: 3;
+/*    width: 10000px;*/
 	display: inline-block;
 	white-space: nowrap;
-	width: 10000;
-    height: 100vh;	
+	max-height: 100vh;
 }
 
 .page {
-	padding: 20px;
+  	left: 3vw;
+  	padding-top: 20px;
   	float:left;
     width: 99vw;
     height: 99vh;
@@ -32,15 +37,17 @@ body{
 }
 
 .pageTitle {
-	font-size: 7vh;
+	font-size: 3vh;
 	float:left;
   	white-space:normal;
 }
 
 #translate {
-	padding: 20px;
+/*	padding: 20px;*/
 	bottom: 3vh;
-  	left: 2vw;
-  	font-size: 7vh;
+/*  	left: 2vw;*/
+  	font-size: 5vh;
   	float: left;
+  	left: 3vw;
+  	position: absolute;
 }
