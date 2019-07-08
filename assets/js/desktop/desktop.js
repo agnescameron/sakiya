@@ -81,6 +81,9 @@ function showPage(title) {
 
     console.log('lang is ', lang)
 
+    //remove other page divs (of class textbox?)
+    $('.textbox').remove();
+
     $pageDiv = $('<div/>', {
         id: title + 'Page',
         class: 'textbox',
