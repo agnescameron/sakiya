@@ -35,9 +35,12 @@ canvas[resize] {
 }
 
 #translate {
-	width: 3vw;
-	height: 3vw;
-	left: 20px;
+	width: 5vw;
+	height: 5vw;
+  font-size: 30px;
+	margin: 20px;
+  position: fixed;
+  z-index: 25;
 }
 
 .pageContainer {

@@ -211,7 +211,7 @@ var dictionary = {
   'type': 'page',
   'en':{  
    'title': 'Current Programs',
-  ' contents': `<b>event 1</b> <br><br><br> event 2 <br><br><br>`
+    'contents': `current programs`
    },
   'ar':{
    'title': 'اﻟﻌﺮﺑﻴﺔ',
@@ -223,7 +223,7 @@ var dictionary = {
   'type': 'page',
   'en':{  
    'title': 'Program Archive',
-   'contents': `<b>event 1</b> <br><br><br> event 2 <br><br><br>`
+   'contents': `program archive`
   },
   'ar':{
    'title': 'اﻟﻌﺮﺑﻴﺔ',
