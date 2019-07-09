@@ -104,6 +104,7 @@ var dictionary = {
   'en':{  
    'title': 'Co-Founder and Director',
    'contents': `Worked as an architect restorer, planner, and cultural heritage expert with Riwaq, Center for Engineering and Planning, and other local and private institutions. 
+    <div class="textImage"></div>
     In 2012, Sahar coordinated the first edition of Qalandiya International, and co-wrote the first of Riwaq’s Re-Walk Heritage Guidebook Series. In 2016, she co-curated the Ramallah 
     Municipality’s exhibition for Qalandiya International III. She was an architecture fellow at Akademie Schloss Solitude in Stuttgart, Germany in 2014-2015. Sahar received her BA 
     in Architecture from Birzeit University and her Master in Architecture from Miami University.`

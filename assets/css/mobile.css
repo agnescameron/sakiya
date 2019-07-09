@@ -51,7 +51,7 @@ body{
 	overflow-y: scroll;
   	float:left;
   	white-space:normal;
-  	width: 90%;
+  	width: 85%;
 }
 
 .pageTitle {
@@ -61,6 +61,15 @@ body{
 	height: 10vh;
 	float:left;
   	white-space:normal;
+}
+
+.textImage {
+	width: 90%;
+	height: 15vh;
+	margin: 20 0 20 0;
+	border: 2px solid white;
+	position: relative;
+	z-index: 20;	
 }
 
 .bottomImage {
