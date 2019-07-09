@@ -46,23 +46,25 @@ body{
 
 .textbox {
 	padding: 20px;
-	font-size: 40px;
+	font-size: 15px;
   	float:left;
   	white-space:normal;
+  	width: 80%;
 }
 
 .pageTitle {
 	font-size: 3vh;
+	width: 90%;
 	float:left;
   	white-space:normal;
 }
 
 #translate {
-	bottom: 3vh;
+	top: 90vh;
   	font-size: 5vh;
   	float: left;
   	left: 3vw;
-  	position: absolute;
+  	position: fixed;
 }
 
 #translate:lang(ar) {

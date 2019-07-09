@@ -68,9 +68,6 @@ function makeTextPage(title, parentLevel){
         id: title,
         class: 'pageTitle'    
     })
-    .css({
-        width: initialWidth-10 + 'px',
-    })
     .html(dictionary[title].en.title)
     .appendTo( page );
 
@@ -78,21 +75,18 @@ function makeTextPage(title, parentLevel){
         id: title,
         class: 'textbox'
     })
-    .css({
-        width: initialWidth-10 + 'px',
-    })
     
     .appendTo( page );
 
     //perhaps change to translateDiv?
     if(lang === 'en'){
         $divTitle.attr({lang: 'en'}).html(dictionary[title].en.title)
-        $divContents.html(dictionary[title].en.contents)
+        $divContents.attr({lang: 'en'}).html(dictionary[title].en.contents)
     }
 
     else{
         $divTitle.attr({lang: 'ar'}).html(dictionary[title].ar.title)
-        $divContents.html(dictionary[title].ar.contents)
+        $divContents.attr({lang: 'ar'}).html(dictionary[title].ar.contents)
     }
 
     $('body').animate({
