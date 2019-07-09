@@ -38,7 +38,7 @@ async function returnToMain () {
 
     });
 
-    if(window.pageMode === true){  
+    if(window.pageMode === true){ 
         rotate($('#logo'), 90);
     }
     

@@ -5,6 +5,15 @@ var documentHeight = $(document).height();
 
 console.log('initil width is ', initialWidth, 'initial height is ', initialHeight, 'document height is ', documentHeight)
 
+function returnToMain() {
+    console.log('returning')
+
+    $('body').animate({
+        scrollLeft: 0
+    }, 1000);
+
+}
+
 function generateList(menu, page){
 
     $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
@@ -50,7 +59,7 @@ function makeTextPage(title, parentLevel){
     pageDepth=parentLevel+1;
 
     $('#container').css({
-        'width': 10000 + 'px',
+        'width': initialWidth*(pageDepth+1) + 10 + 'px',
         'overflow-x': 'scroll',
     })
     //generate the next page
@@ -65,7 +74,7 @@ function makeTextPage(title, parentLevel){
     $(page).empty();
 
     $divTitle = $('<div/>', {
-        id: title,
+        id: title + 'Title',
         class: 'pageTitle'    
     })
     .html(dictionary[title].en.title)
@@ -75,8 +84,13 @@ function makeTextPage(title, parentLevel){
         id: title,
         class: 'textbox'
     })
-    
     .appendTo( page );
+
+    $('<div/>', {
+        id: 'backButton',
+        click: (function(){ returnToMain() } ),
+    }).appendTo( page );
+
 
     //perhaps change to translateDiv?
     if(lang === 'en'){
@@ -100,7 +114,7 @@ function makeMenuPage(name){
     pageDepth=menus[name].level;
 
     $('#container').css({
-        'width': initialWidth*2 + 'px',
+        'width': initialWidth*(pageDepth+1) + 'px',
     })
     //generate the next page
     $newpage = $('<div/>', {

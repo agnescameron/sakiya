@@ -1,6 +1,6 @@
 body{
 	overflow-y: hidden;
-    width: 100000px;
+    width: 5000px;
     height: 100%;
     margin: 0px;
 }
@@ -8,7 +8,6 @@ body{
 :lang(ar) {
 	direction: rtl;
 }
-
 
 :lang(en) {
 	direction: ltr;
@@ -21,7 +20,7 @@ body{
 }
 
 .heading:lang(ar) {
-	font-size:7vh;
+	font-size:5vh;
 }
 
 #container {
@@ -47,14 +46,17 @@ body{
 .textbox {
 	padding: 20px;
 	font-size: 15px;
+	height: 50vh;
+	overflow-y: scroll;
   	float:left;
   	white-space:normal;
-  	width: 80%;
+  	width: 90%;
 }
 
 .pageTitle {
-	font-size: 3vh;
+	font-size: 5vh;
 	width: 90%;
+	margin: 20px;
 	float:left;
   	white-space:normal;
 }
@@ -62,11 +64,31 @@ body{
 #translate {
 	top: 90vh;
   	font-size: 5vh;
-  	float: left;
-  	left: 3vw;
-  	position: fixed;
+  	margin-left: 3vw;
+  	z-index: 6;
+  	position: fixed !important;
 }
 
 #translate:lang(ar) {
-  	font-size: 7vh;
+  	font-size: 4vh;
+}
+
+#backButton {
+  width: 5vh;
+  height: 5vh;
+  z-index: 10;
+  top: 12.5vh;
+  right: 3vw;
+  background-image: url("../img/close.png");
+  background-size: cover;
+  position: relative;
+  float: right;
+}
+
+p:lang(ar) {
+  	font-size: 2vh;
+}
+
+p:lang(en) {
+  	font-size: 2.2vh;
 }

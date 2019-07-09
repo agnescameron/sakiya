@@ -18,11 +18,13 @@ function translateText() {
 
 		else {
 			if(lang === 'ar'){
-				$('#'+key).html(dictionary[key].ar.title).css({direction: 'rtl'}).attr({lang: 'ar'})
+
+				console.log('key is ', key)
+				$('#'+key+'Title').html(dictionary[key].ar.title).css({direction: 'rtl'}).attr({lang: 'ar'})
 				$('#'+key).html(dictionary[key].ar.contents).css({direction: 'rtl'}).attr({lang: 'ar'})
 			}
 			else{
-				$('#'+key).html(dictionary[key].en.title).css({direction: 'ltr'}).attr({lang: 'en'})
+				$('#'+key+'Title').html(dictionary[key].en.title).css({direction: 'ltr'}).attr({lang: 'en'})
 				$('#'+key).html(dictionary[key].en.contents).css({direction: 'ltr'}).attr({lang: 'en'})
 			}
 		}
