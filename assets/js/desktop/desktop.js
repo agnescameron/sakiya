@@ -13,10 +13,32 @@ async function returnToMain () {
         if(sheet.href === "file:///Users/agnes/Documents/SAKIYA/sakiya%20website/assets/css/frames.css")
             styleSheet = sheet;
     }
-    $('.subframe').hide();
+    $('.subframe').show();
 
     //for all divs with class "frame"
      $('.frame').each(function(){
+        var frameRules = styleSheet.rules;
+
+        frame = '#' + this.id;
+
+        for (var j = 0; j < frameRules.length; j++){
+            if (frameRules[j].selectorText && frameRules[j].selectorText.toLowerCase() === frame){
+                $('#' + this.id).animate({
+                    "top":frameRules[j].style.top,
+                    "left":frameRules[j].style.left,
+                    "position":'absolute'
+                }, 1000);
+                $('#' + this.id).children().animate({
+                    "left": Math.random()*50 + 'px',
+                    "top":Math.random()*50 + 'px',
+                }, 1000);
+
+            }
+        }
+
+    });
+
+     $('.subframe').each(function(){
         var frameRules = styleSheet.rules;
 
         frame = '#' + this.id;
@@ -185,9 +207,8 @@ function showPage(title) {
 }
 
 function showFrames(root) {
-    if(pageMode === false){
+    if(pageMode === false){  
         for(i=0; i<menus[root].contents.length; i++){
-
             $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
         }
         //if divs are now hidden, remove the branch
@@ -208,7 +229,7 @@ function generateMenus() {
 function generateFrames(menu){
 //class, css etc defined by type
     for(i=0; i<menus[menu].contents.length; i++){
-        
+
         if(menu !== "main"){
             parent = $('#' + menu).parent();
             parentNum = parseInt(parent.attr('id').slice(5));
