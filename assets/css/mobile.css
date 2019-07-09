@@ -5,13 +5,22 @@ body{
     margin: 0px;
 }
 
+:lang(ar) {
+	direction: rtl;
+}
+
+
+:lang(en) {
+	direction: ltr;
+}
+
 .heading {
 	font-size:5vh;
 	height:5vh;
 	position:relative;
 }
 
-.heading:lang(ar), .subheading:lang(ar) {
+.heading:lang(ar) {
 	font-size:7vh;
 }
 
@@ -31,7 +40,7 @@ body{
 }
 
 .menuContainer {
-  	margin: 20px;
+  	margin: 15px;
     width: 90%;
 }
 

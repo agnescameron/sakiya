@@ -7,6 +7,8 @@ console.log('initil width is ', initialWidth, 'initial height is ', initialHeigh
 
 function generateList(menu, page){
 
+    $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
+
     if(menu.level === 1 || menu.contents.length === 1){
         console.log('level is 1')
         for(i=0; i<menu.contents.length; i++){
@@ -15,17 +17,16 @@ function generateList(menu, page){
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
             click: function(){ makeTextPage(this.id + 'Page', menu.level) }
-        }).appendTo( page );
+        }).appendTo( $menuContainer );
 
         if(lang === 'ar')
-            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
         else
-            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
+            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
         }
     }
 
     else{
-        $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
 
         for(i=0; i<menu.contents.length; i++){
             $newheading = $('<div/>', {
@@ -35,9 +36,9 @@ function generateList(menu, page){
         }).appendTo( $menuContainer );
 
         if(lang === 'ar')
-            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
         else
-            $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
+            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
         }
     }
 }
@@ -83,13 +84,14 @@ function makeTextPage(title, parentLevel){
     
     .appendTo( page );
 
+    //perhaps change to translateDiv?
     if(lang === 'en'){
-        $divTitle.html(dictionary[title].en.title)
+        $divTitle.attr({lang: 'en'}).html(dictionary[title].en.title)
         $divContents.html(dictionary[title].en.contents)
     }
 
     else{
-        $divTitle.html(dictionary[title].ar.title)
+        $divTitle.attr({lang: 'ar'}).html(dictionary[title].ar.title)
         $divContents.html(dictionary[title].ar.contents)
     }
 
