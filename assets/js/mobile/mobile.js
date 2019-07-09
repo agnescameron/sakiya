@@ -1,8 +1,9 @@
 var pageDepth = 0;
 var initialWidth = $(window).width();
 var initialHeight = $(window).height();
+var documentHeight = $(document).height();
 
-console.log('initil width is ', initialWidth, 'initial height is ', initialHeight)
+console.log('initil width is ', initialWidth, 'initial height is ', initialHeight, 'document height is ', documentHeight)
 
 function generateList(menu, page){
 
@@ -24,13 +25,14 @@ function generateList(menu, page){
     }
 
     else{
-        console.log('else')
+        $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
+
         for(i=0; i<menu.contents.length; i++){
             $newheading = $('<div/>', {
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
             click: function(){ makeMenuPage(this.id) }
-        }).appendTo( page );
+        }).appendTo( $menuContainer );
 
         if(lang === 'ar')
             $newheading.html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
@@ -103,7 +105,6 @@ function makeMenuPage(name){
 
     $('#container').css({
         'width': initialWidth*2 + 'px',
-        'height': initialHeight,
     })
     //generate the next page
     $newpage = $('<div/>', {
@@ -143,5 +144,6 @@ window.onload = function() {
     $('body').animate({
         scrollLeft: 0
     }, 1);
-
+    document.body.style.height = initialHeight + "px";
+    console.log($(document).height())
 }

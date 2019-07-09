@@ -19,25 +19,20 @@
 
 @font-face {
 	font-family: 'Barabics';
-	src: url('../fonts/Barabic/Barabics.ttf') format('truetype'); 
+	src: url('../fonts/Barabic/Barabics.ttf') format('truetype');
 	unicode-range: U+0600–06FF;
 }
 
-
 body {
-	font-family: Canela, aljazeera;
+	font-family: Canela, Barabics;
 	color: white;
 	background-color: #309937;
 	line-height: 1;
-/*	unicode-bidi: bidi-override !important;
-	direction: unset !important;*/
 }
 
 p {
-	font-family: Apercu, Barabics;
+	font-family: Apercu, aljazeera;
 	color: white;
 	background-color: #309937;
 	line-height: 1;
-/*	unicode-bidi: bidi-override !important;
-	direction: unset !important;*/
 }

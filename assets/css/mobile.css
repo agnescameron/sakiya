@@ -1,7 +1,8 @@
 body{
-/*	overflow: hidden;*/
-	max-height: 700px;
-    width: 100000px;	
+	overflow-y: hidden;
+    width: 100000px;
+    height: 100%;
+    margin: 0px;
 }
 
 .heading {
@@ -10,24 +11,29 @@ body{
 	position:relative;
 }
 
+.heading:lang(ar), .subheading:lang(ar) {
+	font-size:7vh;
+}
+
 #container {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	z-index: 3;
-/*    width: 10000px;*/
 	display: inline-block;
 	white-space: nowrap;
 	max-height: 100vh;
 }
 
 .page {
-  	left: 3vw;
-  	padding-top: 20px;
   	float:left;
-    width: 99vw;
-    height: 99vh;
+    width: 100vw;
+    height: 100vh;
 }
 
+.menuContainer {
+  	margin: 20px;
+    width: 90%;
+}
 
 .textbox {
 	padding: 20px;
@@ -43,11 +49,13 @@ body{
 }
 
 #translate {
-/*	padding: 20px;*/
 	bottom: 3vh;
-/*  	left: 2vw;*/
   	font-size: 5vh;
   	float: left;
   	left: 3vw;
   	position: absolute;
+}
+
+#translate:lang(ar) {
+  	font-size: 7vh;
 }
