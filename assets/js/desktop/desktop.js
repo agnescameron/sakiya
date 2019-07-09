@@ -6,6 +6,7 @@ function sleep(ms) {
 
 async function returnToMain () {
     $('.pageContainer').remove();
+    $('.imageContainer').remove();
 
     var styleSheet;
     for (var i = 0; i < document.styleSheets.length; i++){
@@ -196,6 +197,16 @@ function showPage(title) {
         id: 'backButton',
         click: (function(){ returnToMain() } ),
     }).appendTo( $pageContainer );
+
+
+    $imageContainer = $('<div/>', {
+        id: title + 'ImageContainer',
+        class: 'imageContainer',
+    });
+
+    $imageContainer.appendTo( 'body' );
+
+
 
     if(window.pageMode === false){
         //$('#logo').animate({"width": "15vw", "height": "15vw"});   

@@ -1,3 +1,4 @@
+
 .heading {
 	font-size:30px;
 	position:absolute;
@@ -49,6 +50,22 @@ canvas[resize] {
   top: 12vh;
   left: 300px;
   min-width: 500px;
+  overflow-y: scroll;
+  float: right;
+}
+
+.imageContainer {
+  z-index: 4;
+  position: absolute;
+  display: inline-block;
+  opacity: 0%;
+  top: 15vh;
+  float: right;
+  right: 70px;
+  width: 20vw;
+  border: 3px solid white;
+  overflow-y: scroll;
+  height: 80vh;
 }
 
 .textbox {
