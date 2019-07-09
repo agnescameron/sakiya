@@ -47,7 +47,7 @@ body{
 .textbox {
 	padding: 20px;
 	font-size: 15px;
-	height: 45vh;
+	height: 40vh;
 	overflow-y: scroll;
   	float:left;
   	white-space:normal;
@@ -57,10 +57,21 @@ body{
 .pageTitle {
 	font-size: 5vh;
 	width: 90%;
-	margin: 20px;
+	padding: 20px;
 	height: 10vh;
 	float:left;
   	white-space:normal;
+}
+
+.bottomImage {
+	width: 90%;
+	height: 20vh;
+	overflow-x: scroll;
+	border: 2px solid white;
+	position: relative;
+	float: left;
+	margin-left: 20px;
+	z-index: 20;
 }
 
 #translate {
@@ -80,8 +91,8 @@ body{
   height: 5vh;
   z-index: 10;
   float: right;
-  bottom: -17.5vh;
-  margin-right: 3vw;
+/*  bottom: -17.5vh;*/
+  margin: 3vw;
   background-image: url("../img/close.png");
   background-size: cover;
   position: relative;

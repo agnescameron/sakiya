@@ -87,10 +87,14 @@ function makeTextPage(title, parentLevel){
     .appendTo( page );
 
     $('<div/>', {
-        id: 'backButton',
+        class: 'bottomImage',
         click: (function(){ returnToMain() } ),
     }).appendTo( page );
 
+    $('<div/>', {
+        id: 'backButton',
+        click: (function(){ returnToMain() } ),
+    }).appendTo( page );
 
     //perhaps change to translateDiv?
     if(lang === 'en'){
