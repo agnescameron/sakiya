@@ -36,6 +36,7 @@ body{
   	float:left;
     width: 100vw;
     height: 100vh;
+    display: block;
 }
 
 .menuContainer {
@@ -46,7 +47,7 @@ body{
 .textbox {
 	padding: 20px;
 	font-size: 15px;
-	height: 50vh;
+	height: 45vh;
 	overflow-y: scroll;
   	float:left;
   	white-space:normal;
@@ -57,6 +58,7 @@ body{
 	font-size: 5vh;
 	width: 90%;
 	margin: 20px;
+	height: 10vh;
 	float:left;
   	white-space:normal;
 }
@@ -77,12 +79,13 @@ body{
   width: 5vh;
   height: 5vh;
   z-index: 10;
-  top: 12.5vh;
-  right: 3vw;
+  float: right;
+  bottom: -17.5vh;
+  margin-right: 3vw;
   background-image: url("../img/close.png");
   background-size: cover;
   position: relative;
-  float: right;
+/*  float: right;*/
 }
 
 p:lang(ar) {
