@@ -61,7 +61,6 @@ canvas[resize] {
   z-index: 4;
   position: absolute;
   display: inline-block;
-  opacity: 0%;
   top: 15vh;
   float: right;
   right: 70px;
@@ -70,6 +69,18 @@ canvas[resize] {
   overflow-y: scroll;
   height: 80vh;
 }
+
+
+.sideImage {
+  z-index: 4;
+  position: relative;
+  margin: auto;
+  margin-top:20px;
+  width: 80%;
+  background-repeat: cover;
+  border: 3px solid white;
+}
+
 
 .textbox {
   width: 66%;
@@ -90,4 +101,12 @@ canvas[resize] {
   text-align: justify;
   position: absolute;
   float: right;
+}
+
+p:lang(ar) {
+    font-size: 3vh;
+}
+
+p:lang(en) {
+    font-size: 2vh;
 }

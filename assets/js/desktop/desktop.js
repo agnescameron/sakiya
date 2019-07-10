@@ -49,9 +49,10 @@ async function returnToMain () {
                 $('#' + this.id).animate({
                     "top":frameRules[j].style.top,
                     "left":frameRules[j].style.left,
-                    "position":'absolute'
+                    "position":'absolute',
                 }, 1000);
-                $('#' + this.id).children().animate({
+                $('#' + this.id).children()
+                .animate({
                     "left": Math.random()*50 + 'px',
                     "top":Math.random()*50 + 'px',
                 }, 1000);
@@ -176,7 +177,7 @@ function showPage(title) {
     });
 
 
-    $pageDiv = $('<div/>', {
+    $pageDiv = $('<p/>', {
         id: title + 'Page',
         class: 'textbox',
     });
@@ -198,7 +199,6 @@ function showPage(title) {
         click: (function(){ returnToMain() } ),
     }).appendTo( $pageContainer );
 
-
     $imageContainer = $('<div/>', {
         id: title + 'ImageContainer',
         class: 'imageContainer',
@@ -206,10 +206,17 @@ function showPage(title) {
 
     $imageContainer.appendTo( 'body' );
 
+    for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+            $('<div/>', {
+                id: dictionary[title + 'Page'].img[i].id,
+                class: 'sideImage'
+            })
+            .prepend(`<img src= ${dictionary[title + 'Page'].img[i].src} style="width: 100%"/>`)
+            .appendTo( $imageContainer )
+    }
 
 
     if(window.pageMode === false){
-        //$('#logo').animate({"width": "15vw", "height": "15vw"});   
         rotate($('#logo'), -90);
     }
 
