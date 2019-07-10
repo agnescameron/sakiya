@@ -35,10 +35,9 @@ canvas[resize] {
 }
 
 #translate {
-	width: 5vw;
-	height: 5vw;
   font-size: 30px;
-	margin: 20px;
+	top: 20px;
+  left: 20px;
   position: fixed;
   z-index: 25;
 }

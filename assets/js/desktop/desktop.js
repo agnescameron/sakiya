@@ -4,6 +4,8 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+var fields = 7;
+
 async function returnToMain () {
     $('.pageContainer').remove();
     $('.imageContainer').remove();
@@ -11,6 +13,7 @@ async function returnToMain () {
     var styleSheet;
     for (var i = 0; i < document.styleSheets.length; i++){
         var sheet = document.styleSheets[i]
+        //need to find a good way to ref this for online 
         if(sheet.href === "file:///Users/agnes/Documents/SAKIYA/sakiya%20website/assets/css/frames.css")
             styleSheet = sheet;
     }
@@ -170,6 +173,7 @@ function showPage(title) {
     //remove other page divs (of class textbox?)
     // $('.textbox').remove();
     $('.pageContainer').remove();
+    $('.imageContainer').remove();
 
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
@@ -199,22 +203,25 @@ function showPage(title) {
         click: (function(){ returnToMain() } ),
     }).appendTo( $pageContainer );
 
-    $imageContainer = $('<div/>', {
-        id: title + 'ImageContainer',
-        class: 'imageContainer',
-    });
+    //if there are images to display
+    if(dictionary[title + 'Page'].img){
 
-    $imageContainer.appendTo( 'body' );
+        $imageContainer = $('<div/>', {
+            id: title + 'ImageContainer',
+            class: 'imageContainer',
+        });
 
-    for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
-            $('<div/>', {
-                id: dictionary[title + 'Page'].img[i].id,
-                class: 'sideImage'
-            })
-            .prepend(`<img src= ${dictionary[title + 'Page'].img[i].src} style="width: 100%"/>`)
-            .appendTo( $imageContainer )
+        $imageContainer.appendTo( 'body' );   
+             
+        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+                $('<div/>', {
+                    id: dictionary[title + 'Page'].img[i].id,
+                    class: 'sideImage'
+                })
+                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].src} style="width: 100%"/>`)
+                .appendTo( $imageContainer )
+        }
     }
-
 
     if(window.pageMode === false){
         rotate($('#logo'), -90);
@@ -304,6 +311,8 @@ function generateFrames(menu){
 
 
 window.onload = function() {
-    generateMenus();
     // generateGrid();
+    getJSON();
+    //need to make this wait for JSON to get fetched
+    generateMenus();
 }

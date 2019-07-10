@@ -18,8 +18,6 @@ function translateText() {
 
 		else {
 			if(lang === 'ar'){
-
-				console.log('key is ', key)
 				$('#'+key+'Title').html(dictionary[key].ar.title).css({direction: 'rtl'}).attr({lang: 'ar'})
 				$('#'+key).html(dictionary[key].ar.contents).css({direction: 'rtl'}).attr({lang: 'ar'})
 			}
