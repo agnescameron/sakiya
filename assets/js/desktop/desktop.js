@@ -14,7 +14,7 @@ async function returnToMain () {
     for (var i = 0; i < document.styleSheets.length; i++){
         var sheet = document.styleSheets[i]
         //need to find a good way to ref this for online 
-        if(sheet.href === "file:///Users/agnes/Documents/SAKIYA/sakiya%20website/assets/css/frames.css")
+        if(sheet.href === "http://agnescameron.github.io/sakiya/assets/css/frames.css")
             styleSheet = sheet;
     }
     $('.subframe').show();
