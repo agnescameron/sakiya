@@ -1,6 +1,6 @@
 //this file gets all of the site data and parses it as json
-var page1Data = [];
-var page2Data = [];
+var dictionary = {};
+var eventsData = {};
 
 
 async function getJSON() {
@@ -12,18 +12,19 @@ async function getJSON() {
         var entry = data.feed.entry
 
         $(entry).each(function(){
-	        page1Data.push(
-	        {
-	        	"id": this["gsx$id"]["$t"],
+	       var key = this["gsx$id"]["$t"];
+	       dictionary[key] = {
 	        	"type": this["gsx$type"]["$t"],
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
 	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
-	        	"images": this["gsx$images"]["$t"] ? this["gsx$images"]["$t"] : null,
-	        })
+	        	"image1": this["gsx$image1"]["$t"] ? this["gsx$image1"]["$t"] : null,
+	        	"imageCaption1-en": this["gsx$imagecaption1-en"]["$t"] ? this["gsx$imagecaption1-en"]["$t"] : null,
+	        	"imageCaption1-ar": this["gsx$imagecaption1-ar"]["$t"] ? this["gsx$imagecaption1-ar"]["$t"] : null,	        	
+	        }
         });
-        console.log(page1Data)
+        console.log(dictionary)
     })
 
 
@@ -32,17 +33,16 @@ async function getJSON() {
         var entry = data.feed.entry
 
         $(entry).each(function(){
-	        page2Data.push(
-	        {
-	        	"id": this["gsx$events"]["$t"],
+	       var key = this["gsx$id"]["$t"];
+	       eventsData[key] = {
 	        	"type": this["gsx$eeeeee"]["$t"],
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
 	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
 	        	"images": this["gsx$images"]["$t"] ? this["gsx$images"]["$t"] : null,
-	        })
+	        }
         });
-        console.log(page2Data)
+        console.log(eventsData)
     })    
 }

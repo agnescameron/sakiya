@@ -48,7 +48,7 @@ canvas[resize] {
   text-align: justify;
   position: absolute;
   display: inline-block;
-  opacity: 100%;
+  opacity: 0%;
   top: 12vh;
   left: 300px;
   min-width: 500px;

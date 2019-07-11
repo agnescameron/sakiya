@@ -9,21 +9,22 @@ function translateText() {
 		key = Object.keys(dictionary)[i];
 		
 		if(dictionary[key].type === 'heading'){
+			console.log('its a heading')
 			if(lang === 'ar')
-				$('#'+key).html(dictionary[key].ar).css({direction: 'rtl'}).attr({lang: 'ar'})
+				$('#'+key).html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 
 			else
-				$('#'+key).html(dictionary[key].en).css({direction: 'ltr'}).attr({lang: 'en'})
+				$('#'+key).html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 		}
 
 		else {
 			if(lang === 'ar'){
-				$('#'+key+'Title').html(dictionary[key].ar.title).css({direction: 'rtl'}).attr({lang: 'ar'})
-				$('#'+key).html(dictionary[key].ar.contents).css({direction: 'rtl'}).attr({lang: 'ar'})
+				$('#'+key+'Title').html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+				$('#'+key).html(dictionary[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 			}
 			else{
-				$('#'+key+'Title').html(dictionary[key].en.title).css({direction: 'ltr'}).attr({lang: 'en'})
-				$('#'+key).html(dictionary[key].en.contents).css({direction: 'ltr'}).attr({lang: 'en'})
+				$('#'+key+'Title').html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+				$('#'+key).html(dictionary[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 			}
 		}
 	}

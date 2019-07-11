@@ -20,7 +20,8 @@ body{
 }
 
 .heading:lang(ar) {
-	font-size:5vh;
+	font-size:6vh;
+	margin-bottom: 20px;
 }
 
 #container {
