@@ -138,8 +138,10 @@ canvas[resize] {
 
 p:lang(ar) {
     font-size: 3vh;
+    direction: 'rtl';
 }
 
 p:lang(en) {
     font-size: 2vh;
+    direction: 'ltr';
 }

@@ -25,11 +25,13 @@ function showImage(imageID) {
         click: (function(){ closeImage() } ),
     }).appendTo( $display );
 
-    $('<div/>', {
+    $displayCaption = $('<div/>', {
     	id: imageID + 'Caption',
         class: 'displayCaption',
         click: (function(){ closeImage() } ),
     }).html(`<p>${caption}</p>`)
     .appendTo( $display );
+
+    (lang === 'en') ? $displayCaption.css({direction: 'ltr'}) : $displayCaption.css({direction: 'rtl'})
 
 }
