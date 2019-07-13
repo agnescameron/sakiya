@@ -28,6 +28,29 @@ function translateText() {
 		}
 	}
 
+	if(	window.galleryMode === true ){
+		console.log('woooooo in the gallery')
+		//gets the caption div, 
+		$(".displayCaption").each(function() {
+	    	
+			imageID = this.id.slice(0, -7);
+			console.log(this)
+
+			var parentPage = imageID.slice(0, -6);
+			var imageNumber = imageID.slice(-1);
+
+			if(lang==='ar')
+	    		$(this).css({"margin-left": '30%'})
+	    		.html('<p>' + dictionary[parentPage].img[imageNumber]["caption-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'} + '</p>')
+
+			else
+	    		$(this).css({"margin-left": '20%'})
+	    		.html('<p>' + dictionary[parentPage].img[imageNumber]["caption-en"] ).css({direction: 'ltr'}).attr({lang: 'en'} + '</p>')	    	
+
+		});
+	}
+
+
 	$('#translate').attr("lang") === 'en' ? $('#translate').attr({lang: 'ar'}) : $('#translate').attr({lang: 'en'}) 
 
 	window.lang = lang;

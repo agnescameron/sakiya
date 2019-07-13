@@ -1,11 +1,13 @@
 window.showImage = showImage;
-
+window.galleryMode = false;
 
 function closeImage() {
+	window.galleryMode = false;
 	$('.imageDisplay').remove();
 }
 
 function showImage(imageID) {
+	window.galleryMode = true;
 	var parentPage = imageID.slice(0, -6);
 	var imageNumber = imageID.slice(-1);
 
@@ -22,5 +24,12 @@ function showImage(imageID) {
         id: 'closeImage',
         click: (function(){ closeImage() } ),
     }).appendTo( $display );
+
+    $('<div/>', {
+    	id: imageID + 'Caption',
+        class: 'displayCaption',
+        click: (function(){ closeImage() } ),
+    }).html(`<p>${caption}</p>`)
+    .appendTo( $display );
 
 }

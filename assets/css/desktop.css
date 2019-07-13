@@ -94,7 +94,7 @@ canvas[resize] {
   height: 30px;
   z-index: 10;
   top: 0px;
-  right: 18%;
+  right: 30%;
   background-image: url("../img/close.png");
   background-size: cover;
   text-align: justify;
@@ -123,15 +123,23 @@ canvas[resize] {
 }
 
 .displayImage {
-  width: 80%;
-  margin-left:10%;
+  width: 70%;
+  max-width: 800px;
+  margin-left:15%;
   border: 3px solid white;
+}
+
+.displayCaption {
+  width: 50%;
+  margin-left:20%;
+/*  border: 3px solid white;*/
+  position: relative;
 }
 
 p:lang(ar) {
     font-size: 3vh;
 }
 
-/*p:lang(en) {*/
+p:lang(en) {
     font-size: 2vh;
 }
