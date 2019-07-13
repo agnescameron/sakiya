@@ -95,7 +95,7 @@ function toggleSideMenu(title) {
         $div.children().attr('id')
 
         $div.css({'left': '180px'})
-        $div.children().css({'left': '20px'})
+        $div.children().css({'left': '35px'})
         $div.css({'top': topOffset + 50*i + 'px'})
         $div.children().css({'top': '10px'})     
 
@@ -164,7 +164,7 @@ function showPage(title) {
         $div.children().attr('id')
 
         $div.animate({'left': '180px'}, 800)
-        $div.children().animate({'left': '20px'}, 800)
+        $div.children().animate({'left': '35px'}, 800)
         $div.animate({'top': topOffset + 50*i + 'px'}, 800)
         $div.children().animate({'top': '10px'}, 800)     
 
@@ -211,7 +211,7 @@ function showPage(title) {
 
     //if there are images to display
     if(dictionary[title + 'Page'].img){
-
+        console.log('theres an image')
         $imageContainer = $('<div/>', {
             id: title + 'ImageContainer',
             class: 'imageContainer',
@@ -224,7 +224,7 @@ function showPage(title) {
                     id: dictionary[title + 'Page'].img[i].id,
                     class: 'sideImage'
                 })
-                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].src} style="width: 100%"/>`)
+                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
         }
     }
@@ -299,8 +299,6 @@ function generateFrames(menu){
         }
 
         headingID = menus[menu].contents[i].replace(/\s/g, '');
-
-        console.log('heading is ', headingID, 'dictionary is ', dictionary)
 
         $heading = $('<div/>', {
             id: headingID,

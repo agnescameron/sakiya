@@ -1,12 +1,14 @@
 .frame {
 	height: 20vh;
 	width: 15vw;
+/*	background-color: green;*/
 	position: absolute;
 }
 
 .subframe {
 	height: 12vh;
 	width: 8vw;
+/*	background-color: lightblue;*/	
 	position: absolute;
 }
 
@@ -119,4 +121,19 @@
 #frame6 {
 	top: 65vh;
 	left: 60vw;
+}
+
+#frame60 {
+	top: 70vh;
+ 	left: 80vw;
+}
+
+#frame61 {
+	top: 55vh;
+ 	left: 75vw;
+}
+
+#frame62 {
+	top: 75vh;
+ 	left: 70vw;
 }
