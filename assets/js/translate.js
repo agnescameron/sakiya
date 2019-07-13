@@ -9,7 +9,6 @@ function translateText() {
 		key = Object.keys(dictionary)[i];
 		
 		if(dictionary[key].type === 'heading'){
-			console.log('its a heading')
 			if(lang === 'ar')
 				$('#'+key).html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 

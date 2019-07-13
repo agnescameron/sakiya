@@ -103,6 +103,12 @@ function toggleSideMenu(title) {
         $div.children().show()
         $('#' + title).css({"color": color})
 
+        if(dictionary[$div.children(0).attr("id")].type === "link" ) {
+            console.log('its a link')
+            $div.children().unbind('click');
+            $div.children().click(function(){ window.location =dictionary[this.id].link });
+        }
+
         i++;
     });  
 
@@ -234,7 +240,14 @@ function showPage(title) {
 function showFrames(root) {
     if(pageMode === false){  
         for(i=0; i<menus[root].contents.length; i++){
-            $('#' + menus[root].contents[i].replace(/\s/g, '')).toggle();
+            var divId = menus[root].contents[i].replace(/\s/g, '');
+            $('#' + divId).toggle();
+        
+        //now the dictionary has loaded, add the links
+            if(dictionary[divId].type === "link" ) {
+                $('#' + divId).unbind('click');
+                $('#' + divId).click(function(){ window.location =dictionary[this.id].link });
+            }
         }
         //if divs are now hidden, remove the branch
         $('#' + menus[root].contents[0].replace(/\s/g, '')).is(":hidden") ? removeBranch(root) : drawBranch(root)
@@ -243,6 +256,8 @@ function showFrames(root) {
     else {
         toggleSideMenu(root);
     }
+
+
 }
 
 function generateMenus() {
@@ -283,8 +298,12 @@ function generateFrames(menu){
             left = Math.random()*50;
         }
 
+        headingID = menus[menu].contents[i].replace(/\s/g, '');
+
+        console.log('heading is ', headingID, 'dictionary is ', dictionary)
+
         $heading = $('<div/>', {
-            id: menus[menu].contents[i].replace(/\s/g, ''),
+            id: headingID,
             class: headingType,
             click: (function(){ showFrames(this.id) } ),
         })
@@ -295,7 +314,7 @@ function generateFrames(menu){
             $heading.click(function(){ showPage(this.id) });
         }
 
-        if(menus[menu].contents.length === 1 ) {
+        if(menus[menu].type === "text" ) {
             $('#' + menu).unbind('click');
             $('#' + menu).click(function(){ showPage(this.id) });
         }

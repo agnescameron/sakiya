@@ -19,6 +19,7 @@ async function getJSON() {
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
 	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
+	        	"link": this["gsx$link"]["$t"] ? this["gsx$link"]["$t"] : null,
 	        	"image1": this["gsx$image1"]["$t"] ? this["gsx$image1"]["$t"] : null,
 	        	"imageCaption1-en": this["gsx$imagecaption1-en"]["$t"] ? this["gsx$imagecaption1-en"]["$t"] : null,
 	        	"imageCaption1-ar": this["gsx$imagecaption1-ar"]["$t"] ? this["gsx$imagecaption1-ar"]["$t"] : null,	        	
