@@ -64,6 +64,4 @@ function drawBranch(menu) {
 	}
 }
 
-drawBranch("main");
-
 window.onresize = function(){drawTree()}

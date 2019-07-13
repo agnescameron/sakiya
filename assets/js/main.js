@@ -3,11 +3,12 @@ var dictionary = {};
 var eventsData = {};
 
 
-async function getJSON() {
-    var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
-    var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
-    var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
+var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
+var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
+var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 
+
+var getDictionary = new Promise( function(resolve, reject) {
     $.getJSON(pagesUrl, function(data){
         var entry = data.feed.entry
 
@@ -34,11 +35,12 @@ async function getJSON() {
 	        }
 	        dictionary[key].img = img;
         });
+        resolve('Success, dictionary!');  
         console.log(dictionary)
     })
+})
 
-
-
+var getEvents = new Promise( function(resolve, reject) {
     $.getJSON(eventsUrl, function(data){
         var entry = data.feed.entry
 
@@ -53,6 +55,7 @@ async function getJSON() {
 	        	"images": this["gsx$images"]["$t"] ? this["gsx$images"]["$t"] : null,
 	        }
         });
+        resolve('Success, events!'); 
         console.log(eventsData)
-    })    
-}
+    })  
+})

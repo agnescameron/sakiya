@@ -16,7 +16,7 @@ function translateText() {
 				$('#'+key).html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 		}
 
-		else {
+		else if (dictionary[key].type === 'page') {
 			if(lang === 'ar'){
 				$('#'+key+'Title').html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 				$('#'+key).html(dictionary[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})

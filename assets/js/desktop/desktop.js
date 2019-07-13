@@ -328,7 +328,13 @@ function generateFrames(menu){
 
 window.onload = function() {
     // generateGrid();
-    getJSON();
-    //need to make this wait for JSON to get fetched
-    generateMenus();
+
+    getDictionary.then(function(value) {
+        generateMenus();
+        drawBranch("main");
+    })
+
+    getEvents.then(function(value) {
+        console.log(value);
+    })
 }
