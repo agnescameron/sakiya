@@ -104,7 +104,6 @@ function toggleSideMenu(title) {
         $('#' + title).css({"color": color})
 
         if(dictionary[$div.children(0).attr("id")].type === "link" ) {
-            console.log('its a link')
             $div.children().unbind('click');
             $div.children().click(function(){ window.location =dictionary[this.id].link });
         }
@@ -211,7 +210,6 @@ function showPage(title) {
 
     //if there are images to display
     if(dictionary[title + 'Page'].img){
-        console.log('theres an image')
         $imageContainer = $('<div/>', {
             id: title + 'ImageContainer',
             class: 'imageContainer',
@@ -221,8 +219,9 @@ function showPage(title) {
              
         for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
                 $('<div/>', {
-                    id: dictionary[title + 'Page'].img[i].id,
-                    class: 'sideImage'
+                    id: title + 'PageImage' + i,
+                    class: 'sideImage',
+                    click: (function(){ showImage(this.id) } ),
                 })
                 .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
