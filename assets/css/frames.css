@@ -3,6 +3,7 @@
 	width: 15vw;
 /*	background-color: green;*/
 	position: fixed;
+  	z-index: 5;	
 }
 
 .subframe {
@@ -10,6 +11,7 @@
 	width: 8vw;
 /*	background-color: lightblue;*/	
 	position: fixed;
+  	z-index: 5;	
 }
 
 
@@ -33,21 +35,6 @@
  	left: 16vw;
 }
 
-/*#frame12 {
-	top: 75vh;
- 	left: 25vw;
-}
-
-#frame13 {
-	top: 70vh;
- 	left: 7vw;
-}
-
-#frame14 {
-	top: 60vh;
- 	left: 7vw;
-}
-*/
 #frame2 {
 	top: 43vh;
  	left: 15vw;

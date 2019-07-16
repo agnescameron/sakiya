@@ -15,7 +15,6 @@ function drawTree() {
 }
 
 function removeBranch(menu) {
-	console.log('removin brancj', menu)
 	if(pageMode === false)
 		mainGroup.children[menu + 'Branch'].remove();
 }

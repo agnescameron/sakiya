@@ -99,7 +99,7 @@ function translateText() {
 		    var leftIndent =  60;
 
 		    console.log('left indent is ', leftIndent)
-		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 500);   
+		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 1000);   
 		}
 
 	    var i = 0;
@@ -114,16 +114,12 @@ function translateText() {
 
 	        $div.show()
 	        $div.children().show()
-
-	        // if(dictionary[$div.children(0).attr("id")].type === "link" ) {
-	        //     $div.children().unbind('click');
-	        //     $div.children().click(function(){ window.location =dictionary[this.id].link });
-	        // }
-
+	        
 	        i++;
 	    });  
 
-	    $(`.pageContainer`).css({'left': '100px'})
+	    $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
+	    $(`.textbox`).css({'float': 'right', 'right': '80px'})
 	    $(`#backButton`).css({'left': '10%', 'float': 'left'})	    
 	}
 

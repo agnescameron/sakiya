@@ -69,23 +69,33 @@ async function returnToMain () {
         rotate($('#logo'), 90);
     }
     
+    //need to make this async
     window.pageMode = false;
-    await sleep(1000);
+    await sleep(1100);
     drawTree();
 
 }
 
 function toggleSideMenu(title) {
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
-    var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
-
 
     for(i=0; i<menus["main"].contents.length; i++){
+    var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
         //change for ar vs en
-    var leftIndent = (mainMenuItem === title) ? "50" : "20";
+    console.log('toggling side menu')
+
+    var leftIndent;
+
+    if(lang === 'ar'){
+        console.log('mainmenuitem is in ar')
+        leftIndent = (mainMenuItem === title) ? "58vw" : "60vw";
+    }
+    else {
+        leftIndent = (mainMenuItem === title) ? "50px" : "20px";
+    }
     var color = (mainMenuItem === title) ? 'yellow' : 'white';
 
-        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'px'}, 500);  
+        $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 500);  
         $( '#' + mainMenuItem).css({"color": color })  
     }
 
@@ -97,7 +107,8 @@ function toggleSideMenu(title) {
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
-        $div.css({'left': '180px'})
+        var leftIndent = (lang === 'ar') ? "50vw" : '180px';
+        $div.css({'left': leftIndent})
         $div.children().css({'left': '35px'})
         $div.css({'top': topOffset + 50*i + 'px'})
         $div.children().css({'top': '10px'})     
@@ -143,14 +154,26 @@ function rotate(div, rotate){
 
 function showPage(title) {
    //put the tree to the side
+
+   //hide tree
+   removeAllBranches();
+
+
     for(i=0; i<menus["main"].contents.length; i++){
         var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
         
-        var leftIndent = (menus["main"].contents[i] === title ||
-            $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "50" : "20";
+        if(lang === 'en'){
+            var leftIndent = (menus["main"].contents[i] === title ||
+                $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "50px" : "20px";
+            }
+
+        else {
+            var leftIndent = (menus["main"].contents[i] === title ||
+                $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "58vw" : "60vw";
+    }
 
         $( '#' + mainMenuItem).animate({'left': '10px'}, 800);
-        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'px'}, 800);
+        $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 800);
         $( '#' + mainMenuItem).animate({'top': 100 + 70*i + 'px'}, 800);
         $( '#' + mainMenuItem).parent().animate({'top': '20px'}, 800);        
     }
@@ -163,11 +186,13 @@ function showPage(title) {
         var topOffset = 110 + 70*parentFrame;
 
         var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
+        var leftIndent = (lang === 'en') ? '180px' : '50vw';
+
 
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
-        $div.animate({'left': '180px'}, 800)
+        $div.animate({'left': leftIndent}, 800)
         $div.children().animate({'left': '35px'}, 800)
         $div.animate({'top': topOffset + 50*i + 'px'}, 800)
         $div.children().animate({'top': '10px'}, 800)     
@@ -235,6 +260,12 @@ function showPage(title) {
 
     if(window.pageMode === false){
         rotate($('#logo'), -90);
+    }
+
+    if(lang === 'ar') {   
+        $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
+        $(`.textbox`).css({'float': 'right', 'right': '80px'})
+        $(`#backButton`).css({'left': '10%', 'float': 'left'})    
     }
 
     window.pageMode = true;
