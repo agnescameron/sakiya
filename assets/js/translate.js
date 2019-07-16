@@ -8,29 +8,35 @@ function translateText() {
 	if(lang === 'ar'){
 		$('#marquee').remove();
 
-		$('<marquee/>', {
+		$marquee = $('<div/>', {
             id: 'marquee',
-            lang: 'ar',
-            direction: 'right'
+            class: 'marquee',
         })
-        .html(`<div>${dictionary['marquee']["heading-ar"]}</div>`)
-        .appendTo('#marqueeContainer')
+        
+        $span = $('<span/>', {
+			lang:'ar',
+			id: 'marqueeText',
+        })
+        .html(`${dictionary['marquee']["heading-ar"]}`)
+        .css({direction: 'rtl'})
+        // .html(`${dictionary['marquee']["heading-ar"]}`)
+
+        $marquee.appendTo('#marqueeContainer')
+        $span.appendTo('#marquee')
 
 		//$('#marquee').css({direction: 'rtl'}).attr({lang: 'ar', direction: 'right'});
 	}
 
 	else{
-		$('#marquee').remove();
+		$('#marqueeText').remove();
 
-		$('<marquee/>', {
-            id: 'marquee',
+		$('<span/>', {
+            id: 'marqueeText',
             lang: 'en',
-            direction: 'left',
-
         })
+        .html(`${dictionary['marquee']["heading-en"]}`)
         .css({direction: 'ltr'})
-        .html(dictionary['marquee']["heading-en"])
-        .appendTo('#marqueeContainer')
+        .appendTo('#marquee')
 
 
 		//$('#marquee').css({direction: 'ltr'}).attr({lang: 'en', direction: 'left'})

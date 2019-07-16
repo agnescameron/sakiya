@@ -156,3 +156,38 @@ p:lang(en) {
     font-size: 2vh;
     direction: 'ltr';
 }
+
+.marquee {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee span {
+  display: inline-block;
+  position: relative;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee:hover span {
+  animation-play-state: paused;
+}
+
+.marquee span:lang(ar) {
+  right: 100%;
+  animation-direction: reverse;
+  animation: marquee 15s reverse linear infinite;
+}
+
+/*.marquee:lang(en) span {
+  left: 100%;
+}
+
+.marquee:lang(ar) span {
+  right: 100%;
+}*/
+
+@keyframes marquee {
+  0%   { left: 100%; }
+  100% { left: -50%; }
+}
