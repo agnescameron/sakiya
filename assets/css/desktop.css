@@ -169,23 +169,15 @@ p:lang(en) {
   animation: marquee 15s linear infinite;
 }
 
-.marquee:hover span {
-  animation-play-state: paused;
-}
-
 .marquee span:lang(ar) {
   right: 100%;
   animation-direction: reverse;
   animation: marquee 15s reverse linear infinite;
 }
 
-/*.marquee:lang(en) span {
-  left: 100%;
+.marquee:hover span {
+  animation-play-state: paused;
 }
-
-.marquee:lang(ar) span {
-  right: 100%;
-}*/
 
 @keyframes marquee {
   0%   { left: 100%; }
