@@ -81,6 +81,7 @@ function toggleSideMenu(title) {
 
 
     for(i=0; i<menus["main"].contents.length; i++){
+        //change for ar vs en
     var leftIndent = (mainMenuItem === title) ? "50" : "20";
     var color = (mainMenuItem === title) ? 'yellow' : 'white';
 

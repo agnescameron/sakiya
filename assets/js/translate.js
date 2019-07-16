@@ -91,6 +91,47 @@ function translateText() {
 	}
 
 
+	if(	window.pageMode === true && lang === 'ar'){
+		console.log('shifting pages ar')
+
+		for(i=0; i<menus["main"].contents.length; i++){
+			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
+		    var leftIndent =  60;
+
+		    console.log('left indent is ', leftIndent)
+		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 500);   
+		}
+
+	    var i = 0;
+	    $(`.subframe:visible`).each(function() {
+
+	        var topOffset = 110 + 70*parentFrame;
+	        $div = $('#' + $(this).attr('id'))
+	        $div.children().attr('id')
+
+	        $div.css({'left': leftIndent-8 + 'vw'})
+	        $div.css({'top': topOffset + 50*i + 'px'})   
+
+	        $div.show()
+	        $div.children().show()
+
+	        // if(dictionary[$div.children(0).attr("id")].type === "link" ) {
+	        //     $div.children().unbind('click');
+	        //     $div.children().click(function(){ window.location =dictionary[this.id].link });
+	        // }
+
+	        i++;
+	    });  
+
+	    $(`.pageContainer`).css({'left': '100px'})
+	    $(`#backButton`).css({'left': '10%', 'float': 'left'})	    
+	}
+
+	if(	window.pageMode === true && lang === 'en'){
+		console.log('shifting pages en')
+		}
+
+
 	$('#translate').attr("lang") === 'en' ? $('#translate').attr({lang: 'ar'}) : $('#translate').attr({lang: 'en'}) 
 
 	window.lang = lang;
