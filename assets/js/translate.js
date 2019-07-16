@@ -114,17 +114,48 @@ function translateText() {
 
 	        $div.show()
 	        $div.children().show()
-	        
+
 	        i++;
 	    });  
 
 	    $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
-	    $(`.textbox`).css({'float': 'right', 'right': '80px'})
-	    $(`#backButton`).css({'left': '10%', 'float': 'left'})	    
+ 	    $(`.textbox`).css({'float': 'right', 'right': '80px'})
+	    $(`#backButton`).css({'left': '10%', 'float': 'left'})	   
 	}
 
 	if(	window.pageMode === true && lang === 'en'){
 		console.log('shifting pages en')
+
+		for(i=0; i<menus["main"].contents.length; i++){
+			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
+		    var leftIndent =  '20px';
+
+		    console.log('left indent is ', leftIndent)
+		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 1000);   
+		}
+
+	    var i = 0;
+	    $(`.subframe:visible`).each(function() {
+
+	        var topOffset = 110 + 70*parentFrame;
+	        $div = $('#' + $(this).attr('id'))
+	        $div.children().attr('id')
+
+	        $div.css({'left':'180px'})
+	        $div.css({'top': topOffset + 50*i + 'px'})   
+
+	        $div.show()
+	        $div.children().show()
+	        
+	        i++;
+	    });  
+
+	    $(`.pageContainer`).css({'left': '300px'})
+ 	    $(`.textbox`).css({'float': 'left', 'right': ''})
+	    $(`#backButton`).css({'right': '30%', 'float': 'right', 'left': ''})	   
+
+
+
 		}
 
 
