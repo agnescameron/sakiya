@@ -4,16 +4,50 @@ window.lang = lang;
 function translateText() {
 	lang = (lang === 'ar') ? 'en' : 'ar';
 
+	//deal with the marquee
+	if(lang === 'ar'){
+		$('#marquee').remove();
+
+		$('<marquee/>', {
+            id: 'marquee',
+            lang: 'ar',
+            direction: 'right'
+        })
+        .html(`<div>${dictionary['marquee']["heading-ar"]}</div>`)
+        .appendTo('#marqueeContainer')
+
+		//$('#marquee').css({direction: 'rtl'}).attr({lang: 'ar', direction: 'right'});
+	}
+
+	else{
+		$('#marquee').remove();
+
+		$('<marquee/>', {
+            id: 'marquee',
+            lang: 'en',
+            direction: 'left',
+
+        })
+        .css({direction: 'ltr'})
+        .html(dictionary['marquee']["heading-en"])
+        .appendTo('#marqueeContainer')
+
+
+		//$('#marquee').css({direction: 'ltr'}).attr({lang: 'en', direction: 'left'})
+	}
+
 	for(i = 0; i< Object.keys(dictionary).length; i++){
 
 		key = Object.keys(dictionary)[i];
 		
 		if(dictionary[key].type === 'heading'){
-			if(lang === 'ar')
+			if(lang === 'ar'){
 				$('#'+key).html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+			}
 
-			else
+			else{
 				$('#'+key).html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+			}
 		}
 
 		else if (dictionary[key].type === 'page') {

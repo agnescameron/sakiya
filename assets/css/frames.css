@@ -2,14 +2,14 @@
 	height: 20vh;
 	width: 15vw;
 /*	background-color: green;*/
-	position: absolute;
+	position: fixed;
 }
 
 .subframe {
 	height: 12vh;
 	width: 8vw;
 /*	background-color: lightblue;*/	
-	position: absolute;
+	position: fixed;
 }
 
 
@@ -17,21 +17,6 @@
 	top:60vh;
 	left: 42.5vw;
 }
-
-/*#frame00 {
-	top:70vh;
-	left: 38vw;
-}
-
-#frame01 {
-	top:70vh;
-	left: 48vw;
-}
-
-#frame02 {
-	top:82vh;
-	left: 43vw;
-}*/
 
 #frame1 {
 	top: 65vh;
@@ -48,7 +33,7 @@
  	left: 16vw;
 }
 
-#frame12 {
+/*#frame12 {
 	top: 75vh;
  	left: 25vw;
 }
@@ -58,6 +43,11 @@
  	left: 7vw;
 }
 
+#frame14 {
+	top: 60vh;
+ 	left: 7vw;
+}
+*/
 #frame2 {
 	top: 43vh;
  	left: 15vw;
@@ -71,6 +61,11 @@
 #frame21 {
 	top: 31vh;
  	left: 15vw;
+}
+
+#frame22 {
+	top: 26vh;
+ 	left: 10vw;
 }
 
 #frame3 {

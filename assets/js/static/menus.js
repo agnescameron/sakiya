@@ -2,42 +2,41 @@ var menus = {
     "main":{
         "level":0,
         "type":"menu",
-        "contents": ["SAKIYA", "Team", "Events", "Programs", "Curriculum", "Friends", "Heritage"],
+        "contents": ["SAKIYA", "About", "Program", "Residencies", "Curriculum", "Heritage", "Visit Us"],
     },
     "SAKIYA": {
         "level": 1,
         "type":"text",        
         "contents": [''],
-        // "contents": ["heritage farm", "counter-culture residency", "re-rooting culture"],
     },
-    "Team": {
+    "About": {
         "level": 1,
         "type":"menu",        
-        "contents": ["Sahar Qawasmi", "Nida Sinnokrot", "Anan Quzmar", "Naji AlSlaibi"],
+        "contents": ["About Sakiya", "Team"],
     },
-    "Events": {
+    "Program": {
         "level": 1,
         "type":"menu",
-        "contents":["upcoming", "past events"],
+        "contents":["upcoming events", "symposium", "past events"],
     },
-    "Programs": {
+    "Residencies": {
         "level": 1,
         "type":"menu",        
-        "contents":["current", "archive"],
+        "contents":["current residents", "residency archive"],
     },
     "Curriculum": {
         "level": 1,
         "type":"text",        
         "contents":[''],        
     },    
-    "Friends": {
-        "level": 1,
-        "type":"menu",        
-        "contents":[`friend1`, "friend2", "friend3", "friend4"],
-    },
     "Heritage": {
         "level": 1,
         "type":"menu",        
-        "contents":['Zalatimo Family', 'Ein Qiniya', 'Restoration'],        
+        "contents":['Zalatimo Family', 'Ein Qiniya', 'Restoration', "Farm"],        
+    },
+    "VisitUs": {
+        "level": 1,
+        "type":"text",        
+        "contents":[''],
     },    
 }

@@ -77,13 +77,15 @@ async function returnToMain () {
 
 function toggleSideMenu(title) {
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
-    
-    for(i=0; i<menus["main"].contents.length; i++){
-    var leftIndent = (menus["main"].contents[i] === title) ? "50" : "20";
-    var color = (menus["main"].contents[i] === title) ? 'yellow' : 'white';
+    var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
 
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 500);  
-        $( '#' + menus["main"].contents[i]).css({"color": color })  
+
+    for(i=0; i<menus["main"].contents.length; i++){
+    var leftIndent = (mainMenuItem === title) ? "50" : "20";
+    var color = (mainMenuItem === title) ? 'yellow' : 'white';
+
+        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'px'}, 500);  
+        $( '#' + mainMenuItem).css({"color": color })  
     }
 
     var i = 0;
@@ -141,13 +143,15 @@ function rotate(div, rotate){
 function showPage(title) {
    //put the tree to the side
     for(i=0; i<menus["main"].contents.length; i++){
+        var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
+        
         var leftIndent = (menus["main"].contents[i] === title ||
-            $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + menus["main"].contents[i]).parent().attr("id")) ? "50" : "20";
+            $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "50" : "20";
 
-        $( '#' + menus["main"].contents[i]).animate({'left': '10px'}, 800);
-        $( '#' + menus["main"].contents[i]).parent().animate({'left': leftIndent+'px'}, 800);
-        $( '#' + menus["main"].contents[i]).animate({'top': 100 + 70*i + 'px'}, 800);
-        $( '#' + menus["main"].contents[i]).parent().animate({'top': '20px'}, 800);        
+        $( '#' + mainMenuItem).animate({'left': '10px'}, 800);
+        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'px'}, 800);
+        $( '#' + mainMenuItem).animate({'top': 100 + 70*i + 'px'}, 800);
+        $( '#' + mainMenuItem).parent().animate({'top': '20px'}, 800);        
     }
 
     //handle submenus: if you clicked from a submenu 
@@ -268,6 +272,7 @@ function generateMenus() {
 function generateFrames(menu){
 //class, css etc defined by type
     for(i=0; i<menus[menu].contents.length; i++){
+        menu = menu.replace(/\s/g, '');
 
         if(menu !== "main"){
             parent = $('#' + menu).parent();
