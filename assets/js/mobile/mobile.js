@@ -19,6 +19,7 @@ function generateList(menu, page){
     $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
 
     if(menu.level === 1 || menu.contents.length === 1){
+        console.log("should be mking text page for ")
         console.log('level is 1')
         for(i=0; i<menu.contents.length; i++){
             console.log('i is ', i)
@@ -38,19 +39,19 @@ function generateList(menu, page){
     }
 
     else{
-
+        //need to account for non-
         for(i=0; i<menu.contents.length; i++){
-            console.log("menu is ", menu.contents[i], "dictionayr entry is ", dictionary[menu.contents[i].replace(/\s/g, '')])
+            var menuID = menu.contents[i].replace(/\s/g, '');
             $newheading = $('<div/>', {
-            id: menu.contents[i].replace(/\s/g, ''),
+            id: menuID,
             class: "heading",
-            click: function(){ makeMenuPage(this.id) }
+            click: (menus[menuID].type === "text") ?  function(){ makeTextPage(this.id) } : function(){ makeMenuPage(this.id) }
         }).appendTo( $menuContainer );
 
         if(lang === 'ar')
-            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-ar']);
+            $newheading.attr({lang: 'ar'}).html(dictionary[menuID]['heading-ar']);
         else
-            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-en']);
+            $newheading.attr({lang: 'en'}).html(dictionary[menuID]['heading-en']);
         }
     }
 }
