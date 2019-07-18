@@ -92,11 +92,11 @@ body{
 }
 
 #translate {
-	top: 90vh;
+	bottom: 10vh;
   	font-size: 5vh;
   	margin-left: 3vw;
   	z-index: 6;
-  	position: fixed !important;
+/*  	position: fixed !important;*/
 }
 
 #translate:lang(ar) {
