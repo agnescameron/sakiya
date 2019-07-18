@@ -169,7 +169,7 @@ function makeMenuPage(name){
 
     generateList( menus[name] , '#pageBody'+pageDepth)
 
-    $('<div/>', {"class": "menuPageFooter"}).appendTo(page)
+    // $('<div/>', {"class": "menuPageFooter"}).appendTo(page)
     $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
     }, 1000);

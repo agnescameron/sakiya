@@ -42,32 +42,50 @@ body{
 }
 
 
+.container {
+	display: grid;
+	grid-template-columns: 20vw 70vw 20vw;
+	grid-template-rows: 10vh 45vh 24vh 10vh;
+	grid-auto-rows: 1fr;
+	grid-gap: 1em 1em;
+}
+
 .textPage {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 20vw 50vw 20vw;
 	grid-template-rows: 10vh 45vh 24vh 10vh;
 	grid-auto-rows: 1fr;
 	grid-gap: 1em 1em;
 }
 
 .textPageImageBox {
-	grid-area: 3 / 1 / 4 / 3;
+	grid-area: 3 / 1 / 4 / 4;
 	background-color: lightgreen;
 }
 
 .textPageFooter {
-	grid-area: 4 / 1 / 5 / 3;
+	grid-area: 4 / 1 / 5 / 2;
 	background-color: lightgreen;
 }
 
 .textPageTitle {
-	grid-area: 1 / 1 / 2 / 3;
+	grid-area: 1 / 1 / 2 / 4;
 	background-color: lightgreen;
 }
 
 .textPageBody {
-	grid-area: 2 / 1 / 3 / 3;
+	grid-area: 2 / 1 / 3 / 4;
 	background-color: lightgreen;
+}
+
+.translateBox {
+	background-color: lightgreen;
+	grid-area: 4 / 1 / 5 / 2;
+}
+
+.backBox {
+	background-color: lightgreen;
+	grid-area: 4 / 3 / 5 / 4;
 }
 
 .menuPage {
@@ -75,21 +93,31 @@ body{
 	float: left;
 	width: 100vw;
     height: 100vh;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 10vh 1fr;
+	grid-template-columns: 20vw 50vw 20vw;
+	grid-template-rows: 1fr 10vh;
 	grid-gap: 1em 1em;
-}
-
-.menuPageBody {
-	grid-area: span 2 / span 2 / 3 / 3;
-	height: 80vh;
-	background-color: lightblue;
 }
 
 .menuPageFooter {
 	grid-area: 3 / 1 / 3 / 3;
 	height: 10vh;
 	background-color: lightblue;	
+}
+
+.translateBox {
+	grid-area: 2 / 1 / 3 / 2;
+	background-color: lightblue;
+}
+
+.backBox {
+	grid-area: 2 / 3 / 3 / 4;
+	background-color: lightblue;
+}
+
+.menuPageBody {
+	padding: 15px;
+	grid-area: 1 / 1 / 2 / 4;
+	background-color: lightblue;
 }
 
 
@@ -146,7 +174,7 @@ body{
 
 #translate {
   	font-size: 5vh;
-  	margin-left: 3vw;
+  	padding:20px;
   	z-index: 6;
   	position: fixed !important;
 }
@@ -163,9 +191,7 @@ body{
 #backButton {
   width: 5vh;
   height: 5vh;
-/*  right: 3vw;*/
   z-index: 10;
-/*  bottom: -17.5vh;*/
   margin: 3vw;
   background-image: url("../img/close.png");
   background-size: cover;
