@@ -15,10 +15,11 @@ function returnToMain() {
 }
 
 function generateList(menu, page){
-
-    $menuContainer = $('<div/>', {"class": "menuContainer"}).appendTo( page )
-
+    //need to check if already exists
+    console.log("generating list for page ", page)
     if(menu.level === 1 || menu.contents.length === 1){
+        //$menuContainer = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
+
         console.log("should be mking text page for ")
         console.log('level is 1')
         for(i=0; i<menu.contents.length; i++){
@@ -27,7 +28,7 @@ function generateList(menu, page){
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
             click: function(){ makeTextPage(this.id + 'Page', menu.level) }
-        }).appendTo( $menuContainer );
+        }).appendTo( page );
 
 
 
@@ -40,6 +41,7 @@ function generateList(menu, page){
 
     else{
         //need to account for non-
+        $menuContainer = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
         for(i=0; i<menu.contents.length; i++){
             var menuID = menu.contents[i].replace(/\s/g, '');
             $newheading = $('<div/>', {
@@ -163,11 +165,11 @@ function makeMenuPage(name){
         height: offset,
     }).appendTo($menuPageBody)
 
-    //$( '#page'+pageDepth ).html($offsetDiv);
+    $( '#page'+pageDepth ).html($menuPageBody);
 
     generateList( menus[name] , '#pageBody'+pageDepth)
 
-
+    $('<div/>', {"class": "menuPageFooter"}).appendTo(page)
     $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
     }, 1000);

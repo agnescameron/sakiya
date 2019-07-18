@@ -16,12 +16,13 @@ body{
 .heading {
 	font-size:5.5vh;
 	height:5vh;
+	margin-bottom: 10px;
 	position:relative;
 }
 
 .heading:lang(ar) {
 	font-size:6vh;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 #container {
@@ -144,11 +145,10 @@ body{
 }
 
 #translate {
-	top: 85vh;
   	font-size: 5vh;
   	margin-left: 3vw;
   	z-index: 6;
-/*  	position: fixed !important;*/
+  	position: fixed !important;
 }
 
 #translate:lang(ar) {
@@ -163,14 +163,13 @@ body{
 #backButton {
   width: 5vh;
   height: 5vh;
+/*  right: 3vw;*/
   z-index: 10;
-  float: right;
 /*  bottom: -17.5vh;*/
   margin: 3vw;
   background-image: url("../img/close.png");
   background-size: cover;
-  position: relative;
-/*  float: right;*/
+  position: fixed !important;
 }
 
 p:lang(ar) {
