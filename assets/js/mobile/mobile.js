@@ -28,16 +28,19 @@ function generateList(menu, page){
             click: function(){ makeTextPage(this.id + 'Page', menu.level) }
         }).appendTo( $menuContainer );
 
+
+
         if(lang === 'ar')
-            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-ar']);
         else
-            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
+            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-en']);
         }
     }
 
     else{
 
         for(i=0; i<menu.contents.length; i++){
+            console.log("menu is ", menu.contents[i], "dictionayr entry is ", dictionary[menu.contents[i].replace(/\s/g, '')])
             $newheading = $('<div/>', {
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
@@ -45,9 +48,9 @@ function generateList(menu, page){
         }).appendTo( $menuContainer );
 
         if(lang === 'ar')
-            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].ar);
+            $newheading.attr({lang: 'ar'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-ar']);
         else
-            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')].en);
+            $newheading.attr({lang: 'en'}).html(dictionary[menu.contents[i].replace(/\s/g, '')]['heading-en']);
         }
     }
 }
@@ -77,7 +80,7 @@ function makeTextPage(title, parentLevel){
         id: title + 'Title',
         class: 'pageTitle'    
     })
-    .html(dictionary[title].en.title)
+    .html(dictionary[title]["heading-en"])
     .appendTo( page );
 
     $divContents = $('<p/>', {
@@ -98,13 +101,13 @@ function makeTextPage(title, parentLevel){
 
     //perhaps change to translateDiv?
     if(lang === 'en'){
-        $divTitle.attr({lang: 'en'}).html(dictionary[title].en.title)
-        $divContents.attr({lang: 'en'}).html(dictionary[title].en.contents)
+        $divTitle.attr({lang: 'en'}).html(dictionary[title]["heading-en"])
+        $divContents.attr({lang: 'en'}).html(dictionary[title]["contents-en"])
     }
 
     else{
-        $divTitle.attr({lang: 'ar'}).html(dictionary[title].ar.title)
-        $divContents.attr({lang: 'ar'}).html(dictionary[title].ar.contents)
+        $divTitle.attr({lang: 'ar'}).html(dictionary[title]["heading-ar"])
+        $divContents.attr({lang: 'ar'}).html(dictionary[title]["contents-ar"])
     }
 
     $('body').animate({
@@ -151,8 +154,6 @@ function makeMenuPage(name){
 }
 
 window.onload = function() {
-    generateList(menus["main"], '#page0');
-    
     //v weird fix, to reset scroll position on load
     //
     $('body').animate({
@@ -160,4 +161,13 @@ window.onload = function() {
     }, 1);
     document.body.style.height = initialHeight + "px";
     console.log($(document).height())
+
+    getDictionary.then(function(value) {
+        console.log('got dictionary')
+        generateList(menus["main"], '#page0');
+    });
+
+    getEvents.then(function(value) {
+        console.log(value);
+    });
 }
