@@ -33,7 +33,7 @@ body{
 	white-space: nowrap;
 	max-height: 100vh;
 }
-
+/*
 .page {
   	float:left;
     width: 100vw;
@@ -41,7 +41,7 @@ body{
     display: block;
 }
 
-
+*/
 .container {
 	display: grid;
 	grid-template-columns: 20vw 70vw 20vw;
@@ -64,28 +64,21 @@ body{
 }
 
 .textPageFooter {
-	grid-area: 4 / 1 / 5 / 2;
+	grid-area: 4 / 1 / 5 / 4;
 	background-color: lightgreen;
 }
 
 .textPageTitle {
+	font-size: 5vh;
+	padding: 20px;
 	grid-area: 1 / 1 / 2 / 4;
 	background-color: lightgreen;
 }
 
 .textPageBody {
+	padding: 15px;
 	grid-area: 2 / 1 / 3 / 4;
 	background-color: lightgreen;
-}
-
-.translateBox {
-	background-color: lightgreen;
-	grid-area: 4 / 1 / 5 / 2;
-}
-
-.backBox {
-	background-color: lightgreen;
-	grid-area: 4 / 3 / 5 / 4;
 }
 
 .menuPage {
@@ -120,49 +113,13 @@ body{
 	background-color: lightblue;
 }
 
-
-.menuContainer {
-  	margin: 15px;
-    width: 90%;
-}
-
-.textbox {
-	padding: 20px;
-	font-size: 15px;
-	height: 40vh;
-	overflow-y: scroll;
-  	float:left;
-  	white-space:normal;
-  	width: 85%;
-}
-
-.pageTitle {
-	font-size: 5vh;
-	width: 90%;
-	padding: 20px;
-	height: 10vh;
-	float:left;
-  	white-space:normal;
-}
-
-.textImage {
-	width: 90%;
-	height: 15vh;
-	margin: 20 0 20 0;
-	border: 2px solid white;
-	position: relative;
-	z-index: 20;	
-}
-
-.bottomImageContainer {
-	width: 90%;
-	height: 20vh;
+.imageContainer {
+	height: 100%;
+	width: 100%;
 	overflow-x: scroll;
 	position: relative;
 	display: inline-block;
-	float: left;
-	margin-left: 20px;
-	z-index: 20;
+	z-index: 10;
 }
 
 .bottomImage {

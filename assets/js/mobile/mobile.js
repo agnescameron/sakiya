@@ -18,8 +18,6 @@ function generateList(menu, page){
     //need to check if already exists
     console.log("generating list for page ", page)
     if(menu.level === 1 || menu.contents.length === 1){
-        //$menuContainer = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
-
         console.log("should be mking text page for ")
         console.log('level is 1')
         for(i=0; i<menu.contents.length; i++){
@@ -41,14 +39,14 @@ function generateList(menu, page){
 
     else{
         //need to account for non-
-        $menuContainer = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
+        $menuBody = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
         for(i=0; i<menu.contents.length; i++){
             var menuID = menu.contents[i].replace(/\s/g, '');
             $newheading = $('<div/>', {
             id: menuID,
             class: "heading",
             click: (menus[menuID].type === "text") ?  function(){ makeTextPage(this.id) } : function(){ makeMenuPage(this.id) }
-        }).appendTo( $menuContainer );
+        }).appendTo( $menuBody );
 
         if(lang === 'ar')
             $newheading.attr({lang: 'ar'}).html(dictionary[menuID]['heading-ar']);
@@ -96,9 +94,13 @@ function makeTextPage(title, parentLevel){
 
     if(dictionary[title].img){
 
-        $imageContainer = $('<div/>', {
+        $imageBox = $('<div/>', {
             class: 'textPageImageBox',
         }).appendTo( page );
+
+         $imageContainer = $('<div/>', {
+            class: 'imageContainer',
+        }).appendTo( $imageBox );
 
         for(i=0; i<dictionary[title].img.length; i++) {
                 $(`<img src= ${dictionary[title].img[i].location} class="bottomImage" style="width: 100%"/>`)
@@ -121,8 +123,8 @@ function makeTextPage(title, parentLevel){
     }
 
     else{
-        $divTitle.attr({lang: 'ar'}).html(dictionary[title]["heading-ar"])
-        $divContents.attr({lang: 'ar'}).html(dictionary[title]["contents-ar"])
+        $divTitle.attr({lang: 'ar'}).html(`<p>`+dictionary[title]["heading-ar"]+'</p>')
+        $divContents.attr({lang: 'ar'}).html(`<p>`+dictionary[title]["contents-ar"]+'</p>')
     }
 
     $('body').animate({
