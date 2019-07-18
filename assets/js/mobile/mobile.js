@@ -62,6 +62,8 @@ function makeTextPage(title, parentLevel){
 
     pageDepth=parentLevel+1;
 
+    console.log('page depth is', pageDepth)
+
     $('#container').css({
         'width': initialWidth*(pageDepth+1) + 10 + 'px',
         'overflow-x': 'scroll',
@@ -69,7 +71,7 @@ function makeTextPage(title, parentLevel){
     //generate the next page
     $newpage = $('<div/>', {
         id: 'page' + pageDepth,
-        class: "page",
+        class: "textPage",
         width: initialWidth + 'px',
     }).appendTo( '#container' );
 
@@ -79,21 +81,21 @@ function makeTextPage(title, parentLevel){
 
     $divTitle = $('<div/>', {
         id: title + 'Title',
-        class: 'pageTitle'    
+        class: 'textPageTitle'    
     })
     .html(dictionary[title]["heading-en"])
     .appendTo( page );
 
     $divContents = $('<p/>', {
         id: title,
-        class: 'textbox'
+        class: 'textPageBody'
     })
     .appendTo( page );
 
     if(dictionary[title].img){
 
         $imageContainer = $('<div/>', {
-            class: 'bottomImageContainer',
+            class: 'textPageImageBox',
         }).appendTo( page );
 
         for(i=0; i<dictionary[title].img.length; i++) {
@@ -105,7 +107,8 @@ function makeTextPage(title, parentLevel){
 
 
     $('<div/>', {
-        id: 'backButton',
+        // id: 'backButton',
+        class: 'textPageFooter',
         click: (function(){ returnToMain() } ),
     }).appendTo( page );
 
@@ -134,15 +137,22 @@ function makeMenuPage(name){
         'width': initialWidth*(pageDepth+1) + 'px',
     })
     //generate the next page
-    $newpage = $('<div/>', {
+    $menuPage = $('<div/>', {
         id: 'page' + pageDepth,
-        class: "page",
+        class: "menuPage",
     })
     .css({
         'width': initialWidth+ 'px'
     })
     .appendTo( '#container' );
 
+    page = '#page'+pageDepth;
+
+    $menuPageBody = $('<div/>', {
+        id: 'pageBody'+pageDepth,
+        class: "menuPageBody",
+    })
+    .appendTo( page );
 
     offset = ($('#'+name).offset()).top - parseInt($('#page'+pageDepth).css('padding-top'));
 
@@ -151,11 +161,11 @@ function makeMenuPage(name){
         class: "offset",
     }).css({
         height: offset,
-    });
+    }).appendTo($menuPageBody)
 
-    $( '#page'+pageDepth ).html($offsetDiv);
+    //$( '#page'+pageDepth ).html($offsetDiv);
 
-    generateList( menus[name] , '#page'+pageDepth)
+    generateList( menus[name] , '#pageBody'+pageDepth)
 
 
     $('body').animate({
