@@ -90,10 +90,19 @@ function makeTextPage(title, parentLevel){
     })
     .appendTo( page );
 
-    $('<div/>', {
-        class: 'bottomImage',
-        click: (function(){ returnToMain() } ),
-    }).appendTo( page );
+    if(dictionary[title].img){
+
+        $imageContainer = $('<div/>', {
+            class: 'bottomImageContainer',
+        }).appendTo( page );
+
+        for(i=0; i<dictionary[title].img.length; i++) {
+                $(`<img src= ${dictionary[title].img[i].location} class="bottomImage" style="width: 100%"/>`)
+                .appendTo( $imageContainer )
+        }    
+
+    }
+
 
     $('<div/>', {
         id: 'backButton',

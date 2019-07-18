@@ -73,15 +73,22 @@ body{
 	z-index: 20;	
 }
 
-.bottomImage {
+.bottomImageContainer {
 	width: 90%;
 	height: 20vh;
 	overflow-x: scroll;
-	border: 2px solid white;
 	position: relative;
+	display: inline-block;
 	float: left;
 	margin-left: 20px;
 	z-index: 20;
+}
+
+.bottomImage {
+	height: 95%;
+	border: 2px solid white;
+	width: auto !important;
+	margin-right: 10px;
 }
 
 #translate {
