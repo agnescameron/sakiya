@@ -42,7 +42,7 @@ function generateList(menu, page){
             $newheading = $('<div/>', {
             id: menuID,
             class: "heading",
-            click: (menus[menuID].type === "text") ?  function(){ makeTextPage(this.id) } : function(){ makeMenuPage(this.id) }
+            click: (menus[menuID].type === "text") ?  function(){ makeTextPage(this.id+ 'Page', menu.level) } : function(){ makeMenuPage(this.id) }
         }).appendTo( $menuBody );
 
         if(lang === 'ar')
@@ -67,10 +67,23 @@ function makeTextPage(title, parentLevel){
 
     page = '#page'+pageDepth;
     
-    if ($( page ).length){
+    if ($( page ).length && $(page).attr('class') === 'textPage'){
         console.log('page is not null')
         $(page).empty();
     }
+    else if ($( page ).length && $(page).attr('class') === 'menuPage'){
+        console.log('page is not null, but was a text page')
+        $(page).remove();
+        $('<div/>', {
+            id: 'page' + pageDepth,
+            class: "textPage",
+        })
+        .css({
+            'width': initialWidth+ 'px'
+        })
+        .appendTo( '#container' );
+
+    }      
     else{
         console.log('page is null')
         //generate the next page
@@ -146,10 +159,23 @@ function makeMenuPage(name){
 
     page = '#page' + pageDepth;
 
-    if ($( page ).length){
-        console.log('page is not null')
+    if ($( page ).length && $(page).attr('class') === 'menuPage'){
+        console.log('page is not null, and is a menu page')
         $(page).empty();
     }
+    else if ($( page ).length && $(page).attr('class') === 'textPage'){
+        console.log('page is not null, but was a text page')
+        $(page).remove();
+        $('<div/>', {
+            id: 'page' + pageDepth,
+            class: "menuPage",
+        })
+        .css({
+            'width': initialWidth+ 'px'
+        })
+        .appendTo( '#container' );
+
+    }    
     else{
         console.log('page is null')
         //generate the next page
