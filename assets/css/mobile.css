@@ -73,7 +73,7 @@ body{
 	width: 100vw;
     height: 100vh;
 	grid-template-columns: 20vw 50vw 20vw;
-	grid-template-rows: 1fr 10vh;
+	grid-template-rows: 1fr 20vh;
 	grid-gap: 1em 1em;
 }
 
