@@ -58,6 +58,7 @@ function makeTextPage(title, parentLevel){
     console.log('making text page for ', title)
 
     pageDepth=parentLevel+1;
+    nextPage = pageDepth+1;
 
     $('#container').css({
         'width': initialWidth*(pageDepth+1) + 10 + 'px',
@@ -65,8 +66,14 @@ function makeTextPage(title, parentLevel){
     })
     console.log('page depth is', pageDepth, "container width is ", $('#container').width(), "body is", $('body').width())
 
-    page = '#page'+pageDepth;
-    
+    page = '#page' + pageDepth;
+
+    //gets rid of text pages further up
+    if($('#page'+nextPage).length){
+        console.log('bigger number page')
+        $('#page'+nextPage).remove();
+    }
+
     if ($( page ).length && $(page).attr('class') === 'textPage'){
         console.log('page is not null')
         $(page).empty();
