@@ -18,8 +18,6 @@ function generateList(menu, page){
     //need to check if already exists
     console.log("generating list for page ", page)
     if(menu.level === 1 || menu.contents.length === 1){
-        console.log("should be mking text page for ")
-        console.log('level is 1')
         for(i=0; i<menu.contents.length; i++){
             console.log('i is ', i)
             $newheading = $('<div/>', {
@@ -38,7 +36,6 @@ function generateList(menu, page){
     }
 
     else{
-        //need to account for non-
         $menuBody = $('<div/>', {"class": "menuPageBody"}).appendTo( page )
         for(i=0; i<menu.contents.length; i++){
             var menuID = menu.contents[i].replace(/\s/g, '');
@@ -62,22 +59,28 @@ function makeTextPage(title, parentLevel){
 
     pageDepth=parentLevel+1;
 
-    console.log('page depth is', pageDepth)
-
     $('#container').css({
         'width': initialWidth*(pageDepth+1) + 10 + 'px',
         'overflow-x': 'scroll',
     })
-    //generate the next page
-    $newpage = $('<div/>', {
-        id: 'page' + pageDepth,
-        class: "textPage",
-        width: initialWidth + 'px',
-    }).appendTo( '#container' );
+    console.log('page depth is', pageDepth, "container width is ", $('#container').width(), "body is", $('body').width())
 
     page = '#page'+pageDepth;
+    
+    if ($( page ).length){
+        console.log('page is not null')
+        $(page).empty();
+    }
+    else{
+        console.log('page is null')
+        //generate the next page
+        $('<div/>', {
+            id: 'page' + pageDepth,
+            class: "textPage",
+            width: initialWidth + 'px',
+        }).appendTo( '#container' );
 
-    $(page).empty();
+    }
 
     $divTitle = $('<div/>', {
         id: title + 'Title',
@@ -133,24 +136,33 @@ function makeTextPage(title, parentLevel){
 }
 
 function makeMenuPage(name){
-    console.log("making menu page ", name)
 
     pageDepth=menus[name].level;
 
     $('#container').css({
         'width': initialWidth*(pageDepth+1) + 'px',
     })
-    //generate the next page
-    $menuPage = $('<div/>', {
-        id: 'page' + pageDepth,
-        class: "menuPage",
-    })
-    .css({
-        'width': initialWidth+ 'px'
-    })
-    .appendTo( '#container' );
+    console.log("making menu page ", name, "pageDepth is ", pageDepth, "container width is", $('#container').width())
 
-    page = '#page'+pageDepth;
+    page = '#page' + pageDepth;
+
+    if ($( page ).length){
+        console.log('page is not null')
+        $(page).empty();
+    }
+    else{
+        console.log('page is null')
+        //generate the next page
+        $('<div/>', {
+            id: 'page' + pageDepth,
+            class: "menuPage",
+        })
+        .css({
+            'width': initialWidth+ 'px'
+        })
+        .appendTo( '#container' );
+    }
+
 
     $menuPageBody = $('<div/>', {
         id: 'pageBody'+pageDepth,

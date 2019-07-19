@@ -3,6 +3,7 @@ body{
     width: 5000px;
     height: 100%;
     margin: 0px;
+    max-height: 100vh;
 }
 
 :lang(ar) {
