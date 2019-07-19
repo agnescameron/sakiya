@@ -2,7 +2,7 @@ body{
 	overflow-y: hidden;
     width: 5000px;
     height: 100%;
-    margin: 0px;
+/*    margin: 0px;*/
     max-height: 100vh;
 }
 
@@ -38,7 +38,7 @@ body{
 .textPage {
 	display: grid;
 	grid-template-columns: 20vw 50vw 20vw;
-	grid-template-rows: 5vh 55vh 24vh 10vh;
+	grid-template-rows: 5vh 50vh 22vh 10vh;
 	grid-auto-rows: 1fr;
 	grid-gap: 1em 1em;
 }
@@ -73,26 +73,30 @@ body{
 	width: 100vw;
     height: 100vh;
 	grid-template-columns: 20vw 50vw 20vw;
-	grid-template-rows: 1fr 20vh;
+	grid-template-rows: 82vh 15vh;
 	grid-gap: 1em 1em;
 }
 
 .menuPageFooter {
 	grid-area: 3 / 1 / 3 / 3;
-	height: 10vh;
+	background-color: lightblue;
 }
 
 .translateBox {
 	grid-area: 2 / 1 / 3 / 2;
+	background-color: lightblue;	
 }
 
 .backBox {
 	grid-area: 2 / 3 / 3 / 4;
+	background-color: lightblue;
+	margin-bottom: 10px	
 }
 
 .menuPageBody {
 	padding: 15px;
 	grid-area: 1 / 1 / 2 / 4;
+	background-color: lightblue;
 }
 
 .imageContainer {
