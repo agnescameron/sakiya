@@ -71,7 +71,6 @@ canvas[resize] {
   float: right;
   right: 70px;
   width: 20vw;
-/*  border: 3px solid white;*/
   overflow-y: scroll;
   height: 80vh;
 }
@@ -157,12 +156,15 @@ p:lang(en) {
   height: 200px;
   margin: 10px;
   border: 3px solid white;
+  padding: 20px;
+  font-size:28px;
+  /*font-family: Apercu;*/
   position: relative;
   float: left;
 }
 
 .eventBox:hover {
-  background-color: lightgreen;
+  font-style: italic;
 }
 
 .marquee {

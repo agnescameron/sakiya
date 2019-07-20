@@ -158,6 +158,21 @@ function translateText() {
 
 		}
 
+	for(i = 0; i< Object.keys(eventsData).length; i++){
+		key = Object.keys(eventsData)[i];
+
+		if(lang === 'ar'){
+			$('#'+key+'Title').html(eventsData[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+			$('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})			
+			$('#'+key+'Contents').html(eventsData[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+		}
+		else{
+			$('#'+key+'Title').html(eventsData[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+			$('#'+key+'Date').css({direction: 'ltr'}).attr({lang: 'en'})			
+			$('#'+key+'Contents').html(eventsData[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+		}
+	}
+
 
 	$('#translate').attr("lang") === 'en' ? $('#translate').attr({lang: 'ar'}) : $('#translate').attr({lang: 'en'}) 
 

@@ -181,16 +181,28 @@ function addEventsPage(title) {
 
 
     for (i=0; i<Object.keys(events).length; i++){
-        var key = Object.keys(events)[i];  
-        $('<div/>', {
+        var key = Object.keys(events)[i];
+        var eventDate = new Date(events[key]["date"]);
+        var title = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
+
+        $eventBox = $('<div/>', {
             id: key,
             class: 'eventBox',
             click: (function(){ openEvent(this.id) } ),
-        }).html(
-        events[key]["heading-en"] + '<br><br>' +
-        events[key]["date"] )
+        })
         .appendTo($pageContainer);
+    
+        $('<div/>', {
+            id: key+'Title',
+        }).html(title)
+        .appendTo( $eventBox );
+
+        $('<div/>', {
+            id: key+'Date',
+        }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
+        .appendTo( $eventBox );
     }
+
     $pageContainer.appendTo( 'body' );
 }
 
