@@ -6,17 +6,6 @@ jQuery.fx.interval = 10;
 
 console.log('initil width is ', initialWidth, 'initial height is ', initialHeight, 'document height is ', documentHeight)
 
-function calibrateScreen () {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-window.addEventListener('resize', () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
-
 function returnToMain() {
     console.log('returning')
 
@@ -235,10 +224,6 @@ function makeMenuPage(name){
 }
 
 window.onload = function() {
-    //v weird fix, to reset scroll position on load
-    //
-
-    calibrateScreen();
 
     $('body').animate({
         scrollLeft: 0

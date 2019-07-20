@@ -98,8 +98,7 @@ function translateText() {
 			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
 		    var leftIndent =  60;
 
-		    console.log('left indent is ', leftIndent)
-		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 1000);   
+		    $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 1000);   
 		}
 
 	    var i = 0;
@@ -118,9 +117,12 @@ function translateText() {
 	        i++;
 	    });  
 
-	    $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
- 	    $(`.textbox`).css({'float': 'right', 'right': '80px'})
-	    $(`#backButton`).css({'left': '10%', 'float': 'left'})	   
+        $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
+        $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
+        $(`.textbox`).css({'float': 'right', 'right': '80px'})
+        $(`#backButton`).css({'left': '10%', 'float': 'left'})  
+        // $(`.eventBox`).css({'float': 'right', 'margin-right': '40px'})
+       	// $(`.eventPage`).css({'margin-right': '40px', 'float': 'right'})          
 	}
 
 	if(	window.pageMode === true && lang === 'en'){
@@ -153,9 +155,9 @@ function translateText() {
 	    $(`.pageContainer`).css({'left': '300px'})
  	    $(`.textbox`).css({'float': 'left', 'right': ''})
 	    $(`#backButton`).css({'right': '30%', 'float': 'right', 'left': ''})	   
-
-
-
+        $(`.eventPageContainer`).css({'left': '350px'})
+        // $(`.eventBox`).css({'float': 'left', 'margin-right': ''})  
+       	// $(`.eventPage`).css({'margin-right': '', 'float': 'left'})  
 		}
 
 	for(i = 0; i< Object.keys(eventsData).length; i++){

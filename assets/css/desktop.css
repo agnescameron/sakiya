@@ -63,6 +63,20 @@ canvas[resize] {
   float: right;
 }
 
+.eventPageContainer {
+  width: 50vw;
+  z-index: 4;
+  text-align: justify;
+  position: absolute;
+  display: inline-block;
+  opacity: 0%;
+  top: 12vh;
+  left: 350px;
+  min-width: 500px;
+  overflow-y: scroll;
+  float: right;
+}
+
 .imageContainer {
   z-index: 4;
   position: absolute;
@@ -152,19 +166,31 @@ p:lang(en) {
 }
 
 .eventBox {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 10px;
   border: 3px solid white;
-  padding: 20px;
-  font-size:28px;
-  /*font-family: Apercu;*/
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   float: left;
 }
 
 .eventBox:hover {
   font-style: italic;
+  background-size: 0 0;
+}
+
+.eventPage {
+  width: 250px;
+  height: 250px;
+  border: 3px solid white;
+  margin: 10px;
+  background-size: 0 0;
+  position:absoulte;
+  overflow-y: scroll;
+  z-index: 30;
 }
 
 .marquee {
@@ -187,6 +213,26 @@ p:lang(en) {
 
 .marquee:hover span {
   animation-play-state: paused;
+}
+
+.eventBoxTitle {
+  margin: 20px;  
+  font-size:28px;
+}
+
+.eventPageDate {
+  margin: 20px;  
+  font-size:28px;
+}
+.eventText {
+  margin: 20px;
+}
+
+.eventBoxDate {
+  margin: 20px;
+  bottom: 20px;
+  font-size:28px;
+  position: absolute;
 }
 
 @keyframes marquee {

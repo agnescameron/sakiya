@@ -1,5 +1,15 @@
 window.pageMode = false;
 
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+    // $('.eventPage')
+    // .animate({
+    //     'height': '400px',
+    //     'width': eventWidth})
+    // .html(eventsData[title]["contents-en"])
+});
+
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -22,6 +32,7 @@ function getEntries(array, type, val) {
 async function returnToMain () {
     $('.pageContainer').remove();
     $('.imageContainer').remove();
+    $('.eventPageContainer').remove();
 
     var styleSheet;
     for (var i = 0; i < document.styleSheets.length; i++){
@@ -100,7 +111,6 @@ function toggleSideMenu(title) {
     var leftIndent;
 
     if(lang === 'ar'){
-        console.log('mainmenuitem is in ar')
         leftIndent = (mainMenuItem === title) ? "58vw" : "60vw";
     }
     else {
@@ -165,40 +175,77 @@ function rotate(div, rotate){
     elem.attr('data-degree', newDegree);
 }
 
-function openEvent(eventID) {
-    console.log('event id is ', eventID)
+function openEvent(title) {
+    //get width of page container. 234 accounts for margins and borders
+
+    $('.eventBoxDate').addClass('eventPageDate').removeClass('eventBoxDate')
+    var containerWidth = $('.eventPageContainer').width();
+    numContainers = Math.floor(containerWidth/276);
+    console.log('number of containers is', numContainers)
+
+    eventWidth = numContainers*276 - 26; //-20 + 6*(numContainers-1);
+
+    $('#'+title).addClass('eventPage').removeClass('eventBox')
+    .animate({
+        'height': '400px',
+        'width': eventWidth})
+
+    var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
+
+    $('<div/>', {
+        id: title+'Contents',
+        class: 'eventText',
+    }).html(eventsData[title]["contents-en"])
+    .appendTo( $('#'+title) )
+
+    console.log('div text title is ', title+'Contents')
 }
+
+function closeEvent(title) {
+
+    $('#'+title).css({
+        'width': '200px',
+        'height': '200px',
+        'pointer-events': '',
+        'background-size': '',
+        })
+    .html(eventsData[title]["contents-en"])
+
+}
+
 
 function addEventsPage(title) {
     var events = getEntries(eventsData, "type", title);
 
-    console.log('events are', events)
-
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
-        class: 'pageContainer',
+        class: 'eventPageContainer',
     });
 
 
     for (i=0; i<Object.keys(events).length; i++){
         var key = Object.keys(events)[i];
         var eventDate = new Date(events[key]["date"]);
-        var title = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
+        var eventTitle = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
+        var randImage = illustrationArray[ i ];
 
         $eventBox = $('<div/>', {
             id: key,
             class: 'eventBox',
             click: (function(){ openEvent(this.id) } ),
         })
+        .css({'background-image': `url(${randImage})`})
         .appendTo($pageContainer);
     
         $('<div/>', {
             id: key+'Title',
-        }).html(title)
+            class: 'eventBoxTitle',
+        }).html(eventTitle)
         .appendTo( $eventBox );
 
         $('<div/>', {
             id: key+'Date',
+            class: 'eventBoxDate',
         }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
         .appendTo( $eventBox );
     }
@@ -313,7 +360,7 @@ function showPage(title) {
     // $('.textbox').remove();
     $('.pageContainer').remove();
     $('.imageContainer').remove();
-    $('.eventsContainer').remove();
+    $('.eventPageContainer').remove();
 
     if(dictionary[title + 'Page'].type === 'page'){
         addTextPage(title);
@@ -329,8 +376,11 @@ function showPage(title) {
 
     if(lang === 'ar') {   
         $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
+        $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
         $(`.textbox`).css({'float': 'right', 'right': '80px'})
-        $(`#backButton`).css({'left': '10%', 'float': 'left'})    
+        $(`#backButton`).css({'left': '10%', 'float': 'left'})  
+        // $(`.eventBox`).css({'float': 'right', 'margin-right': '40px'})            
+        // $(`.eventPage`).css({'margin-right': '40px', 'float': 'right'})        
     }
 
     window.pageMode = true;
