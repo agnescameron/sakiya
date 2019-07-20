@@ -17,7 +17,7 @@ var menus = {
     "Program": {
         "level": 1,
         "type":"menu",
-        "contents":["upcoming events", "symposium", "past events"],
+        "contents":["upcoming events", "past events"],
     },
     "Residencies": {
         "level": 1,

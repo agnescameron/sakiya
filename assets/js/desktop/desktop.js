@@ -6,6 +6,19 @@ function sleep(ms) {
 
 var fields = 7;
 
+function getEntries(array, type, val) {
+    var entries = {};
+
+    for (j=0; j<Object.keys(array).length; j++){
+        var key = Object.keys(array)[j];
+        if(array[key].type === val){
+            entries[key] = array[key];
+        }
+    }
+
+    return entries;
+}
+
 async function returnToMain () {
     $('.pageContainer').remove();
     $('.imageContainer').remove();
@@ -152,6 +165,85 @@ function rotate(div, rotate){
     elem.attr('data-degree', newDegree);
 }
 
+function openEvent(eventID) {
+    console.log('event id is ', eventID)
+}
+
+function addEventsPage(title) {
+    var events = getEntries(eventsData, "type", title);
+
+    console.log('events are', events)
+
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'pageContainer',
+    });
+
+
+    for (i=0; i<Object.keys(events).length; i++){
+        var key = Object.keys(events)[i];  
+        $('<div/>', {
+            id: key,
+            class: 'eventBox',
+            click: (function(){ openEvent(this.id) } ),
+        }).html(
+        events[key]["heading-en"] + '<br><br>' +
+        events[key]["date"] )
+        .appendTo($pageContainer);
+    }
+    $pageContainer.appendTo( 'body' );
+}
+
+function addTextPage(title) {
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'pageContainer',
+    });
+
+    $textbox = $('<p/>', {
+        id: title + 'Page',
+        class: 'textbox',
+    });
+
+    if(lang === 'en'){
+        $textbox.html(dictionary[title + 'Page']['contents-en'])
+            .css({direction: 'ltr'})
+    }
+
+    else{
+        $textbox.html(dictionary[title + 'Page']['contents-ar'])
+            .css({direction: 'rtl'})
+    }
+
+    $pageContainer.appendTo( 'body' );
+    $textbox.appendTo( $pageContainer );
+    $('<div/>', {
+        id: 'backButton',
+        click: (function(){ returnToMain() } ),
+    }).appendTo( $pageContainer );
+
+    //if there are images to display
+    if(dictionary[title + 'Page'].img){
+        $imageContainer = $('<div/>', {
+            id: title + 'ImageContainer',
+            class: 'imageContainer',
+        });
+
+        $imageContainer.appendTo( 'body' );   
+             
+        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+                $('<div/>', {
+                    id: title + 'PageImage' + i,
+                    class: 'sideImage',
+                    click: (function(){ showImage(this.id) } ),
+                })
+                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
+                .appendTo( $imageContainer )
+        }
+    }
+}
+
+
 function showPage(title) {
    //put the tree to the side
 
@@ -209,53 +301,14 @@ function showPage(title) {
     // $('.textbox').remove();
     $('.pageContainer').remove();
     $('.imageContainer').remove();
+    $('.eventsContainer').remove();
 
-    $pageContainer = $('<div/>', {
-        id: title + 'PageContainer',
-        class: 'pageContainer',
-    });
-
-
-    $pageDiv = $('<p/>', {
-        id: title + 'Page',
-        class: 'textbox',
-    });
-
-    if(lang === 'en'){
-        $pageDiv.html(dictionary[title + 'Page']['contents-en'])
-            .css({direction: 'ltr'})
+    if(dictionary[title + 'Page'].type === 'page'){
+        addTextPage(title);
     }
 
-    else{
-        $pageDiv.html(dictionary[title + 'Page']['contents-ar'])
-            .css({direction: 'rtl'})
-    }
-
-    $pageContainer.appendTo( 'body' );
-    $pageDiv.appendTo( $pageContainer );
-    $('<div/>', {
-        id: 'backButton',
-        click: (function(){ returnToMain() } ),
-    }).appendTo( $pageContainer );
-
-    //if there are images to display
-    if(dictionary[title + 'Page'].img){
-        $imageContainer = $('<div/>', {
-            id: title + 'ImageContainer',
-            class: 'imageContainer',
-        });
-
-        $imageContainer.appendTo( 'body' );   
-             
-        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
-                $('<div/>', {
-                    id: title + 'PageImage' + i,
-                    class: 'sideImage',
-                    click: (function(){ showImage(this.id) } ),
-                })
-                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
-                .appendTo( $imageContainer )
-        }
+    if (dictionary[title + 'Page'].type === 'eventsPage') {
+        addEventsPage(title);
     }
 
     if(window.pageMode === false){
@@ -316,7 +369,7 @@ function generateFrames(menu){
 
         var frameType = (menus[menu].level > 0) ? "subframe" : "frame";
         var headingType = (menus[menu].level > 0) ? "subheading" : "heading";
-        var display = (menus[menu].level > 0) ? "none" : "block";
+        var display = (menus[menu].level > 0) ? "none" : "Event";
 
         $frame = $('<div/>', {
             id: 'frame' + parentNum + i,

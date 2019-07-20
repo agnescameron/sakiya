@@ -35,8 +35,7 @@ var getDictionary = new Promise( function(resolve, reject) {
 	        }
 	        dictionary[key].img = img;
         });
-        resolve('Success, dictionary!');  
-        console.log(dictionary)
+        resolve('Success, dictionary!');
     })
 })
 
@@ -47,15 +46,31 @@ var getEvents = new Promise( function(resolve, reject) {
         $(entry).each(function(){
 	       var key = this["gsx$id"]["$t"];
 	       eventsData[key] = {
-	        	"type": this["gsx$eeeeee"]["$t"],
+	        	"type": this["gsx$type"]["$t"],
+	        	"date": Date(this["gsx$date"]["$t"]),
+	        	"organisers-ar": this["gsx$organisers-ar"]["$t"],
+	        	"organisers-en": this["gsx$organisers-en"]["$t"],
+	        	"location-ar": this["gsx$location-ar"]["$t"],
+	        	"location-en": this["gsx$location-en"]["$t"],	        	
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
 	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
-	        	"images": this["gsx$images"]["$t"] ? this["gsx$images"]["$t"] : null,
+	        	"poster": this["gsx$poster"]["$t"] ? this["gsx$poster"]["$t"] : null,  
 	        }
+	        
+	        var img = [];
+	        for(var i=0; i<5; i++){
+	        	var image = {
+	        	"location": this[`gsx$image${i}`]["$t"] ? this[`gsx$image${i}`]["$t"] : null,
+	        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
+	        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+	        	}
+	        	
+	        	img[i] = image;
+	        }
+	        eventsData[key].img = img;
         });
         resolve('Success, events!'); 
-        console.log(eventsData)
     })  
 })

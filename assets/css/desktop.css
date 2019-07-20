@@ -152,6 +152,19 @@ p:lang(en) {
     direction: 'ltr';
 }
 
+.eventBox {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border: 3px solid white;
+  position: relative;
+  float: left;
+}
+
+.eventBox:hover {
+  background-color: lightgreen;
+}
+
 .marquee {
   width: 80%;
   margin: 0 auto;
