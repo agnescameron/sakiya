@@ -1,13 +1,13 @@
 window.pageMode = false;
 
-window.addEventListener('resize', () => {
-  // We execute the same script as before
-    // $('.eventPage')
-    // .animate({
-    //     'height': '400px',
-    //     'width': eventWidth})
-    // .html(eventsData[title]["contents-en"])
-});
+// window.addEventListener('resize', () => {
+//   // We execute the same script as before
+//     // $('.eventPage')
+//     // .animate({
+//     //     'height': '400px',
+//     //     'width': eventWidth})
+//     // .html(eventsData[title]["contents-en"])
+// });
 
 
 function sleep(ms) {
@@ -186,31 +186,44 @@ function openEvent(title) {
     eventWidth = numContainers*276 - 26; //-20 + 6*(numContainers-1);
 
     $('#'+title).addClass('eventPage').removeClass('eventBox')
+    .unbind("click")
     .animate({
         'height': '400px',
         'width': eventWidth})
+
+    $('<div/>', {
+        id: 'backButton',
+        class: 'eventBackButton',
+        click: (function(){ closeEvent(title) } ),
+    })
+    .css({'z-index': '50'})
+    .appendTo( $('#'+title) );
 
     var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
 
     $('<div/>', {
         id: title+'Contents',
         class: 'eventText',
-    }).html(eventsData[title]["contents-en"])
+    }).html(eventContents)
     .appendTo( $('#'+title) )
-
-    console.log('div text title is ', title+'Contents')
 }
 
-function closeEvent(title) {
+async function closeEvent(title) {
 
-    $('#'+title).css({
-        'width': '200px',
-        'height': '200px',
-        'pointer-events': '',
-        'background-size': '',
-        })
-    .html(eventsData[title]["contents-en"])
+    $('eventPageDate').addClass('eventBoxDate').removeClass('eventPageDate')
 
+    $('#'+title).addClass('eventBox').removeClass('eventPage')
+    .animate({
+        'height': '250px',
+        'width': '250px'});
+
+    $('.eventBackButton').remove();
+
+    $('.eventText').remove();
+    //$('#'+title+'Contents').remove();
+
+    await sleep(100);
+    $('#'+title).click(function(){ openEvent(title) } )
 }
 
 
@@ -222,6 +235,10 @@ function addEventsPage(title) {
         class: 'eventPageContainer',
     });
 
+    $imageContainer = $('<div/>', {
+        id: title + 'ImageContainer',
+        class: 'imageContainer',
+    });
 
     for (i=0; i<Object.keys(events).length; i++){
         var key = Object.keys(events)[i];
@@ -248,9 +265,22 @@ function addEventsPage(title) {
             class: 'eventBoxDate',
         }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
         .appendTo( $eventBox );
+    
+        $('<div/>', {
+            id: title + 'Poster',
+            class: 'sideImage',
+            click: (function(){ showImage(this.id) } ),
+        })
+        .prepend(`<img src= ${events[key].poster} style="width: 100%"/>`)
+        .appendTo( $imageContainer )
+
+        $pageContainer.appendTo( 'body' );
     }
 
-    $pageContainer.appendTo( 'body' );
+
+
+    $imageContainer.appendTo( 'body' ); 
+
 }
 
 function addTextPage(title) {
@@ -378,9 +408,7 @@ function showPage(title) {
         $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
         $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
         $(`.textbox`).css({'float': 'right', 'right': '80px'})
-        $(`#backButton`).css({'left': '10%', 'float': 'left'})  
-        // $(`.eventBox`).css({'float': 'right', 'margin-right': '40px'})            
-        // $(`.eventPage`).css({'margin-right': '40px', 'float': 'right'})        
+        $(`#backButton`).css({'left': '10%', 'float': 'left'})      
     }
 
     window.pageMode = true;
