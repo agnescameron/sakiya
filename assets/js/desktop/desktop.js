@@ -9,7 +9,6 @@ window.pageMode = false;
 //     // .html(eventsData[title]["contents-en"])
 // });
 
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -101,6 +100,10 @@ async function returnToMain () {
 }
 
 function toggleSideMenu(title) {
+
+    $('.pageContainer').remove();
+    $('.eventPageContainer').remove();
+
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
 
     for(i=0; i<menus["main"].contents.length; i++){
@@ -192,12 +195,12 @@ function openEvent(title) {
         'width': eventWidth})
 
     $('<div/>', {
-        id: 'backButton',
+        id: title + 'Back',
         class: 'eventBackButton',
         click: (function(){ closeEvent(title) } ),
     })
     .css({'z-index': '50'})
-    .appendTo( $('#'+title) );
+    .prependTo( $('#'+title) );
 
     var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
 
@@ -217,7 +220,7 @@ async function closeEvent(title) {
         'height': '250px',
         'width': '250px'});
 
-    $('.eventBackButton').remove();
+    $('#' + title + 'Back').remove();
 
     $('.eventText').remove();
     //$('#'+title+'Contents').remove();

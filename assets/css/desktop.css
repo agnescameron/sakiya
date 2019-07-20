@@ -121,6 +121,18 @@ canvas[resize] {
   float: right;
 }
 
+.eventBackButton {
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  float: right;
+  margin: 10px;
+  background-image: url("../img/close.png");
+  background-size: cover;
+  position: relative;
+  /*float: right;*/
+}
+
 #closeImage {
   width: 30px;
   height: 30px;
@@ -191,6 +203,7 @@ p:lang(en) {
   position:absoulte;
   overflow-y: scroll;
   z-index: 30;
+  display: inline-block;
 }
 
 .marquee {
@@ -218,6 +231,7 @@ p:lang(en) {
 .eventBoxTitle {
   margin: 20px;  
   font-size:28px;
+/*  width: 200px;*/
 }
 
 .eventPageDate {
