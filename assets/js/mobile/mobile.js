@@ -2,6 +2,7 @@ var pageDepth = 0;
 var initialWidth = $(window).width();
 var initialHeight = $(window).height();
 var documentHeight = $(document).height();
+jQuery.fx.interval = 10;
 
 console.log('initil width is ', initialWidth, 'initial height is ', initialHeight, 'document height is ', documentHeight)
 
