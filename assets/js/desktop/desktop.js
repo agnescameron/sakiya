@@ -15,19 +15,6 @@ function sleep(ms) {
 
 var fields = 7;
 
-function getEntries(array, type, val) {
-    var entries = {};
-
-    for (j=0; j<Object.keys(array).length; j++){
-        var key = Object.keys(array)[j];
-        if(array[key].type === val){
-            entries[key] = array[key];
-        }
-    }
-
-    return entries;
-}
-
 async function returnToMain () {
     $('.pageContainer').remove();
     $('.imageContainer').remove();

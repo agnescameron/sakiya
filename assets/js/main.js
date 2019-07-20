@@ -8,6 +8,20 @@ var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/pub
 var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 
 
+function getEntries(array, type, val) {
+	console.log('getting entries')
+    var entries = {};
+
+    for (j=0; j<Object.keys(array).length; j++){
+        var key = Object.keys(array)[j];
+        if(array[key].type === val){
+            entries[key] = array[key];
+        }
+    }
+
+    return entries;
+}
+
 var getDictionary = new Promise( function(resolve, reject) {
     $.getJSON(pagesUrl, function(data){
         var entry = data.feed.entry
