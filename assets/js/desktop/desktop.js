@@ -236,13 +236,13 @@ function addResidencyPage(title) {
         $residentBox = $('<div/>', {
             id: key,
             class: 'eventBox',
-            click: (function(){ showPage(residencies, this.id) } ),
+            click: (function(){ $('.eventPageContainer').remove(); addTextPage(residencies, this.id); } ),
         })
         .css({'background-image': `url(${image})`, 'background-size': 'cover'})
         .appendTo($pageContainer);
     
         $('<div/>', {
-            id: key+'Title',
+            id: key+'PageTitle',
             class: 'eventBoxTitle',
         }).html(residencyTitle)
         .appendTo( $residentBox );
