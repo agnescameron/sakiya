@@ -8,6 +8,10 @@ var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/pub
 var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function getEntries(array, type, val) {
 	console.log('getting entries')
     var entries = {};

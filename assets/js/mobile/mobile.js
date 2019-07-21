@@ -54,14 +54,58 @@ function generateList(menu, page){
     }
 }
 
+async function closeEvent(title) {
+
+    // $('#'+title)
+    // .animate({
+    //     'height': '250px'
+    // });
+
+    $('#' + title + 'Back').remove();
+
+    $('.eventText').remove();
+    //$('#'+title+'Contents').remove();
+
+    await sleep(100);
+    $('#'+title).click(function(){ openEvent(title) } )
+
+}
+
+function openEvent(title) {
+    $('#'+title)
+    .unbind("click")
+    .animate({
+        // 'height': '400px'
+    })
+
+    $('<div/>', {
+        id: title + 'Back',
+        class: 'eventBackButton',
+        click: (function(){ closeEvent(title) } ),
+    })
+    .css({'z-index': '50'})
+    .prependTo( $('#'+title) );
+
+    var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
+
+    $('<div/>', {
+        id: title+'Contents',
+        class: 'eventText',
+    }).html(eventContents)
+    .appendTo( $('#'+title) )
+
+    if( lang === 'ar'){
+        console.log('floating')
+        $(`.eventBackButton`).css({'float': 'left'})  
+        $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
+    }
+}
 
 function addEvents(page, title) {
-    //title = title+'Event';
-    console.log('adding events for ', title);
-    
+
     $('<div/>', {
-            id: key,
-            class: 'eventPageTitle',
+        id: title+'PageTitle',
+        class: 'eventPageTitle',
     }).html(dictionary[title]["heading-en"])
     .appendTo( page );
 

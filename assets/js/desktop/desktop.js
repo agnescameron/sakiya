@@ -9,10 +9,6 @@ window.pageMode = false;
 //     // .html(eventsData[title]["contents-en"])
 // });
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 var fields = 7;
 
 async function returnToMain () {
@@ -398,7 +394,7 @@ function showPage(title) {
         $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
         $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
         $(`.textbox`).css({'float': 'right', 'right': '80px'})
-        $(`#backButton`).css({'left': '10%', 'float': 'left'})      
+        $(`#backButton`).css({'left': '10%', 'float': 'left'})    
     }
 
     window.pageMode = true;

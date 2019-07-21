@@ -56,7 +56,7 @@ function translateText() {
 			}
 		}
 
-		else if (dictionary[key].type === 'page') {
+		else if (dictionary[key].type === 'page' || dictionary[key].type === 'eventsPage') {
 			if(lang === 'ar'){
 				$('#'+key+'Title').html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 				$('#'+key).html(dictionary[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
@@ -69,7 +69,6 @@ function translateText() {
 	}
 
 	if(	window.galleryMode === true ){
-		console.log('woooooo in the gallery')
 		//gets the caption div, 
 		$(".displayCaption").each(function() {
 	    	
@@ -86,14 +85,11 @@ function translateText() {
 			else
 	    		$(this).css({"margin-left": '20%'})
 	    		.html('<p>' + dictionary[parentPage].img[imageNumber]["caption-en"] ).css({direction: 'ltr'}).attr({lang: 'en'} + '</p>')	    	
-
 		});
 	}
 
 
 	if(	window.pageMode === true && lang === 'ar'){
-		console.log('shifting pages ar')
-
 		for(i=0; i<menus["main"].contents.length; i++){
 			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
 		    var leftIndent =  60;
@@ -121,8 +117,7 @@ function translateText() {
         $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
         $(`.textbox`).css({'float': 'right', 'right': '80px'})
         $(`#backButton`).css({'left': '10%', 'float': 'left'})  
-        // $(`.eventBox`).css({'float': 'right', 'margin-right': '40px'})
-       	// $(`.eventPage`).css({'margin-right': '40px', 'float': 'right'})          
+     
 	}
 
 	if(	window.pageMode === true && lang === 'en'){
@@ -156,8 +151,6 @@ function translateText() {
  	    $(`.textbox`).css({'float': 'left', 'right': ''})
 	    $(`#backButton`).css({'right': '30%', 'float': 'right', 'left': ''})	   
         $(`.eventPageContainer`).css({'left': '350px'})
-        // $(`.eventBox`).css({'float': 'left', 'margin-right': ''})  
-       	// $(`.eventPage`).css({'margin-right': '', 'float': 'left'})  
 		}
 
 	for(i = 0; i< Object.keys(eventsData).length; i++){
@@ -167,11 +160,13 @@ function translateText() {
 			$('#'+key+'Title').html(eventsData[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 			$('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})			
 			$('#'+key+'Contents').html(eventsData[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+		    $(`.eventBackButton`).css({'float': 'left'}) 
 		}
 		else{
 			$('#'+key+'Title').html(eventsData[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 			$('#'+key+'Date').css({direction: 'ltr'}).attr({lang: 'en'})			
 			$('#'+key+'Contents').html(eventsData[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+		    $(`.eventBackButton`).css({'float': 'right'})
 		}
 	}
 
