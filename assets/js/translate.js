@@ -170,6 +170,23 @@ function translateText() {
 		}
 	}
 
+	for(i = 0; i< Object.keys(residenciesData).length; i++){
+		key = Object.keys(residenciesData)[i];
+
+		if(lang === 'ar'){
+			$('#'+key+'Title').html(residenciesData[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+			$('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})			
+			$('#'+key).html(residenciesData[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+		    $(`.eventBackButton`).css({'float': 'left'}) 
+		}
+		else{
+			$('#'+key+'Title').html(residenciesData[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+			$('#'+key+'Date').css({direction: 'ltr'}).attr({lang: 'en'})			
+			$('#'+key).html(residenciesData[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+		    $(`.eventBackButton`).css({'float': 'right'})
+		}
+	}
+
 
 	$('#translate').attr("lang") === 'en' ? $('#translate').attr({lang: 'ar'}) : $('#translate').attr({lang: 'en'}) 
 

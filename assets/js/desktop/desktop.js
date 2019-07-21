@@ -228,15 +228,15 @@ function addResidencyPage(title) {
     });
 
     for (i=0; i<Object.keys(residencies).length; i++){
-        var key = Object.keys(residencies)[i];
-        var residencyTitle = (lang === 'en') ? residencies[key]["heading-en"] : residencies[key]["heading-ar"];
-        var image = residencies[key].img[0].location;
+        var key = Object.keys(residencies)[i].slice(0, -4);
+        var residencyTitle = (lang === 'en') ? residencies[key+'Page']["heading-en"] : residencies[key+'Page']["heading-ar"];
+        var image = residencies[key+'Page'].img[0].location;
 
 
         $residentBox = $('<div/>', {
             id: key,
             class: 'eventBox',
-            click: (function(){ showPage(this.id) } ),
+            click: (function(){ showPage(residencies, this.id) } ),
         })
         .css({'background-image': `url(${image})`, 'background-size': 'cover'})
         .appendTo($pageContainer);
@@ -341,7 +341,7 @@ function addEventsPage(title) {
 
 }
 
-function addTextPage(title) {
+function addTextPage(pageArray, title) {
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
         class: 'pageContainer',
@@ -353,13 +353,13 @@ function addTextPage(title) {
     });
 
     if(lang === 'en'){
-        $textbox.html(dictionary[title + 'Page']['contents-en'])
+        $textbox.html(pageArray[title + 'Page']['contents-en'])
             .attr({lang: 'en'})
             .css({direction: 'ltr'})
     }
 
     else{
-        $textbox.html(dictionary[title + 'Page']['contents-ar'])
+        $textbox.html(pageArray[title + 'Page']['contents-ar'])
             .attr({lang: 'ar'})
             .css({direction: 'rtl'})
     }
@@ -372,7 +372,7 @@ function addTextPage(title) {
     }).appendTo( $pageContainer );
 
     //if there are images to display
-    if(dictionary[title + 'Page'].img){
+    if(pageArray[title + 'Page'].img){
         $imageContainer = $('<div/>', {
             id: title + 'ImageContainer',
             class: 'imageContainer',
@@ -380,20 +380,20 @@ function addTextPage(title) {
 
         $imageContainer.appendTo( 'body' );   
              
-        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+        for(i=0; i<pageArray[title + 'Page'].img.length; i++) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
                     click: (function(){ showImage(this.id) } ),
                 })
-                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
+                .prepend(`<img src= ${pageArray[title + 'Page'].img[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
         }
     }
 }
 
 
-function showPage(title) {
+function showPage(pageArray, title) {
    //put the tree to the side
 
    //hide tree
@@ -452,15 +452,17 @@ function showPage(title) {
     $('.imageContainer').remove();
     $('.eventPageContainer').remove();
 
-    if(dictionary[title + 'Page'].type === 'page'){
-        addTextPage(title);
+    console.log('pageArray is ', pageArray, 'title is', title)
+
+    if(pageArray[title + 'Page'].type === 'page'){
+        addTextPage(pageArray, title);
     }
 
-    if (dictionary[title + 'Page'].type === 'eventsPage') {
+    if (pageArray[title + 'Page'].type === 'eventsPage') {
         addEventsPage(title);
     }
 
-    if (dictionary[title + 'Page'].type === 'residencyPage') {
+    if (pageArray[title + 'Page'].type === 'residencyPage') {
         addResidencyPage(title);
     }
 
@@ -553,12 +555,12 @@ function generateFrames(menu){
 
         if(menus[menu].level === 1) {
             $heading.unbind('click');
-            $heading.click(function(){ showPage(this.id) });
+            $heading.click(function(){ showPage(dictionary, this.id) });
         }
 
         if(menus[menu].type === "text" ) {
             $('#' + menu).unbind('click');
-            $('#' + menu).click(function(){ showPage(this.id) });
+            $('#' + menu).click(function(){ showPage(dictionary, this.id) });
         }
 
         $heading.css({
