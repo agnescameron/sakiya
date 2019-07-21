@@ -192,6 +192,13 @@ function openEvent(title) {
         class: 'eventText',
     }).html(eventContents)
     .appendTo( $('#'+title) )
+
+    if( lang === 'ar'){
+        console.log('floating')
+        $(`.eventBackButton`).css({'float': 'left'})  
+        $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
+    }
+    
 }
 
 async function closeEvent(title) {
