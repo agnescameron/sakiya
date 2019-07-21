@@ -147,6 +147,7 @@ canvas[resize] {
 
 .imageDisplay {
   width: 80%;
+/*  max-height: 70%;*/
   z-index: 20;
   position: fixed;
   top: 100px;

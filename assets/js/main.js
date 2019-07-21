@@ -1,24 +1,26 @@
 //this file gets all of the site data and parses it as json
 var dictionary = {};
 var eventsData = {};
+var residenciesData = {};
 
 
 var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
 var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
 var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
+var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
 
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function getEntries(array, type, val) {
-	console.log('getting entries')
+function getEntries(array, entrytype, val) {
     var entries = {};
 
     for (j=0; j<Object.keys(array).length; j++){
         var key = Object.keys(array)[j];
-        if(array[key].type === val){
+        console.log("matching", array[key][entrytype.toString()], val)
+        if(array[key][entrytype.toString()] === val){
             entries[key] = array[key];
         }
     }
@@ -90,5 +92,37 @@ var getEvents = new Promise( function(resolve, reject) {
 	        eventsData[key].img = img;
         });
         resolve('Success, events!'); 
+    })  
+})
+
+
+var getResidencies = new Promise( function(resolve, reject) {
+    $.getJSON(residenciesUrl, function(data){
+        var entry = data.feed.entry
+
+        $(entry).each(function(){
+	       var key = this["gsx$id"]["$t"];
+	       residenciesData[key] = {
+	        	"type": this["gsx$type"]["$t"],	
+	        	"group": this["gsx$group"]["$t"],
+	        	"heading-ar": this["gsx$heading-ar"]["$t"],
+	        	"heading-en": this["gsx$heading-en"]["$t"],
+	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
+	        }
+	        
+	        var img = [];
+	        for(var i=0; i<5; i++){
+	        	var image = {
+	        	"location": this[`gsx$image${i}`]["$t"] ? this[`gsx$image${i}`]["$t"] : null,
+	        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
+	        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+	        	}
+	        	
+	        	img[i] = image;
+	        }
+	        residenciesData[key].img = img;
+        });
+        resolve('Success, residencies!'); 
     })  
 })

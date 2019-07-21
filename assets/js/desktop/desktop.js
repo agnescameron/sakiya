@@ -1,14 +1,5 @@
 window.pageMode = false;
 
-// window.addEventListener('resize', () => {
-//   // We execute the same script as before
-//     // $('.eventPage')
-//     // .animate({
-//     //     'height': '400px',
-//     //     'width': eventWidth})
-//     // .html(eventsData[title]["contents-en"])
-// });
-
 var fields = 7;
 
 async function returnToMain () {
@@ -190,6 +181,7 @@ function openEvent(title) {
     $('<div/>', {
         id: title+'Contents',
         class: 'eventText',
+        lang: lang,
     }).html(eventContents)
     .appendTo( $('#'+title) )
 
@@ -198,7 +190,7 @@ function openEvent(title) {
         $(`.eventBackButton`).css({'float': 'left'})  
         $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
     }
-    
+
 }
 
 async function closeEvent(title) {
@@ -217,6 +209,73 @@ async function closeEvent(title) {
 
     await sleep(100);
     $('#'+title).click(function(){ openEvent(title) } )
+}
+
+function addResidencyPage(title) {
+    console.log('group is', title)
+    var residencies = getEntries(residenciesData, "group", title);
+
+    console.log('residencies are ', residencies)
+
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'eventPageContainer',
+    });
+
+    $imageContainer = $('<div/>', {
+        id: title + 'ImageContainer',
+        class: 'imageContainer',
+    });
+
+    for (i=0; i<Object.keys(residencies).length; i++){
+        var key = Object.keys(residencies)[i];
+        var residencyTitle = (lang === 'en') ? residencies[key]["heading-en"] : residencies[key]["heading-ar"];
+        var image = residencies[key].img[0].location;
+
+
+        $residentBox = $('<div/>', {
+            id: key,
+            class: 'eventBox',
+            click: (function(){ showPage(this.id) } ),
+        })
+        .css({'background-image': `url(${image})`, 'background-size': 'cover'})
+        .appendTo($pageContainer);
+    
+        $('<div/>', {
+            id: key+'Title',
+            class: 'eventBoxTitle',
+        }).html(residencyTitle)
+        .appendTo( $residentBox );
+
+        $pageContainer.appendTo( 'body' );
+
+        if(lang === 'ar') {
+            $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
+            $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})
+        }
+
+    }
+
+    if (Object.keys(residencies).length === 0){
+
+        var noResidents = (lang === 'ar') ?  `سامية حلبيسامية حلبيسامية حلبي` : `There are no artists currently in residence at Sakiya. If you are interested 
+        in our open calls, please see here, or contact Sahar Qawasmi`
+
+        var direction = (lang === 'ar') ? 'rtl' : 'ltr' 
+
+        $('<p/>', {
+            id: 'noResidents',
+            lang: lang
+        })
+        .css({'padding': '10px', 'direction': direction})
+        .html(noResidents)
+        .appendTo($pageContainer);
+
+        $pageContainer.appendTo( 'body' );
+    }
+
+    $imageContainer.appendTo( 'body' ); 
+
 }
 
 
@@ -268,6 +327,12 @@ function addEventsPage(title) {
         .appendTo( $imageContainer )
 
         $pageContainer.appendTo( 'body' );
+
+        if(lang === 'ar') {
+            $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
+            $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})
+        }
+
     }
 
 
@@ -289,11 +354,13 @@ function addTextPage(title) {
 
     if(lang === 'en'){
         $textbox.html(dictionary[title + 'Page']['contents-en'])
+            .attr({lang: 'en'})
             .css({direction: 'ltr'})
     }
 
     else{
         $textbox.html(dictionary[title + 'Page']['contents-ar'])
+            .attr({lang: 'ar'})
             .css({direction: 'rtl'})
     }
 
@@ -392,6 +459,11 @@ function showPage(title) {
     if (dictionary[title + 'Page'].type === 'eventsPage') {
         addEventsPage(title);
     }
+
+    if (dictionary[title + 'Page'].type === 'residencyPage') {
+        addResidencyPage(title);
+    }
+
 
     if(window.pageMode === false){
         rotate($('#logo'), -90);
@@ -507,7 +579,6 @@ window.onload = function() {
         drawBranch("main");
     })
 
-    getEvents.then(function(value) {
-        console.log(value);
-    })
+    getEvents;
+    getResidencies;
 }
