@@ -92,12 +92,14 @@ function translateText() {
 	if(	window.pageMode === true) {
 
 		if(lang === 'ar'){
+			$('.backButton').css({'float': 'left'})
 			$('#mainMenuContainer').addClass('mainMenuContainer-ar').removeClass('mainMenuContainer-en');
 			$('#subMenuContainer').addClass('subMenuContainer-ar').removeClass('subMenuContainer-en');
 			$('#imageContainer').addClass('imageContainer-ar').removeClass('imageContainer-en');						
 		}
 
 		else{
+			$('.backButton').css({'float': 'right'})
 			$('#mainMenuContainer').addClass('mainMenuContainer-en').removeClass('mainMenuContainer-ar');
 			$('#subMenuContainer').addClass('subMenuContainer-en').removeClass('subMenuContainer-ar');
 			$('#imageContainer').addClass('imageContainer-en').removeClass('imageContainer-ar');			
@@ -134,12 +136,7 @@ function translateText() {
 
 	        i++;
 	    });
-
-	    $(`.pageContainer`).css({'left': '300px'})
- 	    $(`.textbox`).css({'float': 'left', 'right': ''})
-	    $(`#backButton`).css({'right': '30%', 'float': 'right', 'left': ''})	   
-        $(`.eventPageContainer`).css({'left': '350px'})
-		}
+	}
 
 	for(i = 0; i< Object.keys(eventsData).length; i++){
 		key = Object.keys(eventsData)[i];

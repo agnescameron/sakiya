@@ -360,21 +360,37 @@ function addTextPage(pageArray, title) {
 
     $textbox = $('<p/>', {
         id: title + 'Page',
-        // class: 'textbox',
     })
     .html(pageArray[title + 'Page']['contents-' + lang])
     .attr({lang: lang});
-         
 
-    (lang === 'en') ? $textbox.css({direction: 'ltr'}) :  $textbox.css({direction: 'rtl'})
+    (lang === 'en') ? $textbox.css({direction: 'ltr'}) :  $textbox.css({direction: 'rtl'});
 
+    $pageHeader = $(`<div>`, {
+        class: 'pageHeader',
+    })
 
     $pageContainer.appendTo( '#mainContainer' );
+    $pageHeader.appendTo( $pageContainer );
     $textbox.appendTo( $pageContainer );
-    $('<div/>', {
-        id: 'backButton',
+
+    $backButton = $('<div/>', {
+        class: 'backButton',
         click: (function(){ returnToMain() } ),
-    }).appendTo( $pageContainer );
+    });
+
+    $pageTitle = $('<div/>', {
+        id: title + 'PageTitle',
+        class: 'pageTitle',
+    })
+    .html(pageArray[title]["heading-"+lang]);
+
+
+    (lang === 'en') ? $pageTitle.css({direction: 'ltr'}) :  $pageTitle.css({direction: 'rtl'});
+    (lang === 'en') ?  $backButton.css({float: 'right'}) : $backButton.css({float: 'left'});
+
+    $backButton.appendTo( $pageHeader );
+    $pageTitle.appendTo( $pageHeader );
 
     //if there are images to display
     if(pageArray[title + 'Page'].img){
