@@ -120,7 +120,7 @@ function toggleSideMenu(title) {
 
         $div.css({'left': subOffset}, 800)
         $div.css({'top': topOffset + 50*i + 'px'}, 800)
-        $div.children().animate({'top': '10px'}, 800)     
+        $div.children().css({'top': '10px'}, 800)     
 
         $div.css({"color": color })
 
@@ -245,7 +245,7 @@ function addResidencyPage(title) {
         $residentBox = $('<div/>', {
             id: key,
             class: 'eventBox',
-            click: (function(){ $('.eventPageContainer').remove(); addTextPage(residencies, this.id); } ),
+            click: (function(){ $('.pageContainer').remove(); addTextPage(residencies, this.id); } ),
         })
         .css({'background-image': `url(${image})`, 'background-size': 'cover'})
         .appendTo($pageContainer);
@@ -453,7 +453,7 @@ function showPage(pageArray, title) {
 
         $div.animate({'left': subOffset}, 800)
         $div.animate({'top': topOffset + 50*i + 'px'}, 800)
-        $div.children().animate({'top': '10px'}, 800)     
+        $div.children().css({'top': '10px'}, 800)     
 
         $div.css({"color": color })
 
@@ -467,7 +467,6 @@ function showPage(pageArray, title) {
     // $('.textbox').remove();
     $('.pageContainer').remove();
     $('#imageContainer').remove();
-    $('.eventPageContainer').remove();
 
     console.log('pageArray is ', pageArray, 'title is', title)
 
@@ -489,9 +488,6 @@ function showPage(pageArray, title) {
     }
 
     if(lang === 'ar') {   
-        $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
-        $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
-        $(`.textbox`).css({'float': 'right', 'right': '80px'})
         $(`#backButton`).css({'left': '10%', 'float': 'left'})    
     }
 
