@@ -75,43 +75,54 @@ async function returnToMain () {
 
 function toggleSideMenu(title) {
 
+    console.log('toggling side menu')
+
     $('.pageContainer').remove();
     $('.eventPageContainer').remove();
 
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
 
+    var mainOffset = $("#mainMenuContainer").offset().left + 20;
+    var subOffset = $("#subMenuContainer").offset().left;
+    var padding = (lang === 'en') ? 20 : -20
+
     for(i=0; i<menus["main"].contents.length; i++){
     var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
         //change for ar vs en
-    console.log('toggling side menu')
 
-    var leftIndent;
+    var leftIndent = (mainMenuItem === title) ? mainOffset + padding : mainOffset;
+   
+    console.log('toggling side menu, left indent is ', leftIndent)
+   var color = (mainMenuItem === title) ? 'yellow' : 'white';
 
-    if(lang === 'ar'){
-        leftIndent = (mainMenuItem === title) ? "58vw" : "60vw";
-    }
-    else {
-        leftIndent = (mainMenuItem === title) ? "50px" : "20px";
-    }
-    var color = (mainMenuItem === title) ? 'yellow' : 'white';
 
-        $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 500);  
-        $( '#' + mainMenuItem).css({"color": color })  
+    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+
+
+    $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 500);  
+    $( '#' + mainMenuItem).css({"color": color })  
     }
 
     var i = 0;
     $(`*[id^=frame${parentFrame}].subframe`).each(function() {
         var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
+        console.log("suboffset is ", subOffset)
 
         var topOffset = 110 + 70*parentFrame;
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
-        var leftIndent = (lang === 'ar') ? "50vw" : '180px';
-        $div.css({'left': leftIndent})
-        $div.children().css({'left': '35px'})
-        $div.css({'top': topOffset + 50*i + 'px'})
-        $div.children().css({'top': '10px'})     
+        if(lang === 'en')
+            $div.children().css({'left': '35px', 'right': ''}, 800)
+
+        else
+            $div.children().css({ 'left': '', 'right': '10px'}, 800)
+
+        $div.css({'left': subOffset}, 800)
+        $div.css({'top': topOffset + 50*i + 'px'}, 800)
+        $div.children().animate({'top': '10px'}, 800)     
+
+        $div.css({"color": color })
 
         $div.show()
         $div.children().show()
@@ -219,7 +230,7 @@ function addResidencyPage(title) {
 
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
-        class: 'eventPageContainer',
+        class: 'pageContainer',
     });
 
     $imageContainer = $('<div/>', {
@@ -284,7 +295,7 @@ function addEventsPage(title) {
 
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
-        class: 'eventPageContainer',
+        class: 'pageContainer',
     });
 
     $imageContainer = $('<div/>', {
@@ -349,22 +360,16 @@ function addTextPage(pageArray, title) {
 
     $textbox = $('<p/>', {
         id: title + 'Page',
-        class: 'textbox',
-    });
+        // class: 'textbox',
+    })
+    .html(pageArray[title + 'Page']['contents-' + lang])
+    .attr({lang: lang});
+         
 
-    if(lang === 'en'){
-        $textbox.html(pageArray[title + 'Page']['contents-en'])
-            .attr({lang: 'en'})
-            .css({direction: 'ltr'})
-    }
+    (lang === 'en') ? $textbox.css({direction: 'ltr'}) :  $textbox.css({direction: 'rtl'})
 
-    else{
-        $textbox.html(pageArray[title + 'Page']['contents-ar'])
-            .attr({lang: 'ar'})
-            .css({direction: 'rtl'})
-    }
 
-    $pageContainer.appendTo( 'body' );
+    $pageContainer.appendTo( '#mainContainer' );
     $textbox.appendTo( $pageContainer );
     $('<div/>', {
         id: 'backButton',
@@ -375,10 +380,10 @@ function addTextPage(pageArray, title) {
     if(pageArray[title + 'Page'].img){
         $imageContainer = $('<div/>', {
             id: title + 'ImageContainer',
-            class: 'imageContainer',
+            class: 'imageContainer-' + lang,
         });
 
-        $imageContainer.appendTo( 'body' );   
+        $imageContainer.appendTo( '#mainContainer' );   
              
         for(i=0; i<pageArray[title + 'Page'].img.length; i++) {
                 $('<div/>', {
@@ -399,21 +404,28 @@ function showPage(pageArray, title) {
    //hide tree
    removeAllBranches();
 
+    $mainMenuContainer = $('<div/>', {
+            id: "mainMenuContainer",
+            class: "mainMenuContainer-" + lang,
+    }).appendTo( '#mainContainer' );
+
+    $subMenuContainer = $('<div/>', {
+            id: "subMenuContainer",
+            class: "subMenuContainer-" + lang,
+    }).appendTo( '#mainContainer' );
+
+    var mainOffset = $("#mainMenuContainer").offset().left + 20;
+    var subOffset = $("#subMenuContainer").offset().left;
+    var padding = (lang === 'en') ? 20 : -20
 
     for(i=0; i<menus["main"].contents.length; i++){
         var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
-        
-        if(lang === 'en'){
-            var leftIndent = (menus["main"].contents[i] === title ||
-                $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "50px" : "20px";
-            }
 
-        else {
-            var leftIndent = (menus["main"].contents[i] === title ||
-                $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? "58vw" : "60vw";
-    }
+        var leftIndent = (menus["main"].contents[i] === title ||
+                $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? mainOffset + padding : mainOffset;
 
-        $( '#' + mainMenuItem).animate({'left': '10px'}, 800);
+        (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+
         $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 800);
         $( '#' + mainMenuItem).animate({'top': 100 + 70*i + 'px'}, 800);
         $( '#' + mainMenuItem).parent().animate({'top': '20px'}, 800);        
@@ -427,14 +439,19 @@ function showPage(pageArray, title) {
         var topOffset = 110 + 70*parentFrame;
 
         var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
-        var leftIndent = (lang === 'en') ? '180px' : '50vw';
-
 
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
-        $div.animate({'left': leftIndent}, 800)
-        $div.children().animate({'left': '35px'}, 800)
+        console.log('suboffset i s', subOffset)
+
+        if(lang === 'en')
+            $div.children().css({'left': '35px', 'right': ''}, 800)
+
+        else
+            $div.children().css({ 'left': '', 'right': '10px'}, 800)
+
+        $div.animate({'left': subOffset}, 800)
         $div.animate({'top': topOffset + 50*i + 'px'}, 800)
         $div.children().animate({'top': '10px'}, 800)     
 

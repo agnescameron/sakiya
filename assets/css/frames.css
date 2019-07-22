@@ -1,18 +1,15 @@
 .frame {
 	height: 20vh;
-	width: 15vw;
-/*	background-color: green;*/
+	width: 150px;
 	position: absolute;
   	z-index: 5;
-/*  	margin-top: 90px;*/
 }
 
 .subframe {
 	height: 12vh;
-	width: 8vw;
-/*	background-color: lightblue;*/	
+	width: 100px;
 	position: absolute;
-  	z-index: 5;	
+  	z-index: 5;
 }
 
 

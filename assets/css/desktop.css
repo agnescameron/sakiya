@@ -54,7 +54,7 @@ canvas[resize] {
   background-color: #309937;
 }
 
-.pageContainer {
+/*.pageContainer {
   width: 60vw;
   z-index: 4;
   text-align: justify;
@@ -66,7 +66,7 @@ canvas[resize] {
   min-width: 500px;
   overflow-y: scroll;
   float: right;
-}
+}*/
 
 .eventPageContainer {
   width: 50vw;
@@ -81,7 +81,7 @@ canvas[resize] {
   overflow-y: scroll;
   float: right;
 }
-
+/*
 .imageContainer {
   z-index: 4;
   position: absolute;
@@ -94,7 +94,7 @@ canvas[resize] {
   height: 80vh;
 }
 
-
+*/
 .sideImage {
   z-index: 4;
   position: relative;
