@@ -1,0 +1,68 @@
+.container {
+	display: grid;
+	grid-template-columns: 200px 100px minmax(300px, 1fr) 100px 200px;
+	grid-template-rows: 80px minmax(300px, 1fr) 50px;
+	grid-gap: 1em 1em;
+	height: 100vh;
+	margin: 0px !important;
+}
+
+.translate {
+	grid-area: 1 / 1 / 2 / 2;
+	background-color: lightblue;
+}
+
+.marquee {
+	grid-area: 1 / 2 / 2 / 5;
+	background-color: lightblue;
+}
+
+.teapot {
+	grid-area: 1 / 5 / 2 / 6;
+	background-color: lightblue;
+}
+
+.treeContainer {
+	grid-area: 2 / 1 / 3 / 6;
+	background-color: lightblue;
+}
+
+.mainMenuContainer-en {
+	grid-area: 2 / 1 / 3 / 2;
+	background-color: lightblue;
+}
+
+.submenuContainer-en {
+	grid-area: 2 / 2 / 3 / 3;
+	background-color: lightblue;
+}
+
+.imageContainer-en {
+	grid-area: 2 / 4 / 3 / 6;
+	background-color: lightblue;
+}
+
+.mainMenuContainer-ar {
+	grid-area: 2 / 5 / 3 / 6;
+	background-color: lightblue;
+}
+
+.subMenuContainer-ar {
+	grid-area: 2 / 4 / 3 / 5;
+	background-color: lightblue;
+}
+
+.logoContainer {
+	grid-area: 3 / 1 / 4 / 2;
+	background-color: lightblue;
+}
+
+.socialContainer {
+	grid-area: 3 / 5 / 4 / 6;
+	background-color: lightblue;
+}
+
+.imageContainer-ar {
+	grid-area: 2 / 1 / 3 / 3;
+	background-color: lightblue;
+}

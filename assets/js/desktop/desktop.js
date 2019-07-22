@@ -531,7 +531,7 @@ function generateFrames(menu){
         $frame = $('<div/>', {
             id: 'frame' + parentNum + i,
             class: frameType,
-        }).appendTo( 'body' );
+        }).appendTo( '#treeFrameContainer' );
 
         var top, left;
         if (menus[menu].contents[i] === 'SAKIYA'){

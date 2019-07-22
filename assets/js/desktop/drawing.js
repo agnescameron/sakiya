@@ -33,7 +33,7 @@ function drawBranch(menu) {
 	var base = $baseDiv.offset();
 
 	base.left = base.left + $baseDiv.width()/2;
-	base.top = base.top - $baseDiv.height()/2;
+	base.top = base.top - 90;
 
 	// repositions base.left and base.top to the center of "$SAKIYA"
 	var basePoint = new Point(base.left, base.top)
@@ -49,7 +49,7 @@ function drawBranch(menu) {
 			if ($('#' + goalDiv).is(':visible')){
 				var goal = $('#' + goalDiv).offset();
 				goal.left =	goal.left + $( '#' + goalDiv ).width()/2;
-				goal.top =	goal.top - $( '#' + goalDiv ).height()/2;
+				goal.top =	goal.top - 90;
 
 				var goalPoint = new Point(goal.left, goal.top)
 
