@@ -135,29 +135,6 @@ function translateText() {
 	        i++;
 	    });
 
-		// for(i=0; i<menus["main"].contents.length; i++){
-		// 	var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
-		//     var leftIndent =  '20px';
-		    
-		//     $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 1000);   
-		// }
-
-	 //    var i = 0;
-	 //    $(`.subframe:visible`).each(function() {
-
-	 //        var topOffset = 110 + 70*parentFrame;
-	 //        $div = $('#' + $(this).attr('id'))
-	 //        $div.children().attr('id')
-
-	 //        $div.css({'left':'180px'})
-	 //        $div.css({'top': topOffset + 50*i + 'px'})   
-
-	 //        $div.show()
-	 //        $div.children().show()
-	        
-	 //        i++;
-	 //    });  
-
 	    $(`.pageContainer`).css({'left': '300px'})
  	    $(`.textbox`).css({'float': 'left', 'right': ''})
 	    $(`#backButton`).css({'right': '30%', 'float': 'right', 'left': ''})	   

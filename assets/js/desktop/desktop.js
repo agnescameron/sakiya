@@ -4,7 +4,7 @@ var fields = 7;
 
 async function returnToMain () {
     $('.pageContainer').remove();
-    $('.imageContainer').remove();
+    $('#imageContainer').remove();
     $('.eventPageContainer').remove();
 
     var styleSheet;
@@ -167,7 +167,7 @@ function openEvent(title) {
     //get width of page container. 234 accounts for margins and borders
 
     $('.eventBoxDate').addClass('eventPageDate').removeClass('eventBoxDate')
-    var containerWidth = $('.eventPageContainer').width();
+    var containerWidth = $('.pageContainer').width();
     numContainers = Math.floor(containerWidth/276);
     console.log('number of containers is', numContainers)
 
@@ -226,16 +226,14 @@ function addResidencyPage(title) {
     console.log('group is', title)
     var residencies = getEntries(residenciesData, "group", title);
 
-    console.log('residencies are ', residencies)
-
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
         class: 'pageContainer',
     });
 
     $imageContainer = $('<div/>', {
-        id: title + 'ImageContainer',
-        class: 'imageContainer',
+        id: 'imageContainer',
+        class: 'imageContainer-' + lang,
     });
 
     for (i=0; i<Object.keys(residencies).length; i++){
@@ -258,7 +256,7 @@ function addResidencyPage(title) {
         }).html(residencyTitle)
         .appendTo( $residentBox );
 
-        $pageContainer.appendTo( 'body' );
+        $pageContainer.appendTo( '#mainContainer' );
 
         if(lang === 'ar') {
             $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
@@ -299,8 +297,8 @@ function addEventsPage(title) {
     });
 
     $imageContainer = $('<div/>', {
-        id: title + 'ImageContainer',
-        class: 'imageContainer',
+        id: 'imageContainer',
+        class: 'imageContainer-' + lang,
     });
 
     for (i=0; i<Object.keys(events).length; i++){
@@ -337,7 +335,7 @@ function addEventsPage(title) {
         .prepend(`<img src= ${events[key].poster} style="width: 100%"/>`)
         .appendTo( $imageContainer )
 
-        $pageContainer.appendTo( 'body' );
+        $pageContainer.appendTo( '#mainContainer' );
 
         if(lang === 'ar') {
             $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
@@ -348,7 +346,7 @@ function addEventsPage(title) {
 
 
 
-    $imageContainer.appendTo( 'body' ); 
+    $imageContainer.appendTo( '#mainContainer' ); 
 
 }
 
@@ -379,7 +377,7 @@ function addTextPage(pageArray, title) {
     //if there are images to display
     if(pageArray[title + 'Page'].img){
         $imageContainer = $('<div/>', {
-            id: title + 'ImageContainer',
+            id: 'imageContainer',
             class: 'imageContainer-' + lang,
         });
 
@@ -468,7 +466,7 @@ function showPage(pageArray, title) {
     //remove other page divs (of class textbox?)
     // $('.textbox').remove();
     $('.pageContainer').remove();
-    $('.imageContainer').remove();
+    $('#imageContainer').remove();
     $('.eventPageContainer').remove();
 
     console.log('pageArray is ', pageArray, 'title is', title)
