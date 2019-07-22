@@ -60,4 +60,5 @@
 
 .imageContainer-ar {
 	grid-area: 2 / 1 / 3 / 3;
+	overflow-y: scroll;
 }

@@ -4,8 +4,10 @@ var fields = 7;
 
 async function returnToMain () {
     $('.pageContainer').remove();
+    $('#mainMenuContainer').remove();
+    $('#subMenuContainer').remove();    
     $('#imageContainer').remove();
-    $('.eventPageContainer').remove();
+    $('#residencyImageContainer').remove();
 
     var styleSheet;
     for (var i = 0; i < document.styleSheets.length; i++){
@@ -232,7 +234,7 @@ function addResidencyPage(title) {
     });
 
     $imageContainer = $('<div/>', {
-        id: 'imageContainer',
+        id: 'residencyImageContainer',
         class: 'imageContainer-' + lang,
     });
 
@@ -280,10 +282,10 @@ function addResidencyPage(title) {
         .html(noResidents)
         .appendTo($pageContainer);
 
-        $pageContainer.appendTo( 'body' );
+        $pageContainer.appendTo( '#mainContainer' );
     }
 
-    $imageContainer.appendTo( 'body' ); 
+    $imageContainer.appendTo( '#mainContainer' ); 
 
 }
 
