@@ -89,12 +89,28 @@ function translateText() {
 	}
 
 
-	if(	window.pageMode === true && lang === 'ar'){
-		for(i=0; i<menus["main"].contents.length; i++){
-			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
-		    var leftIndent =  60;
+	if(	window.pageMode === true) {
 
-		    $( '#' + mainMenuItem).parent().animate({'left': leftIndent+'vw'}, 1000);   
+		if(lang === 'ar'){
+			$('#mainMenuContainer').addClass('mainMenuContainer-ar').removeClass('mainMenuContainer-en');
+			$('#subMenuContainer').addClass('subMenuContainer-ar').removeClass('subMenuContainer-en');
+			$('#imageContainer').addClass('imageContainer-ar').removeClass('imageContainer-en');						
+		}
+
+		else{
+			$('#mainMenuContainer').addClass('mainMenuContainer-en').removeClass('mainMenuContainer-ar');
+			$('#subMenuContainer').addClass('subMenuContainer-en').removeClass('subMenuContainer-ar');
+			$('#imageContainer').addClass('imageContainer-en').removeClass('imageContainer-ar');			
+		}
+
+		var mainOffset = $("#mainMenuContainer").offset().left + 20;
+    	var subOffset = $("#subMenuContainer").offset().left;
+
+		for(i=0; i<menus["main"].contents.length; i++){
+			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');			
+		    $( '#' + mainMenuItem).parent().animate({'left': mainOffset+'px'}, 1000);   
+		    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+
 		}
 
 	    var i = 0;
@@ -104,48 +120,43 @@ function translateText() {
 	        $div = $('#' + $(this).attr('id'))
 	        $div.children().attr('id')
 
-	        $div.css({'left': leftIndent-8 + 'vw'})
+	        $div.css({'left': subOffset + 'px'})
 	        $div.css({'top': topOffset + 50*i + 'px'})   
 
 	        $div.show()
 	        $div.children().show()
+
+	        if(lang === 'en')
+	            $div.children().css({'left': '35px', 'right': ''}, 800)
+
+	        else
+	            $div.children().css({ 'left': '', 'right': '10px'}, 800)
 
 	        i++;
-	    });  
+	    });
 
-        $(`.pageContainer`).css({'left': '0px', 'z-index': '0'})
-        $(`.eventPageContainer`).css({'z-index': '0', 'left': '60px',})
-        $(`.textbox`).css({'float': 'right', 'right': '80px'})
-        $(`#backButton`).css({'left': '10%', 'float': 'left'})  
-     
-	}
+		// for(i=0; i<menus["main"].contents.length; i++){
+		// 	var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
+		//     var leftIndent =  '20px';
+		    
+		//     $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 1000);   
+		// }
 
-	if(	window.pageMode === true && lang === 'en'){
-		console.log('shifting pages en')
+	 //    var i = 0;
+	 //    $(`.subframe:visible`).each(function() {
 
-		for(i=0; i<menus["main"].contents.length; i++){
-			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');
-		    var leftIndent =  '20px';
+	 //        var topOffset = 110 + 70*parentFrame;
+	 //        $div = $('#' + $(this).attr('id'))
+	 //        $div.children().attr('id')
 
-		    console.log('left indent is ', leftIndent)
-		        $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 1000);   
-		}
+	 //        $div.css({'left':'180px'})
+	 //        $div.css({'top': topOffset + 50*i + 'px'})   
 
-	    var i = 0;
-	    $(`.subframe:visible`).each(function() {
-
-	        var topOffset = 110 + 70*parentFrame;
-	        $div = $('#' + $(this).attr('id'))
-	        $div.children().attr('id')
-
-	        $div.css({'left':'180px'})
-	        $div.css({'top': topOffset + 50*i + 'px'})   
-
-	        $div.show()
-	        $div.children().show()
+	 //        $div.show()
+	 //        $div.children().show()
 	        
-	        i++;
-	    });  
+	 //        i++;
+	 //    });  
 
 	    $(`.pageContainer`).css({'left': '300px'})
  	    $(`.textbox`).css({'float': 'left', 'right': ''})

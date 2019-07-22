@@ -404,15 +404,17 @@ function showPage(pageArray, title) {
    //hide tree
    removeAllBranches();
 
-    $mainMenuContainer = $('<div/>', {
-            id: "mainMenuContainer",
-            class: "mainMenuContainer-" + lang,
-    }).appendTo( '#mainContainer' );
+   if( !$('#mainMenuContainer').length ){
+        $mainMenuContainer = $('<div/>', {
+                id: "mainMenuContainer",
+                class: "mainMenuContainer-" + lang,
+        }).appendTo( '#mainContainer' );
 
-    $subMenuContainer = $('<div/>', {
-            id: "subMenuContainer",
-            class: "subMenuContainer-" + lang,
-    }).appendTo( '#mainContainer' );
+        $subMenuContainer = $('<div/>', {
+                id: "subMenuContainer",
+                class: "subMenuContainer-" + lang,
+        }).appendTo( '#mainContainer' );
+    }
 
     var mainOffset = $("#mainMenuContainer").offset().left + 20;
     var subOffset = $("#subMenuContainer").offset().left;
