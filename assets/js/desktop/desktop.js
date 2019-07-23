@@ -8,6 +8,9 @@ async function returnToMain () {
     $('#subMenuContainer').remove();    
     $('#imageContainer').remove();
     $('#residencyImageContainer').remove();
+    $('.logoContainer').hide();
+    $('.socialContainer').hide();
+
 
     var styleSheet;
     for (var i = 0; i < document.styleSheets.length; i++){
@@ -505,9 +508,9 @@ function addTextPage(pageArray, title) {
 
 
 function showPage(pageArray, title) {
-   //put the tree to the side
 
-   console.log('showing page for ', title);
+    $('.logoContainer').show();
+    $('.socialContainer').show();
 
    //hide tree
    removeAllBranches();
@@ -701,8 +704,7 @@ function generateFrames(menu){
 
 
 window.onload = function() {
-    // generateGrid();
-
+    
     getDictionary.then(function(value) {
         generateMenus();
         drawBranch("main");

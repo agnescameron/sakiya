@@ -99,6 +99,22 @@ p:lang(en) {
   max-width: 600px;
 }
 
+.shareButton {
+  height: 20px;
+  float: right;
+  margin-right: 8px;
+  margin-top: 10px;
+}
+
+.social {
+  height: 100%;
+}
+
+.sponsor {
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
 /*.textbox:lang(en) {
  float: left;
 }
