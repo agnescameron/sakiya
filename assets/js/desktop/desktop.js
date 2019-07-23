@@ -13,8 +13,11 @@ async function returnToMain () {
     for (var i = 0; i < document.styleSheets.length; i++){
         var sheet = document.styleSheets[i]
         //need to find a good way to ref this for online 
-        if(sheet.href.includes("frames.css"))
-            styleSheet = sheet;
+        if(sheet.href){
+            console.log(sheet.href)
+            if(sheet.href.includes("frames.css"))
+                styleSheet = sheet;
+        }
     }
     $('.subframe').show();
 
