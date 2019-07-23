@@ -86,7 +86,7 @@ function toggleSideMenu(title) {
     console.log('toggling side menu')
 
     $('.pageContainer').remove();
-    $('.eventPageContainer').remove();
+    $('.eventPageContainer-'+lang).remove();
 
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
 
@@ -175,7 +175,7 @@ function openEvent(title) {
     //get width of page container. 234 accounts for margins and borders
 
     $('.eventBoxDate').addClass('eventPageDate').removeClass('eventBoxDate')
-    var containerWidth = $('.pageContainer').width();
+    var containerWidth = $('.eventPageContainer-'+lang).width();
     numContainers = Math.floor(containerWidth/276);
     console.log('number of containers is', numContainers)
 
@@ -377,7 +377,7 @@ function addEventsPage(title) {
 
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
-        class: 'pageContainer',
+        class: 'eventPageContainer-'+lang,
     });
 
     $imageContainer = $('<div/>', {
@@ -411,14 +411,6 @@ function addEventsPage(title) {
             class: 'eventBoxDate',
         }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
         .appendTo( $eventBox );
-    
-        $('<div/>', {
-            id: title + 'Poster',
-            class: 'sideImage',
-            click: (function(){ showImage(this.id) } ),
-        })
-        .prepend(`<img src= ${events[key].poster} style="width: 100%"/>`)
-        .appendTo( $imageContainer )
 
         $pageContainer.appendTo( '#mainContainer' );
 
@@ -426,13 +418,7 @@ function addEventsPage(title) {
             $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
             $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})
         }
-
     }
-
-
-
-    $imageContainer.appendTo( '#mainContainer' ); 
-
 }
 
 function addTextPage(pageArray, title) {
@@ -579,6 +565,7 @@ function showPage(pageArray, title) {
     //remove other page divs (of class textbox?)
     // $('.textbox').remove();
     $('.pageContainer').remove();
+    $('.eventPageContainer-'+lang).remove();    
     $('#imageContainer').remove();
 
     console.log('pageArray is ', pageArray, 'title is', title)
@@ -704,7 +691,7 @@ function generateFrames(menu){
 
 
 window.onload = function() {
-    
+
     getDictionary.then(function(value) {
         generateMenus();
         drawBranch("main");

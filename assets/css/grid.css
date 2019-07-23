@@ -37,6 +37,18 @@
 	grid-area: 2 / 2 / 3 / 3;
 }
 
+.eventPageContainer-en {
+	grid-area: 2 / 3 / 3 / 5;
+	text-align: justify;
+	overflow-y: scroll;
+}
+
+.eventPageContainer-ar {
+	grid-area: 2 / 2 / 3 / 4;
+	text-align: justify;
+	overflow-y: scroll;
+}
+
 .imageContainer-en {
 	grid-area: 2 / 4 / 3 / 6;
 	overflow-y: scroll;
