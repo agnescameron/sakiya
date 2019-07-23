@@ -32,7 +32,7 @@ var menus = {
     "Heritage": {
         "level": 1,
         "type":"menu",        
-        "contents":['Zalatimo Family', 'Ein Qiniya', 'Restoration', "Farm"],        
+        "contents":['Zalatimo Family', 'Ein Qiniya', 'Renovation', "Farm"],        
     },
     "VisitUs": {
         "level": 1,

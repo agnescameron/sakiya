@@ -90,6 +90,9 @@ p:lang(en) {
   float: right;
 }
 
+.textbox {
+  max-width: 600px;
+}
 
 /*IMAGES*/
 

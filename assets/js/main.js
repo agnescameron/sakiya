@@ -2,13 +2,13 @@
 var dictionary = {};
 var eventsData = {};
 var residenciesData = {};
-
+var teamData = {};
 
 var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
 var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
 var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
-
+var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/4/public/values?alt=json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -124,5 +124,25 @@ var getResidencies = new Promise( function(resolve, reject) {
 	        residenciesData[key].img = img;
         });
         resolve('Success, residencies!'); 
+    })  
+})
+
+var getTeam = new Promise( function(resolve, reject) {
+    $.getJSON(teamUrl, function(data){
+        var entry = data.feed.entry;
+        $(entry).each(function(){
+	       var key = this["gsx$id"]["$t"];
+	       teamData[key] = {
+	        	"type": this["gsx$type"]["$t"],	
+	        	"name-ar": this["gsx$name-ar"]["$t"],
+	        	"name-en": this["gsx$name-en"]["$t"],
+	        	"title-ar": this["gsx$title-ar"]["$t"],
+	        	"title-en": this["gsx$title-en"]["$t"],
+	        	"bio-ar": this["gsx$bio-ar"]["$t"] ? this["gsx$bio-ar"]["$t"] : null,
+	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : null,	        	
+	        }
+	        
+        });
+        resolve('Success, team!'); 
     })  
 })

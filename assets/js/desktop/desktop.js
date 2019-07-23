@@ -224,6 +224,52 @@ async function closeEvent(title) {
     $('#'+title).click(function(){ openEvent(title) } )
 }
 
+
+function addTeamPage (title) {
+    console.log('getting team', teamData);
+
+    //make textbox
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'pageContainer',
+    });
+
+    $backButton = $('<div/>', {
+        class: 'backButton',
+        click: (function(){ returnToMain() } ),
+    });
+
+  for (i=0; i<Object.keys(teamData).length; i++){    
+        var key = Object.keys(teamData)[i]
+        console.log(key)
+        
+
+        $name = $('<div/>', {
+            id: key + 'Name',
+            class: 'pageTitle',
+        })
+        .html(teamData[key]["name-"+lang]);
+
+        $title = $('<div/>', {
+            id: key + 'Title',
+            class: 'pageSubTitle',
+        })
+        .html(teamData[key]["title-"+lang]);
+
+        $bio = $('<div/>', {
+            id: key + 'Bio',
+            class: 'textbox'
+        })
+        .html(teamData[key]["bio-"+lang]);
+
+        $pageContainer.append([$name, $title, $bio])
+        //for each person in team, add to page
+    }
+
+    $pageContainer.appendTo( '#mainContainer' );
+
+}
+
 function addResidencyPage(title) {
     console.log('group is', title)
     var residencies = getEntries(residenciesData, "group", title);
@@ -269,9 +315,7 @@ function addResidencyPage(title) {
 
     if (Object.keys(residencies).length === 0){
 
-        var noResidents = (lang === 'ar') ?  `سامية حلبيسامية حلبيسامية حلبي` : `There are no artists currently in residence at Sakiya. If you are interested 
-        in our open calls, please see here, or contact Sahar Qawasmi`
-
+        var noResidents = dictionary["noResidents"]["heading-"+lang]
         var direction = (lang === 'ar') ? 'rtl' : 'ltr' 
 
         $('<p/>', {
@@ -417,6 +461,8 @@ function addTextPage(pageArray, title) {
 function showPage(pageArray, title) {
    //put the tree to the side
 
+   console.log('showing page for ', title);
+
    //hide tree
    removeAllBranches();
 
@@ -494,6 +540,10 @@ function showPage(pageArray, title) {
 
     if (pageArray[title + 'Page'].type === 'eventsPage') {
         addEventsPage(title);
+    }
+
+    if (pageArray[title + 'Page'].type === 'teamPage') {
+        addTeamPage(title);
     }
 
     if (pageArray[title + 'Page'].type === 'residencyPage') {
@@ -614,4 +664,5 @@ window.onload = function() {
 
     getEvents;
     getResidencies;
+    getTeam;    
 }
