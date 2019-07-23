@@ -99,6 +99,14 @@ p:lang(en) {
   max-width: 600px;
 }
 
+/*.textbox:lang(en) {
+ float: left;
+}
+
+.textbox:lang(ar) {
+ float: right;
+}*/
+
 /*IMAGES*/
 
 #closeImage {

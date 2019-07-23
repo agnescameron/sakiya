@@ -98,7 +98,7 @@ function toggleSideMenu(title) {
    var color = (mainMenuItem === title) ? 'yellow' : 'white';
 
 
-    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '100px'}, 800)
 
 
     $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 500);  
@@ -239,7 +239,15 @@ function addTeamPage (title) {
         click: (function(){ returnToMain() } ),
     });
 
-  for (i=0; i<Object.keys(teamData).length; i++){    
+    $textbox = $('<div/>', {
+        class: 'textbox',
+        lang: lang,
+    })
+
+    $pageContainer.append($textbox);
+    $textbox.append($backButton);
+
+    for (i=0; i<Object.keys(teamData).length; i++){    
         var key = Object.keys(teamData)[i]
         console.log(key)
         
@@ -247,6 +255,7 @@ function addTeamPage (title) {
         $name = $('<div/>', {
             id: key + 'Name',
             class: 'pageTitle',
+            lang: lang,
         })
         .html(teamData[key]["name-"+lang]);
 
@@ -258,12 +267,13 @@ function addTeamPage (title) {
 
         $bio = $('<p/>', {
             id: key + 'Bio',
-            class: 'textbox'
+            class: 'textbox',
+            lang: lang,
         })
         .css({'margin-bottom': '30px'})
         .html(teamData[key]["bio-"+lang]);
 
-        $pageContainer.append([$name, $title, $bio])
+        $textbox.append([$name, $title, $bio])
         //for each person in team, add to page
     }
 
@@ -322,6 +332,7 @@ function addResidencyPage(title) {
         $('<div/>', {
             id: key+'PageTitle',
             class: 'eventBoxTitle',
+            lang: lang,
         }).html(residencyTitle)
         .appendTo( $residentBox );
 
@@ -425,11 +436,13 @@ function addTextPage(pageArray, title) {
 
     $textbox = $('<p/>', {
         id: title + 'Page',
+        lang: lang,
     })
     .html(pageArray[title + 'Page']['contents-' + lang])
-    .attr({lang: lang});
 
-    (lang === 'en') ? $textbox.css({direction: 'ltr'}) :  $textbox.css({direction: 'rtl'});
+    if(lang === 'en') $textbox.css({direction: 'ltr'})
+ 
+    else $textbox.css({direction: 'rtl'});
 
     $pageHeader = $(`<div>`, {
         class: 'pageHeader',
@@ -447,12 +460,20 @@ function addTextPage(pageArray, title) {
     $pageTitle = $('<div/>', {
         id: title + 'PageTitle',
         class: 'pageTitle',
+        lang: lang,
     })
     .html(pageArray[title]["heading-"+lang]);
 
 
-    (lang === 'en') ? $pageTitle.css({direction: 'ltr'}) :  $pageTitle.css({direction: 'rtl'});
-    (lang === 'en') ?  $backButton.css({float: 'right'}) : $backButton.css({float: 'left'});
+    if(lang === 'en') {
+        $pageTitle.css({direction: 'ltr'})
+        $backButton.css({float: 'right'})
+    }
+
+    else {
+        $pageTitle.css({direction: 'rtl'})
+        $backButton.css({float: 'left'});
+    }
 
     $backButton.appendTo( $pageHeader );
     $pageTitle.appendTo( $pageHeader );
@@ -509,7 +530,7 @@ function showPage(pageArray, title) {
         var leftIndent = (menus["main"].contents[i] === title ||
                 $('#' + title).parent().attr('id').slice(0, -1) === $( '#' + mainMenuItem).parent().attr("id")) ? mainOffset + padding : mainOffset;
 
-        (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+        (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '100px'}, 800)
 
         $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 800);
         $( '#' + mainMenuItem).animate({'top': 100 + 70*i + 'px'}, 800);

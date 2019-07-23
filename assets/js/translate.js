@@ -111,7 +111,7 @@ function translateText() {
 		for(i=0; i<menus["main"].contents.length; i++){
 			var mainMenuItem = menus["main"].contents[i].replace(/\s/g, '');			
 		    $( '#' + mainMenuItem).parent().animate({'left': mainOffset+'px'}, 1000);   
-		    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '50px'}, 800)
+		    (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '100px'}, 800)
 
 		}
 
@@ -169,6 +169,23 @@ function translateText() {
 			$('#'+key+'Date').css({direction: 'ltr'}).attr({lang: 'en'})			
 			$('#'+key).html(residenciesData[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 		    $(`.eventBackButton`).css({'float': 'right'})
+		}
+	}
+
+	for(i = 0; i< Object.keys(teamData).length; i++){
+		key = Object.keys(teamData)[i];
+
+		if(lang === 'ar'){
+			$('#'+key+'Name').html(teamData[key]["name-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+			$('#'+key+'Title').html(teamData[key]["title-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})		
+			$('#'+key+'Bio').html(teamData[key]["bio-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})	
+		    $(`.backButton`).css({'float': 'left'}) 
+		}
+		else{
+			$('#'+key+'Name').html(teamData[key]["name-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+			$('#'+key+'Title').html(teamData[key]["title-en"]).css({direction: 'ltr'}).attr({lang: 'en'})		
+			$('#'+key+'Bio').html(teamData[key]["bio-en"]).css({direction: 'ltr'}).attr({lang: 'en'})	
+		    $(`.backButton`).css({'float': 'right'}) 
 		}
 	}
 
