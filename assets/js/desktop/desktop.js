@@ -256,14 +256,35 @@ function addTeamPage (title) {
         })
         .html(teamData[key]["title-"+lang]);
 
-        $bio = $('<div/>', {
+        $bio = $('<p/>', {
             id: key + 'Bio',
             class: 'textbox'
         })
+        .css({'margin-bottom': '30px'})
         .html(teamData[key]["bio-"+lang]);
 
         $pageContainer.append([$name, $title, $bio])
         //for each person in team, add to page
+    }
+
+    //if there are images to display
+    if(dictionary[title + 'Page'].img){
+        $imageContainer = $('<div/>', {
+            id: 'imageContainer',
+            class: 'imageContainer-' + lang,
+        });
+
+        $imageContainer.appendTo( '#mainContainer' );   
+             
+        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+                $('<div/>', {
+                    id: title + 'PageImage' + i,
+                    class: 'sideImage',
+                    click: (function(){ showImage(this.id) } ),
+                })
+                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
+                .appendTo( $imageContainer )
+        }
     }
 
     $pageContainer.appendTo( '#mainContainer' );

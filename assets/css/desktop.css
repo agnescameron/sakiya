@@ -72,11 +72,16 @@ p:lang(en) {
   display: inline-block;
   width: 100%;
   height: 40px;
-  font-size: 3vh;
 }
 
 .pageTitle {
   margin-top: 10px;
+  font-size: 3vh;
+}
+
+.pageSubTitle {
+  margin-top: 10px;
+  font-size: 2vh;
 }
 
 .backButton {
