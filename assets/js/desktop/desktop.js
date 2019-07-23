@@ -331,6 +331,7 @@ function addResidencyPage(title) {
             id: key,
             class: 'eventBox',
             click: (function(){ $('.pageContainer').remove(); addTextPage(residencies, this.id); } ),
+            lang: lang,
         })
         .css({'background-image': `url(${image})`, 'background-size': 'cover'})
         .appendTo($pageContainer);
@@ -376,7 +377,7 @@ function addEventsPage(title) {
     var events = getEntries(eventsData, "type", title);
 
     $pageContainer = $('<div/>', {
-        id: title + 'PageContainer',
+        id: 'eventPageContainer',
         class: 'eventPageContainer-'+lang,
     });
 
@@ -396,6 +397,7 @@ function addEventsPage(title) {
             id: key,
             class: 'eventBox',
             click: (function(){ openEvent(this.id) } ),
+            lang: lang,            
         })
         .css({'background-image': `url(${randImage})`})
         .appendTo($pageContainer);

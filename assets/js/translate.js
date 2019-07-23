@@ -95,7 +95,8 @@ function translateText() {
 			$('.backButton').css({'float': 'left'})
 			$('#mainMenuContainer').addClass('mainMenuContainer-ar').removeClass('mainMenuContainer-en');
 			$('#subMenuContainer').addClass('subMenuContainer-ar').removeClass('subMenuContainer-en');
-			$('#imageContainer').addClass('imageContainer-ar').removeClass('imageContainer-en');						
+			$('#imageContainer').addClass('imageContainer-ar').removeClass('imageContainer-en');
+			$('#eventPageContainer').addClass('eventPageContainer-ar').removeClass('eventPageContainer-en')		
 		}
 
 		else{
@@ -103,7 +104,10 @@ function translateText() {
 			$('#mainMenuContainer').addClass('mainMenuContainer-en').removeClass('mainMenuContainer-ar');
 			$('#subMenuContainer').addClass('subMenuContainer-en').removeClass('subMenuContainer-ar');
 			$('#imageContainer').addClass('imageContainer-en').removeClass('imageContainer-ar');			
+			$('#eventPageContainer').addClass('eventPageContainer-en').removeClass('eventPageContainer-ar')	
 		}
+
+		$('.eventBox').attr({lang: lang})
 
 		var mainOffset = $("#mainMenuContainer").offset().left + 20;
     	var subOffset = $("#subMenuContainer").offset().left;

@@ -169,12 +169,19 @@ p:lang(en) {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  float: left;
 }
 
 .eventBox:hover {
   font-style: italic;
   background-size: 0 0;
+}
+
+.eventBox:lang(en) {
+  float: left;
+}
+
+.eventBox:lang(ar) {
+  float: right;
 }
 
 .eventPage {
