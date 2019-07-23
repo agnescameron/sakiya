@@ -383,7 +383,8 @@ function addEventsPage(title) {
         var key = Object.keys(events)[i];
         var eventDate = new Date(events[key]["date"]);
         var eventTitle = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
-        var randImage = illustrationArray[ i ];
+        var randImage = illustrationArray[ i%(illustrationArray.length-1) ];
+        console.log('i is', i, 'mod is ', i%illustrationArray.length, "length is ", illustrationArray.length)
 
         $eventBox = $('<div/>', {
             id: key,
