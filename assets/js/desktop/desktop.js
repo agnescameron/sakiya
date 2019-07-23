@@ -250,8 +250,8 @@ function addTeamPage (title) {
         lang: lang,
     })
 
+    $pageContainer.append($backButton);
     $pageContainer.append($textbox);
-    $textbox.append($backButton);
 
     for (i=0; i<Object.keys(teamData).length; i++){    
         var key = Object.keys(teamData)[i]
@@ -321,6 +321,13 @@ function addResidencyPage(title) {
         class: 'imageContainer-' + lang,
     });
 
+    $backButton = $('<div/>', {
+        class: 'backButton',
+        click: (function(){ returnToMain() } ),
+    });
+
+    $pageContainer.append($backButton);
+
     for (i=0; i<Object.keys(residencies).length; i++){
         var key = Object.keys(residencies)[i].slice(0, -4);
         var residencyTitle = (lang === 'en') ? residencies[key+'Page']["heading-en"] : residencies[key+'Page']["heading-ar"];
@@ -359,7 +366,8 @@ function addResidencyPage(title) {
 
         $('<p/>', {
             id: 'noResidents',
-            lang: lang
+            class: 'textbox',
+            lang: lang,
         })
         .css({'padding': '10px', 'direction': direction})
         .html(noResidents)
@@ -431,6 +439,7 @@ function addTextPage(pageArray, title) {
 
     $textbox = $('<p/>', {
         id: title + 'Page',
+        class: 'textbox',        
         lang: lang,
     })
     .html(pageArray[title + 'Page']['contents-' + lang])
