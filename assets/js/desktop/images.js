@@ -12,8 +12,8 @@ function showImage(imageID, images) {
 	var parentPage = imageID.slice(0, -6);
 	var imageNumber = imageID.slice(-1);
 
-	// var caption = (lang === 'en') ? dictionary[parentPage].img[imageNumber]["caption-en"] 
-	// 			: dictionary[parentPage].img[imageNumber]["caption-ar"]
+	var caption = (lang === 'en') ? dictionary[parentPage].img[imageNumber]["caption-en"] 
+				: dictionary[parentPage].img[imageNumber]["caption-ar"]
 
     $galleryContainer =  $('<div/>', {
         class: 'galleryContainer',

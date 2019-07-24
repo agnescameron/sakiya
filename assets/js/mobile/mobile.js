@@ -257,11 +257,15 @@ function addText (page, title) {
         }).appendTo( page );
 
          $imageContainer = $('<div/>', {
+            id: title + 'imageContainer',
             class: 'imageContainer',
+            click: function(){ showMobileImage(this.id, title)  }
+
         }).appendTo( $imageBox );
 
         for(i=0; i<dictionary[title].img.length; i++) {
                 $(`<img src= ${dictionary[title].img[i].location} class="bottomImage" style="width: 100%"/>`)
+                //.attr({ click: function(){ showMobileImage(this.id) }})
                 .appendTo( $imageContainer )
         }    
 
@@ -413,6 +417,7 @@ window.onload = function() {
 
     getDictionary.then(function(value) {
         generateList(menus["main"], '#page0');
+        console.log('got dictionary')
     });
 
     getEvents;
