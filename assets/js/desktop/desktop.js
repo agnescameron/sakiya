@@ -109,7 +109,6 @@ function toggleSideMenu(title) {
     var i = 0;
     $(`*[id^=frame${parentFrame}].subframe`).each(function() {
         var color = (this.id === $('#' + title).parent().attr('id')) ? 'yellow' : 'white';
-        console.log("suboffset is ", subOffset)
 
         var topOffset = 110 + 70*parentFrame;
         $div = $('#' + $(this).attr('id'))
@@ -172,9 +171,8 @@ function openEvent(title) {
     $('.eventBoxDate').addClass('eventPageDate').removeClass('eventBoxDate')
     var containerWidth = $('.eventPageContainer-'+lang).width();
     numContainers = Math.floor(containerWidth/276);
-    console.log('number of containers is', numContainers)
 
-    eventWidth = numContainers*276 - 26; //-20 + 6*(numContainers-1);
+    eventWidth = numContainers*276 - 26;
 
     $('#'+title).addClass('eventPage').removeClass('eventBox')
     .unbind("click")
@@ -200,7 +198,6 @@ function openEvent(title) {
     .appendTo( $('#'+title) )
 
     if( lang === 'ar'){
-        console.log('floating')
         $(`.eventBackButton`).css({'float': 'left'})  
         $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
     }
@@ -208,7 +205,6 @@ function openEvent(title) {
 }
 
 async function closeEvent(title) {
-
     $('eventPageDate').addClass('eventBoxDate').removeClass('eventPageDate')
 
     $('#'+title).addClass('eventBox').removeClass('eventPage')
@@ -219,7 +215,6 @@ async function closeEvent(title) {
     $('#' + title + 'Back').remove();
 
     $('.eventText').remove();
-    //$('#'+title+'Contents').remove();
 
     await sleep(100);
     $('#'+title).click(function(){ openEvent(title) } )
@@ -227,8 +222,6 @@ async function closeEvent(title) {
 
 
 function addTeamPage (title) {
-    console.log('getting team', teamData);
-
     //make textbox
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
@@ -301,7 +294,6 @@ function addTeamPage (title) {
 }
 
 function addResidencyPage(title) {
-    console.log('group is', title)
     var residencies = getEntries(residenciesData, "group", title);
 
     $pageContainer = $('<div/>', {
