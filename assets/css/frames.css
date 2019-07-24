@@ -12,7 +12,6 @@
   	z-index: 5;
 }
 
-
 #frame0 {
 	top:70vh;
 	left: 42.5vw;
@@ -31,6 +30,11 @@
 #frame11 {
 	top: 65vh;
  	left: 16vw;
+}
+
+#frame12 {
+	top: 70vh;
+ 	left: 7vw;
 }
 
 #frame2 {
@@ -64,13 +68,23 @@
 }
 
 #frame31 {
-	top: 27vh;
+	top: 23vh;
 	left: 35vw;
 }
 
 #frame4 {
 	top: 40vh;
 	left: 47vw;
+}
+
+#frame40 {
+	top: 26vh;
+	left: 45vw;
+}
+
+#frame41 {
+	top: 30vh;
+	left: 56vw;
 }
 
 #frame5 {
@@ -85,7 +99,7 @@
 
 #frame51 {
 	top: 27vh;	
-	left: 72vw;
+	left: 74vw;
 }
 
 #frame52 {

@@ -19,7 +19,6 @@ function getEntries(array, entrytype, val) {
 
     for (j=0; j<Object.keys(array).length; j++){
         var key = Object.keys(array)[j];
-        console.log("matching", array[key][entrytype.toString()], val)
         if(array[key][entrytype.toString()] === val){
             entries[key] = array[key];
         }

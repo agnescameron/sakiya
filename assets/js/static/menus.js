@@ -12,7 +12,7 @@ var menus = {
     "About": {
         "level": 1,
         "type":"menu",        
-        "contents": ["About Sakiya", "Team"],
+        "contents": ["About Sakiya", "Team", "Interns"],
     },
     "Program": {
         "level": 1,
@@ -26,8 +26,8 @@ var menus = {
     },
     "Curriculum": {
         "level": 1,
-        "type":"text",        
-        "contents":[''],        
+        "type":"menu",        
+        "contents":["readings", "summer school"],        
     },    
     "Heritage": {
         "level": 1,

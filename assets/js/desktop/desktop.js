@@ -222,6 +222,8 @@ async function closeEvent(title) {
 
 
 function addTeamPage (title) {
+    var team = getEntries(teamData, "type", title);
+
     //make textbox
     $pageContainer = $('<div/>', {
         id: title + 'PageContainer',
@@ -241,21 +243,21 @@ function addTeamPage (title) {
     $pageContainer.append($backButton);
     $pageContainer.append($textbox);
 
-    for (i=0; i<Object.keys(teamData).length; i++){    
-        var key = Object.keys(teamData)[i]
+    for (i=0; i<Object.keys(team).length; i++){    
+        var key = Object.keys(team)[i]
 
         $name = $('<div/>', {
             id: key + 'Name',
             class: 'pageTitle',
             lang: lang,
         })
-        .html(teamData[key]["name-"+lang]);
+        .html(team[key]["name-"+lang]);
 
         $title = $('<div/>', {
             id: key + 'Title',
             class: 'pageSubTitle',
         })
-        .html(teamData[key]["title-"+lang]);
+        .html(team[key]["title-"+lang]);
 
         $bio = $('<p/>', {
             id: key + 'Bio',
@@ -263,7 +265,7 @@ function addTeamPage (title) {
             lang: lang,
         })
         .css({'margin-bottom': '30px'})
-        .html(teamData[key]["bio-"+lang]);
+        .html(team[key]["bio-"+lang]);
 
         $textbox.append([$name, $title, $bio])
         //for each person in team, add to page
@@ -271,7 +273,7 @@ function addTeamPage (title) {
 
     //if there are images to display
     if(dictionary[title + 'Page'].img){
-        var images = dictionary[title + 'Page'].img;
+        var imgArray = dictionary[title + 'Page'].img;
 
         $imageContainer = $('<div/>', {
             id: 'imageContainer',
