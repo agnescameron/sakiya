@@ -271,6 +271,8 @@ function addTeamPage (title) {
 
     //if there are images to display
     if(dictionary[title + 'Page'].img){
+        var images = dictionary[title + 'Page'].img;
+
         $imageContainer = $('<div/>', {
             id: 'imageContainer',
             class: 'imageContainer-' + lang,
@@ -278,13 +280,13 @@ function addTeamPage (title) {
 
         $imageContainer.appendTo( '#mainContainer' );   
              
-        for(i=0; i<dictionary[title + 'Page'].img.length; i++) {
+        for(i=0; i<imgArray.length; i++) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
-                    click: (function(){ showImage(this.id) } ),
+                    click: (function(){ showImage(this.id, imgArray) } ),
                 })
-                .prepend(`<img src= ${dictionary[title + 'Page'].img[i].location} style="width: 100%"/>`)
+                .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
         }
     }
@@ -468,6 +470,8 @@ function addTextPage(pageArray, title) {
 
     //if there are images to display
     if(pageArray[title + 'Page'].img){
+        var imgArray = pageArray[title + 'Page'].img;
+
         $imageContainer = $('<div/>', {
             id: 'imageContainer',
             class: 'imageContainer-' + lang,
@@ -475,13 +479,13 @@ function addTextPage(pageArray, title) {
 
         $imageContainer.appendTo( '#mainContainer' );   
              
-        for(i=0; i<pageArray[title + 'Page'].img.length; i++) {
+        for(i=0; i<imgArray.length; i++) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
-                    click: (function(){ showImage(this.id) } ),
+                    click: (function(){ showImage(this.id, imgArray) } ),
                 })
-                .prepend(`<img src= ${pageArray[title + 'Page'].img[i].location} style="width: 100%"/>`)
+                .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
         }
     }

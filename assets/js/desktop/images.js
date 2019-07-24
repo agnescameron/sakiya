@@ -3,35 +3,49 @@ window.galleryMode = false;
 
 function closeImage() {
 	window.galleryMode = false;
-	$('.imageDisplay').remove();
+	$('.galleryContainer').remove();
 }
 
-function showImage(imageID) {
+function showImage(imageID, images) {
 	window.galleryMode = true;
+
 	var parentPage = imageID.slice(0, -6);
 	var imageNumber = imageID.slice(-1);
 
-	var caption = (lang === 'en') ? dictionary[parentPage].img[imageNumber]["caption-en"] 
-				: dictionary[parentPage].img[imageNumber]["caption-ar"]
+	// var caption = (lang === 'en') ? dictionary[parentPage].img[imageNumber]["caption-en"] 
+	// 			: dictionary[parentPage].img[imageNumber]["caption-ar"]
 
-	$display =  $('<div/>', {
-        id: imageID + 'display',
-        class: 'imageDisplay',
-    }).prepend(`<img id=${imageID} class=displayImage src=${dictionary[parentPage].img[imageNumber].location} />`)
-    .appendTo( 'body' );
+    $galleryContainer =  $('<div/>', {
+        class: 'galleryContainer',
+    })
+    .appendTo( '#mainContainer' );
 
-    $('<div/>', {
-        id: 'closeImage',
-        click: (function(){ closeImage() } ),
-    }).appendTo( $display );
+    $gallery = $('<div/>', {
+        class: 'gallery',
+    })
+    .appendTo( $galleryContainer );
 
-    $displayCaption = $('<div/>', {
-    	id: imageID + 'Caption',
-        class: 'displayCaption',
-        click: (function(){ closeImage() } ),
-    }).html(`<p>${caption}</p>`)
-    .appendTo( $display );
+        // $('<div/>', {
+        //     class: 'backButton',
+        //     click: (function(){ closeImage() } ),
+        // }).appendTo( $gallery );
 
-    (lang === 'en') ? $displayCaption.css({direction: 'ltr'}) : $displayCaption.css({direction: 'rtl'})
+    console.log('images length is', images.length)
+    for (i=0; i<images.length; i++){
 
+        // $imageBox = $(`<div/>`, {
+        //     class: 'imageBox'
+        // }).prepend(`<img src=${dictionary[parentPage].img[i].location} />`)
+
+        // $imageBox.appendTo( $gallery );
+        
+        // $displayCaption = $('<div/>', {
+        // 	id: imageID + 'Caption',
+        //     class: 'displayCaption',
+        //     click: (function(){ closeImage() } ),
+        // }).html(`<p>${caption}</p>`)
+        // .appendTo( $gallery );
+
+    //(lang === 'en') ? $displayCaption.css({direction: 'ltr'}) : $displayCaption.css({direction: 'rtl'})
+    }
 }

@@ -99,6 +99,15 @@ p:lang(en) {
   max-width: 600px;
 }
 
+.textbox:lang(en) {
+  float: left;
+}
+
+.textbox:lang(ar) {
+  float: right;
+}
+
+
 .shareButton {
   height: 20px;
   float: right;
@@ -146,9 +155,8 @@ p:lang(en) {
 }
 
 .displayImage {
-  width: 70%;
-  max-width: 800px;
-  margin-left:15%;
+  height: 80%;
+  float: left;
   border: 3px solid white;
 }
 
@@ -156,6 +164,10 @@ p:lang(en) {
   width: 50%;
   margin-left:20%;
   position: relative;
+}
+
+.imageBox {
+  float: left;
 }
 
 /*EVENTS*/
