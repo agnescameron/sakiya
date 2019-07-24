@@ -56,11 +56,6 @@ function generateList(menu, page){
 
 async function closeEvent(title) {
 
-    // $('#'+title)
-    // .animate({
-    //     'height': '250px'
-    // });
-
     $('#' + title + 'Back').remove();
 
     $('.eventText').remove();
@@ -101,6 +96,73 @@ function openEvent(title) {
     }
 }
 
+function addTeam(page, title) {
+    console.log('adding team', page, title);
+}
+
+function addResidencies(page, title) {
+    console.log('adding residencies', title+'PageTitle');
+
+    $('<div/>', {
+        id: title+'PageTitle',
+        class: 'eventPageTitle',
+    }).html(dictionary[title]["heading-en"])
+    .appendTo( page );
+
+    $residentsContainer = $('<p/>', {
+        id: title,
+        class: 'eventPageBody'
+    })
+    .appendTo( page );
+    
+    var residencies = getEntries(residenciesData, "group", title);
+
+    for (i=0; i<Object.keys(residencies).length; i++){
+        var key = Object.keys(residencies)[i].slice(0, -4);
+        var residencyTitle = (lang === 'en') ? residencies[key+'Page']["heading-en"] : residencies[key+'Page']["heading-ar"];
+        var image = residencies[key+'Page'].img[0].location;
+
+
+        $residentBox = $('<div/>', {
+            id: key,
+            class: 'eventBox',
+            click: (function(){ $('.pageContainer').remove(); addPage(residencies, this.id); } ),
+            lang: lang,
+        })
+        .css({'background-image': `url(${image})`, 'background-size': 'cover', 'height': '100px'})
+        .appendTo( $residentsContainer );
+    
+        $('<div/>', {
+            id: key+'PageTitle',
+            class: 'eventBoxTitle',
+            lang: lang,
+        }).html(residencyTitle)
+        .appendTo( $residentBox );
+
+        if(lang === 'ar') {
+            $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
+            $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})
+        }
+    
+    }
+
+    if (Object.keys(residencies).length === 0){
+
+        var noResidents = dictionary["noResidents"]["heading-"+lang]
+        var direction = (lang === 'ar') ? 'rtl' : 'ltr' 
+
+        $('<p/>', {
+            id: 'noResidents',
+            class: 'textPageBody',
+            lang: lang,
+        })
+        .html(noResidents)
+        .appendTo($residentsContainer);
+    }
+
+}
+
+
 function addEvents(page, title) {
 
     $('<div/>', {
@@ -116,7 +178,6 @@ function addEvents(page, title) {
     .appendTo( page );
     
     var events = getEntries(eventsData, "type", title);
-    console.log(events)
 
     for (i=0; i<Object.keys(events).length; i++){
         var key = Object.keys(events)[i];
@@ -198,9 +259,6 @@ function addText (page, title) {
 }
 
 function makeTextPage(title, parentLevel){
-    // parent level + 1
-    console.log('making text page for ', title)
-
     pageDepth=parentLevel+1;
     nextPage = pageDepth+1;
 
@@ -208,7 +266,6 @@ function makeTextPage(title, parentLevel){
         'width': initialWidth*(pageDepth+1) + 10 + 'px',
         'overflow-x': 'scroll',
     })
-    console.log('page depth is', pageDepth, "container width is ", $('#container').width(), "body is", $('body').width())
 
     page = '#page' + pageDepth;
 
@@ -220,14 +277,7 @@ function makeTextPage(title, parentLevel){
 
     var pageClass = (dictionary[title].type === 'page') ? "textPage" : "eventPage";
 
-    // if ($( page ).length && $(page).attr('class') === 'textPage'){
-    //     console.log('page is not null')
-    //     $(page).empty();
-    // }
-
-//    else if ($( page ).length && $(page).attr('class') === 'menuPage'){
     if ($( page ).length){
-        console.log('page is not null, but was a text page')
         $(page).remove();
         $('<div/>', {
             id: 'page' + pageDepth,
@@ -252,8 +302,14 @@ function makeTextPage(title, parentLevel){
     if(dictionary[title].type === 'page')
         addText(page, title)
 
-    else
-        addEvents(page, title.slice(0, -4))
+    else if (dictionary[title].type === 'eventsPage')
+        addEvents(page, title.slice(0, -4));
+
+    else if (dictionary[title].type === 'residencyPage')
+        addResidencies(page, title.slice(0, -4));
+
+    else if (dictionary[title].type === 'teamPage')
+        addTeam(page, title.slice(0, -4));
 
     $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
@@ -267,16 +323,12 @@ function makeMenuPage(name){
     $('#container').css({
         'width': initialWidth*(pageDepth+1) + 'px',
     })
-    console.log("making menu page ", name, "pageDepth is ", pageDepth, "container width is", $('#container').width())
-
     page = '#page' + pageDepth;
 
     if ($( page ).length && $(page).attr('class') === 'menuPage'){
-        console.log('page is not null, and is a menu page')
         $(page).empty();
     }
-    else if ($( page ).length && $(page).attr('class') === 'textPage'){
-        console.log('page is not null, but was a text page')
+    else if ($( page ).length && $(page).attr('class') !== 'menuPage'){
         $(page).remove();
         $('<div/>', {
             id: 'page' + pageDepth,
@@ -289,8 +341,6 @@ function makeMenuPage(name){
 
     }    
     else{
-        console.log('page is null')
-        //generate the next page
         $('<div/>', {
             id: 'page' + pageDepth,
             class: "menuPage",
@@ -321,7 +371,6 @@ function makeMenuPage(name){
 
     generateList( menus[name] , '#pageBody'+pageDepth)
 
-    // $('<div/>', {"class": "menuPageFooter"}).appendTo(page)
     $('body').animate({
         scrollLeft: ($('#page'+pageDepth).offset()).left
     }, 1000);
@@ -336,11 +385,10 @@ window.onload = function() {
     console.log($(document).height())
 
     getDictionary.then(function(value) {
-        console.log('got dictionary')
         generateList(menus["main"], '#page0');
     });
 
-    getEvents.then(function(value) {
-        console.log(value);
-    });
+    getEvents;
+    getResidencies;
+    getTeam;
 }
