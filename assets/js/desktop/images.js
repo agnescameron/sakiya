@@ -25,19 +25,19 @@ function showImage(imageID, images) {
     })
     .appendTo( $galleryContainer );
 
-        // $('<div/>', {
-        //     class: 'backButton',
-        //     click: (function(){ closeImage() } ),
-        // }).appendTo( $gallery );
+        $('<div/>', {
+            class: 'galleryBackButton',
+            click: (function(){ closeImage() } ),
+        }).appendTo( $gallery );
 
     console.log('images length is', images.length)
     for (i=0; i<images.length; i++){
 
-        // $imageBox = $(`<div/>`, {
-        //     class: 'imageBox'
-        // }).prepend(`<img src=${dictionary[parentPage].img[i].location} />`)
+        $imageBox = $(`<div/>`, {
+            class: 'imageBox'
+        }).prepend(`<img class='galleryImage' src=${dictionary[parentPage].img[i].location} />`)
 
-        // $imageBox.appendTo( $gallery );
+        $imageBox.appendTo( $gallery );
         
         // $displayCaption = $('<div/>', {
         // 	id: imageID + 'Caption',

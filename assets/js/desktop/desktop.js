@@ -500,6 +500,8 @@ function showPage(pageArray, title) {
    //hide tree
    removeAllBranches();
 
+   console.log('lang is', lang)
+
    if( !$('#mainMenuContainer').length ){
         $mainMenuContainer = $('<div/>', {
                 id: "mainMenuContainer",
@@ -514,6 +516,7 @@ function showPage(pageArray, title) {
 
     var mainOffset = $("#mainMenuContainer").offset().left + 20;
     var subOffset = $("#subMenuContainer").offset().left;
+    console.log('suboffset is ', $("#subMenuContainer").offset().left)
     var padding = (lang === 'en') ? 20 : -20
 
     for(i=0; i<menus["main"].contents.length; i++){

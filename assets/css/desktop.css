@@ -23,11 +23,9 @@ p:lang(en) {
 	position:absolute;
 }
 
-.subHeading {
+.subheading {
 	font-size:20px;
-	width:50px;
-	height:25px;
-	position:absolute;
+	position:relative;
 }
 
 #treeFrameContianer {
@@ -95,6 +93,16 @@ p:lang(en) {
   float: right;
 }
 
+.galleryBackButton {
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  background-image: url("../img/close.png");
+  background-size: cover;
+  position: fixed;
+  right: 30px;
+}
+
 .textbox {
   max-width: 600px;
 }
@@ -122,42 +130,8 @@ p:lang(en) {
 .sponsor {
   margin-bottom: 20px;
   margin-top: -20px;
-}
-
-/*.textbox:lang(en) {
- float: left;
-}
-
-.textbox:lang(ar) {
- float: right;
-}*/
-
-/*IMAGES*/
-
-#closeImage {
-  width: 30px;
-  height: 30px;
-  z-index: 10;
-  top: 0px;
-  background-image: url("../img/close.png");
-  background-size: cover;
-  text-align: justify;
-  position: absolute;
-  right:0px;
-}
-
-.imageDisplay {
-  width: 80%;
-  z-index: 20;
-  position: fixed;
-  top: 100px;
-  left: 10%;
-}
-
-.displayImage {
-  height: 80%;
-  float: left;
-  border: 3px solid white;
+  position: relative;
+  height: 100%;
 }
 
 .displayCaption {
@@ -167,7 +141,15 @@ p:lang(en) {
 }
 
 .imageBox {
-  float: left;
+  height: 80%;
+  margin-left: 20px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.galleryImage {
+  height: 100%;
+  position: relative;
 }
 
 /*EVENTS*/
