@@ -17,7 +17,6 @@ async function returnToMain () {
         var sheet = document.styleSheets[i]
         //need to find a good way to ref this for online 
         if(sheet.href){
-            console.log(sheet.href)
             if(sheet.href.includes("frames.css"))
                 styleSheet = sheet;
         }
@@ -82,9 +81,6 @@ async function returnToMain () {
 }
 
 function toggleSideMenu(title) {
-
-    console.log('toggling side menu')
-
     $('.pageContainer').remove();
     $('.eventPageContainer-'+lang).remove();
 
@@ -100,7 +96,6 @@ function toggleSideMenu(title) {
 
     var leftIndent = (mainMenuItem === title) ? mainOffset + padding : mainOffset;
    
-    console.log('toggling side menu, left indent is ', leftIndent)
    var color = (mainMenuItem === title) ? 'yellow' : 'white';
 
 
@@ -255,8 +250,6 @@ function addTeamPage (title) {
 
     for (i=0; i<Object.keys(teamData).length; i++){    
         var key = Object.keys(teamData)[i]
-        console.log(key)
-        
 
         $name = $('<div/>', {
             id: key + 'Name',
@@ -399,7 +392,6 @@ function addEventsPage(title) {
         var eventDate = new Date(events[key]["date"]);
         var eventTitle = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
         var randImage = illustrationArray[ i%(illustrationArray.length-1) ];
-        console.log('i is', i, 'mod is ', i%illustrationArray.length, "length is ", illustrationArray.length)
 
         $eventBox = $('<div/>', {
             id: key,
@@ -553,8 +545,6 @@ function showPage(pageArray, title) {
         $div = $('#' + $(this).attr('id'))
         $div.children().attr('id')
 
-        console.log('suboffset i s', subOffset)
-
         if(lang === 'en')
             $div.children().css({'left': '35px', 'right': ''}, 800)
 
@@ -578,8 +568,6 @@ function showPage(pageArray, title) {
     $('.pageContainer').remove();
     $('.eventPageContainer-'+lang).remove();    
     $('#imageContainer').remove();
-
-    console.log('pageArray is ', pageArray, 'title is', title)
 
     if(pageArray[title + 'Page'].type === 'page'){
         addTextPage(pageArray, title);

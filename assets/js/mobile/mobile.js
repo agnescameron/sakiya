@@ -4,11 +4,7 @@ var initialHeight = $(window).height();
 var documentHeight = $(document).height();
 jQuery.fx.interval = 10;
 
-console.log('initil width is ', initialWidth, 'initial height is ', initialHeight, 'document height is ', documentHeight)
-
 function returnToMain() {
-    console.log('returning')
-
     $('body').animate({
         scrollLeft: 0
     }, 1000);
@@ -17,10 +13,8 @@ function returnToMain() {
 
 function generateList(menu, page){
     //need to check if already exists
-    console.log("generating list for page ", page)
     if(menu.level === 1 || menu.contents.length === 1){
         for(i=0; i<menu.contents.length; i++){
-            console.log('i is ', i)
             $newheading = $('<div/>', {
             id: menu.contents[i].replace(/\s/g, ''),
             class: "heading",
@@ -90,19 +84,54 @@ function openEvent(title) {
     .appendTo( $('#'+title) )
 
     if( lang === 'ar'){
-        console.log('floating')
         $(`.eventBackButton`).css({'float': 'left'})  
         $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
     }
 }
 
 function addTeam(page, title) {
-    console.log('adding team', page, title);
+    $('<div/>', {
+        id: title+'PageTitle',
+        class: 'eventPageTitle',
+    }).html(dictionary[title]["heading-en"])
+    .appendTo( page );
+
+    $teamContainer = $('<div/>', {
+        id: title,
+        class: 'textPageBody'
+    })
+    .appendTo( page );
+
+
+    for (i=0; i<Object.keys(teamData).length; i++){    
+        var key = Object.keys(teamData)[i]
+
+        $name = $('<div/>', {
+            id: key + 'Name',
+            class: 'pageTitle',
+            lang: lang,
+        })
+        .html(teamData[key]["name-"+lang]);
+
+        $title = $('<div/>', {
+            id: key + 'Title',
+            class: 'pageSubTitle',
+        })
+        .html(teamData[key]["title-"+lang]);
+
+        $bio = $('<p/>', {
+            id: key + 'Bio',
+            lang: lang,
+        })
+        .css({'margin-bottom': '30px'})
+        .html(teamData[key]["bio-"+lang]);
+
+        $teamContainer.append([$name, $title, $bio])
+        //for each person in team, add to page
+    }
 }
 
 function addResidencies(page, title) {
-    console.log('adding residencies', title+'PageTitle');
-
     $('<div/>', {
         id: title+'PageTitle',
         class: 'eventPageTitle',
@@ -271,7 +300,6 @@ function makeTextPage(title, parentLevel){
 
     //gets rid of text pages further up
     if($('#page'+nextPage).length){
-        console.log('bigger number page')
         $('#page'+nextPage).remove();
     }
 
@@ -382,7 +410,6 @@ window.onload = function() {
         scrollLeft: 0
     }, 1);
     document.body.style.height = initialHeight + "px";
-    console.log($(document).height())
 
     getDictionary.then(function(value) {
         generateList(menus["main"], '#page0');

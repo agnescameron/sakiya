@@ -2,7 +2,6 @@ body{
 	overflow-y: hidden;
     width: 5000px;
     height: 100%;
-/*    margin: 0px;*/
     max-height: 100vh;
 }
 
@@ -34,20 +33,6 @@ body{
 	white-space: nowrap;
 	max-height: 100vh;
 }
-
-/*.eventPage {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 5vh 67vh 10vh;
-	grid-auto-rows: 1fr;
-	grid-gap: 1em 1em;
-}
-
-.eventPageEvents {
-	grid-area: 2 / 1 / 4 / 4;
-	padding: 10px;
-	white-space: normal;
-}*/
 
 .textPage {
 	display: grid;
@@ -188,6 +173,15 @@ body{
   margin: 20px;
 }
 
+.pageTitle {
+  margin-top: 10px;
+  font-size: 3vh;
+}
+
+.pageSubTitle {
+  margin-top: 10px;
+  font-size: 2vh;
+}
 
 #translate {
   	font-size: 5vh;
