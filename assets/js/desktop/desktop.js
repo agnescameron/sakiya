@@ -334,7 +334,7 @@ function addTeamPage (title) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
-                    click: (function(){ showImage(this.id, imgArray) } ),
+                    click: (function(){ showImage(this.id, imgArray, teamData) } ),
                 })
                 .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
@@ -502,7 +502,7 @@ function addTextPage(pageArray, title) {
         class: 'pageTitle',
         lang: lang,
     })
-    .html(pageArray[title]["heading-"+lang]);
+    .html(pageArray[title + 'Page']["heading-"+lang]);
 
 
     if(lang === 'en') {
@@ -533,7 +533,7 @@ function addTextPage(pageArray, title) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
-                    click: (function(){ showImage(this.id, imgArray) } ),
+                    click: (function(){ showImage(this.id, imgArray, pageArray) } ),
                 })
                 .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )

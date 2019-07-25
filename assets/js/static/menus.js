@@ -22,7 +22,7 @@ var menus = {
     "Residencies": {
         "level": 1,
         "type":"menu",        
-        "contents":["current residents", "residency archive"],
+        "contents":["current fellows", "past fellows"],
     },
     "Curriculum": {
         "level": 1,

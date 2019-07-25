@@ -125,6 +125,7 @@ var getResidencies = new Promise( function(resolve, reject) {
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
 	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
+	        	"video": this["gsx$video"]["$t"] ? this["gsx$video"]["$t"] : null,
 	        }
 	        
 	        var img = [];
