@@ -151,6 +151,33 @@ p:lang(en) {
   position: relative;
 }
 
+/*ARENA*/
+
+.arenaBlock {
+  width: 250px;
+  height: 350px;
+  margin: 10px;
+  position: relative;
+  float: left;
+}
+
+.arenaBox {
+  border: 3px solid white;
+  width: 100%;
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.arenaCaption {
+  height: 100px;
+  width: 250px;
+  white-space: normal;
+  hyphens: auto;
+}
+
+
 /*EVENTS*/
 
 .eventBox {

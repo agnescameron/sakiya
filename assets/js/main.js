@@ -15,6 +15,12 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function openFile(location) {
+	console.log('opening', location)
+	var redirectWindow = window.open(location, '_blank');
+    redirectWindow.location;
+}
+
 function getEntries(array, entrytype, val) {
     var entries = {};
 

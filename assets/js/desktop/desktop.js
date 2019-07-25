@@ -222,10 +222,50 @@ async function closeEvent(title) {
 
 
 function addArenaPage (title) {
-    console.log('title is ', title)
-    if(title === 'readings')
-        console.log(curriculum)
 
+    //make textbox
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'eventPageContainer-'+lang,
+    });
+
+    $backButton = $('<div/>', {
+        class: 'backButton',
+        click: (function(){ returnToMain() } ),
+    });
+
+    $pageContainer.append($backButton);
+
+    var channel;
+    if(title === 'readings')
+        channel = JSON.parse(curriculum);
+
+    console.log(channel)
+    for(var i=0; i<channel["contents"].length; i++){
+        var block = channel["contents"][i];
+        if(block.image){
+            $block = $('<div/>', {
+                id: block.attachment.url,
+                class: 'arenaBlock',
+                click: (function() { openFile(this.id) })
+            }).appendTo( $pageContainer )
+
+            $blockImg = $('<div/>', {
+                id: block.id,
+                class: 'arenaBox',
+            })
+            .appendTo($block);
+      
+            $blockCaption = $('<p/>', {
+                class: 'arenaCaption',
+            }).html(block.title)
+            .appendTo( $block );
+
+            $blockImg.css({'background-image': `url(${block.image.square.url})`, 'background-size': 'cover'});
+        }
+    }
+
+    $pageContainer.appendTo( '#mainContainer' );
 }
 
 function addTeamPage (title) {
