@@ -3,6 +3,7 @@ var dictionary = {};
 var eventsData = {};
 var residenciesData = {};
 var teamData = {};
+var curriculum = {};
 
 var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
 var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
@@ -26,6 +27,18 @@ function getEntries(array, entrytype, val) {
 
     return entries;
 }
+
+function httpGetAsync(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            curriculum = xmlHttp.responseText;
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
 
 var getDictionary = new Promise( function(resolve, reject) {
     $.getJSON(pagesUrl, function(data){

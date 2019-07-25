@@ -221,6 +221,13 @@ async function closeEvent(title) {
 }
 
 
+function addArenaPage (title) {
+    console.log('title is ', title)
+    if(title === 'readings')
+        console.log(curriculum)
+
+}
+
 function addTeamPage (title) {
     var team = getEntries(teamData, "type", title);
 
@@ -586,6 +593,9 @@ function showPage(pageArray, title) {
         addResidencyPage(title);
     }
 
+    if (pageArray[title + 'Page'].type === 'arenaPage') {
+        addArenaPage(title);
+    }
 
     if(window.pageMode === false){
         rotate($('#logo'), -90);
@@ -699,5 +709,8 @@ window.onload = function() {
 
     getEvents;
     getResidencies;
-    getTeam;    
+    getTeam;
+
+    //get readings
+    httpGetAsync("http://api.are.na/v2/channels/week-2-readings/contents"); 
 }

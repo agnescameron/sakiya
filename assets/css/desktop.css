@@ -59,7 +59,6 @@ p:lang(en) {
 .sideImage {
   z-index: 4;
   position: relative;
-  margin: auto;
   margin-top:20px;
   width: 80%;
   background-repeat: cover;
