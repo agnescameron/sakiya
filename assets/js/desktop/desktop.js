@@ -4,6 +4,7 @@ var fields = 7;
 
 async function returnToMain () {
     $('.pageContainer').remove();
+    $('.eventPageContainer-'+lang).remove();
     $('#mainMenuContainer').remove();
     $('#subMenuContainer').remove();    
     $('#imageContainer').remove();
@@ -225,7 +226,7 @@ function addArenaPage (title) {
 
     //make textbox
     $pageContainer = $('<div/>', {
-        id: title + 'PageContainer',
+        id: 'eventPageContainer',
         class: 'eventPageContainer-'+lang,
     });
 
