@@ -235,11 +235,37 @@ function addArenaPage (title) {
         click: (function(){ returnToMain() } ),
     });
 
-    $pageContainer.append($backButton);
-
     var channel;
     if(title === 'readings')
         channel = JSON.parse(curriculum);
+
+
+    $pageHeader = $(`<div>`, {
+        class: 'pageHeader',
+    })
+
+    $pageHeader.appendTo( $pageContainer );
+    $pageHeader.append($backButton);
+
+    $pageTitle = $('<div/>', {
+        id: title + 'PageTitle',
+        class: 'pageTitle',
+        lang: lang,
+    })
+    .html('Sakiya Reading List');
+
+
+    if(lang === 'en') {
+        $pageTitle.css({direction: 'ltr'})
+        $backButton.css({float: 'right'})
+    }
+
+    else {
+        $pageTitle.css({direction: 'rtl'})
+        $backButton.css({float: 'left'});
+    }
+
+    $pageTitle.appendTo( $pageHeader );
 
     console.log(channel)
     for(var i=0; i<channel["contents"].length; i++){

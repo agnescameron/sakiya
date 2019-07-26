@@ -62,7 +62,10 @@ p:lang(en) {
   margin-top:20px;
   width: 80%;
   background-repeat: cover;
-  border: 3px solid white;
+}
+
+.sideImage img {
+    border: 3px solid white;
 }
 
 .pageHeader {
