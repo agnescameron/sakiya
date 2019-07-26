@@ -490,7 +490,6 @@ function addTextPage(pageArray, title) {
 
     $pageContainer.appendTo( '#mainContainer' );
     $pageHeader.appendTo( $pageContainer );
-    $textbox.appendTo( $pageContainer );
 
     $backButton = $('<div/>', {
         class: 'backButton',
@@ -517,6 +516,16 @@ function addTextPage(pageArray, title) {
 
     $backButton.appendTo( $pageHeader );
     $pageTitle.appendTo( $pageHeader );
+
+    if(pageArray[title + 'Page'].video){
+        $videoFrame = $(`<div/>`, {
+            class: 'aspect-ratio',
+        })
+        .prepend(`<iframe class="videoFrame" src="${pageArray[title + 'Page'].video}" allowfullscreen></iframe>`)
+        .appendTo( $pageContainer )
+    }
+
+    $textbox.appendTo( $pageContainer );
 
     //if there are images to display
     if(pageArray[title + 'Page'].img){
