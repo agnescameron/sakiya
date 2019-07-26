@@ -92,19 +92,21 @@ function translateText() {
 	if(	window.pageMode === true) {
 
 		if(lang === 'ar'){
-			$('.backButton').css({'float': 'left'})
+			$('.backButton').css({'float': 'left'});
+			$('.sideImage').css({'margin-left': '30px'});
 			$('#mainMenuContainer').addClass('mainMenuContainer-ar').removeClass('mainMenuContainer-en');
 			$('#subMenuContainer').addClass('subMenuContainer-ar').removeClass('subMenuContainer-en');
 			$('#imageContainer').addClass('imageContainer-ar').removeClass('imageContainer-en');
-			$('#eventPageContainer').addClass('eventPageContainer-ar').removeClass('eventPageContainer-en')		
+			$('#eventPageContainer').addClass('eventPageContainer-ar').removeClass('eventPageContainer-en');		
 		}
 
 		else{
-			$('.backButton').css({'float': 'right'})
+			$('.backButton').css({'float': 'right'});
+			$('.sideImage').css({'margin-left': '30px'});
 			$('#mainMenuContainer').addClass('mainMenuContainer-en').removeClass('mainMenuContainer-ar');
 			$('#subMenuContainer').addClass('subMenuContainer-en').removeClass('subMenuContainer-ar');
 			$('#imageContainer').addClass('imageContainer-en').removeClass('imageContainer-ar');			
-			$('#eventPageContainer').addClass('eventPageContainer-en').removeClass('eventPageContainer-ar')	
+			$('#eventPageContainer').addClass('eventPageContainer-en').removeClass('eventPageContainer-ar');	
 		}
 
 		$('.eventBox').attr({lang: lang})

@@ -573,6 +573,10 @@ function addTextPage(pageArray, title) {
                 .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
         }
+
+        if(lang === 'ar'){
+            $('.sideImage').css({'margin-left': '30px'})
+        }
     }
 }
 

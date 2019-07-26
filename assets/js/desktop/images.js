@@ -12,9 +12,6 @@ function showImage(imageID, images, pageArray) {
 	var parentPage = imageID.slice(0, -6);
 	var imageNumber = imageID.slice(-1);
 
-	var caption = (lang === 'en') ? pageArray[parentPage].img[imageNumber]["caption-en"] 
-				: pageArray[parentPage].img[imageNumber]["caption-ar"]
-
     $galleryContainer =  $('<div/>', {
         class: 'galleryContainer',
     })
@@ -38,13 +35,17 @@ function showImage(imageID, images, pageArray) {
         }).prepend(`<img class='galleryImage' src=${pageArray[parentPage].img[i].location} />`)
 
         $imageBox.appendTo( $gallery );
-        
-        // $displayCaption = $('<div/>', {
-        // 	id: imageID + 'Caption',
-        //     class: 'displayCaption',
-        //     click: (function(){ closeImage() } ),
-        // }).html(`<p>${caption}</p>`)
-        // .appendTo( $gallery );
+
+        var caption = (lang === 'en') ? pageArray[parentPage].img[i]["caption-en"] 
+                : pageArray[parentPage].img[i]["caption-ar"]
+
+        $displayCaption = $('<div/>', {
+        	id: imageID + 'Caption',
+            class: 'imageCaption',
+            lang: lang,
+        }).html(`<p>${caption}</p>`)
+        .appendTo( $imageBox );
+
 
     //(lang === 'en') ? $displayCaption.css({direction: 'ltr'}) : $displayCaption.css({direction: 'rtl'})
     }

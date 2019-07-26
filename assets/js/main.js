@@ -56,18 +56,18 @@ var getDictionary = new Promise( function(resolve, reject) {
 	        	"type": this["gsx$type"]["$t"],
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
-	        	"link": this["gsx$link"]["$t"] ? this["gsx$link"]["$t"] : null,        	
+	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
+	        	"link": this["gsx$link"]["$t"] ? this["gsx$link"]["$t"] : '',        	
 	        }
 
 	        var img = [];
-	        for(var i=0; i<5; i++){
+	        for(var i=0; i<6; i++){
 	        	if(this[`gsx$image${i}`]["$t"]){
 		        	var image = {
 		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
 		        	}
 	        	img[i] = image;
 	        	}
@@ -91,19 +91,19 @@ var getEvents = new Promise( function(resolve, reject) {
 	        	"organisers-en": this["gsx$organisers-en"]["$t"],        	
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
-	        	"poster": this["gsx$poster"]["$t"] ? this["gsx$poster"]["$t"] : null,  
+	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
+	        	"poster": this["gsx$poster"]["$t"] ? this["gsx$poster"]["$t"] : '',  
 	        }
 	        
 	        var img = [];
-	        for(var i=0; i<5; i++){
+	        for(var i=0; i<6; i++){
 	        	
 	        	if(this[`gsx$image${i}`]["$t"]){
 		        	var image = {
 		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
 		        	}
 	        	img[i] = image;
 	        	}
@@ -126,18 +126,18 @@ var getResidencies = new Promise( function(resolve, reject) {
 	        	"group": this["gsx$group"]["$t"],
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
 	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : null,
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : null,
-	        	"video": this["gsx$video"]["$t"] ? this["gsx$video"]["$t"] : null,
+	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
+	        	"video": this["gsx$video"]["$t"] ? this["gsx$video"]["$t"] : '',
 	        }
 	        
 	        var img = [];
-	        for(var i=0; i<5; i++){
+	        for(var i=0; i<6; i++){
 	        	if(this[`gsx$image${i}`]["$t"]){
 		        	var image = {
 		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
 		        	}
 	        	img[i] = image;
 	        	}
@@ -159,8 +159,8 @@ var getTeam = new Promise( function(resolve, reject) {
 	        	"name-en": this["gsx$name-en"]["$t"],
 	        	"title-ar": this["gsx$title-ar"]["$t"],
 	        	"title-en": this["gsx$title-en"]["$t"],
-	        	"bio-ar": this["gsx$bio-ar"]["$t"] ? this["gsx$bio-ar"]["$t"] : null,
-	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : null,	        	
+	        	"bio-ar": this["gsx$bio-ar"]["$t"] ? this["gsx$bio-ar"]["$t"] : '',
+	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : '',	        	
 	        }
 	        
         });

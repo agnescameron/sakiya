@@ -141,21 +141,20 @@ p:lang(en) {
   height: 100%;
 }
 
-.displayCaption {
-  width: 50%;
-  margin-left:20%;
-  position: relative;
-}
-
 .imageBox {
-  height: 80%;
+  height: 90%;
   margin-left: 20px;
   margin-top: 50px;
   display: inline-block;
 }
 
+.imageCaption {
+  height: 60px;
+  position: relative;
+}
+
 .galleryImage {
-  height: 100%;
+  height: 90%;
   position: relative;
 }
 
