@@ -360,7 +360,7 @@ function addTeamPage (title) {
                 $('<div/>', {
                     id: title + 'PageImage' + i,
                     class: 'sideImage',
-                    click: (function(){ showImage(this.id, imgArray, teamData) } ),
+                    click: (function(){ showImage(this.id, imgArray, dictionary) } ),
                 })
                 .prepend(`<img src= ${imgArray[i].location} style="width: 100%"/>`)
                 .appendTo( $imageContainer )
@@ -613,7 +613,7 @@ function showPage(pageArray, title) {
         (lang === 'en') ? $( '#' + mainMenuItem).animate({'left': '10px'}, 800) : $( '#' + mainMenuItem).animate({'right': '100px'}, 800)
 
         $( '#' + mainMenuItem).parent().animate({'left': leftIndent}, 800);
-        $( '#' + mainMenuItem).animate({'top': 100 + 70*i + 'px'}, 800);
+        $( '#' + mainMenuItem).animate({'top': 102 + 70*i + 'px'}, 800);
         $( '#' + mainMenuItem).parent().animate({'top': '20px'}, 800);        
     }
 

@@ -1,5 +1,9 @@
 /*HANDLING CHANGES*/
 
+body {
+  margin: 0px;
+}
+
 canvas[resize] {
     width: 100%;
     height: 100%;
@@ -132,6 +136,7 @@ p:lang(en) {
 .sponsor {
   margin-bottom: 20px;
   margin-top: -20px;
+  margin-left: 10px;
   position: relative;
   height: 100%;
 }

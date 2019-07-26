@@ -63,13 +63,14 @@ var getDictionary = new Promise( function(resolve, reject) {
 
 	        var img = [];
 	        for(var i=0; i<5; i++){
-	        	var image = {
-	        	"location": this[`gsx$image${i}`]["$t"] ? this[`gsx$image${i}`]["$t"] : null,
-	        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-	        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
-	        	}
-	        	
+	        	if(this[`gsx$image${i}`]["$t"]){
+		        	var image = {
+		        	"location": this[`gsx$image${i}`]["$t"],
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	}
 	        	img[i] = image;
+	        	}
 	        }
 	        dictionary[key].img = img;
         });
@@ -97,13 +98,15 @@ var getEvents = new Promise( function(resolve, reject) {
 	        
 	        var img = [];
 	        for(var i=0; i<5; i++){
-	        	var image = {
-	        	"location": this[`gsx$image${i}`]["$t"] ? this[`gsx$image${i}`]["$t"] : null,
-	        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-	        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
-	        	}
 	        	
+	        	if(this[`gsx$image${i}`]["$t"]){
+		        	var image = {
+		        	"location": this[`gsx$image${i}`]["$t"],
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	}
 	        	img[i] = image;
+	        	}
 	        }
 	        eventsData[key].img = img;
         });
@@ -130,13 +133,14 @@ var getResidencies = new Promise( function(resolve, reject) {
 	        
 	        var img = [];
 	        for(var i=0; i<5; i++){
-	        	var image = {
-	        	"location": this[`gsx$image${i}`]["$t"] ? this[`gsx$image${i}`]["$t"] : null,
-	        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
-	        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
-	        	}
-	        	
+	        	if(this[`gsx$image${i}`]["$t"]){
+		        	var image = {
+		        	"location": this[`gsx$image${i}`]["$t"],
+		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : null,
+		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : null,
+		        	}
 	        	img[i] = image;
+	        	}
 	        }
 	        residenciesData[key].img = img;
         });
