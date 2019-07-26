@@ -43,7 +43,9 @@ function showImage(imageID, images, pageArray) {
         	id: imageID + 'Caption',
             class: 'imageCaption',
             lang: lang,
-        }).html(`<p>${caption}</p>`)
+        })
+        .css({'width': $imageBox.width()})
+        .html(`<p>${caption}</p>`)
         .appendTo( $imageBox );
 
 

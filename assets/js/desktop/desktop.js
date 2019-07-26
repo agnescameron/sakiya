@@ -181,19 +181,33 @@ function openEvent(title) {
         'height': '400px',
         'width': eventWidth})
 
+    $header = $('<div/>', {
+        class: 'eventPageHeader',
+    })
+
+    $('#' + title + 'Title').appendTo($header)
+
     $('<div/>', {
         id: title + 'Back',
         class: 'eventBackButton',
         click: (function(){ closeEvent(title) } ),
     })
     .css({'z-index': '50'})
-    .prependTo( $('#'+title) );
+    .prependTo( $header );
+
+    $header.appendTo( $('#'+title) )
 
     var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
 
     $('<div/>', {
         id: title+'Contents',
-        class: 'eventText',
+        class: 'textCol',
+        lang: lang,
+    }).html(eventContents)
+    .appendTo( $('#'+title) )
+
+    $('<div/>', {
+        class: 'imgCol',
         lang: lang,
     }).html(eventContents)
     .appendTo( $('#'+title) )
@@ -207,7 +221,7 @@ function openEvent(title) {
 
 async function closeEvent(title) {
     $('eventPageDate').addClass('eventBoxDate').removeClass('eventPageDate')
-
+    $('#' + title + 'Title').appendTo('#' + title)
     $('#'+title).addClass('eventBox').removeClass('eventPage')
     .animate({
         'height': '250px',
@@ -216,6 +230,8 @@ async function closeEvent(title) {
     $('#' + title + 'Back').remove();
 
     $('.eventText').remove();
+    $('.imgCol').remove();
+    $('.textCol').remove();
 
     await sleep(100);
     $('#'+title).click(function(){ openEvent(title) } )
@@ -314,7 +330,18 @@ function addTeamPage (title) {
         lang: lang,
     })
 
-    $pageContainer.append($backButton);
+    $pageHeader = $(`<div>`, {
+        class: 'pageHeader',
+    })
+
+    $mainTitle = $(`<div>`, {
+        id: title,
+        class: 'pageTitle',
+    }).html(dictionary[title]['heading-'+lang])
+
+    $pageHeader.append($backButton);
+    $pageHeader.append($mainTitle);    
+    $pageContainer.append($pageHeader);
     $pageContainer.append($textbox);
 
     for (i=0; i<Object.keys(team).length; i++){    
@@ -368,6 +395,12 @@ function addTeamPage (title) {
     }
 
     $pageContainer.appendTo( '#mainContainer' );
+
+    if(lang === 'ar') {
+        $('.pageTitle').css({direction: 'rtl'}).attr({lang: 'ar'});
+        $('.pageSubTitle').css({direction: 'rtl'}).attr({lang: 'ar'});
+        $('.backButton').css({'float': 'left'});
+    }
 
 }
 
@@ -682,7 +715,7 @@ function showPage(pageArray, title) {
     }
 
     if(lang === 'ar') {   
-        $(`#backButton`).css({'left': '10%', 'float': 'left'})    
+        $(`#backButton`).css({'float': 'left'})    
     }
 
     window.pageMode = true;

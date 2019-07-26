@@ -47,12 +47,13 @@ function translateText() {
 		key = Object.keys(dictionary)[i];
 		
 		if(dictionary[key].type === 'heading'){
+			console.log('translating', key)
 			if(lang === 'ar'){
-				$('#'+key).html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+				$(`[id=${key}]`).html(dictionary[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
 			}
 
 			else{
-				$('#'+key).html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+				$(`[id=${key}]`).html(dictionary[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
 			}
 		}
 

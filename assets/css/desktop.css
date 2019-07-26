@@ -142,19 +142,22 @@ p:lang(en) {
 }
 
 .imageBox {
-  height: 90%;
+  height: 100%;
   margin-left: 20px;
-  margin-top: 50px;
+  top: 50px;
   display: inline-block;
 }
 
 .imageCaption {
-  height: 60px;
+  height: 100px;
   position: relative;
+  white-space: normal;
+  overflow-y: scroll;
+  margin: 5px;
 }
 
 .galleryImage {
-  height: 90%;
+  height: 80%;
   position: relative;
 }
 
@@ -239,9 +242,23 @@ p:lang(en) {
   border: 3px solid white;
   margin: 10px;
   background-size: 0 0;
-  position:absoulte;
-  overflow-y: scroll;
   z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-gap: 1em 1em;
+}
+
+.textCol {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.imgCol {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.eventPageHeader {
+  grid-area: 1 / 1 / 2 / 3;
   display: inline-block;
 }
 
@@ -273,7 +290,13 @@ p:lang(en) {
   margin: 10px;
   background-image: url("../img/close.png");
   background-size: cover;
-  position: relative;
+/*  position: relative;*/
+}
+
+.eventImages {
+  width: 200px;
+  height: 200px;
+  border: 3px solid white;  
 }
 
 /*MARQUEE*/
