@@ -762,5 +762,5 @@ window.onload = function() {
     getTeam;
 
     //get readings
-    httpGetAsync("http://api.are.na/v2/channels/week-2-readings/contents"); 
+    httpGetAsync("https://api.are.na/v2/channels/week-2-readings/contents"); 
 }
