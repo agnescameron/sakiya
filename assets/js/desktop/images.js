@@ -9,8 +9,7 @@ function closeImage() {
 function showImage(imageID, images, pageArray) {
 	window.galleryMode = true;
 
-	var parentPage = imageID.slice(0, -6);
-	var imageNumber = imageID.slice(-1);
+//	var imageNumber = imageID.slice(-1);
 
     $galleryContainer =  $('<div/>', {
         class: 'galleryContainer',
@@ -32,12 +31,12 @@ function showImage(imageID, images, pageArray) {
 
         $imageBox = $(`<div/>`, {
             class: 'imageBox'
-        }).prepend(`<img class='galleryImage' src=${pageArray[parentPage].img[i].location} />`)
+        }).prepend(`<img class='galleryImage' src=${images[i].location} />`)
 
         $imageBox.appendTo( $gallery );
 
-        var caption = (lang === 'en') ? pageArray[parentPage].img[i]["caption-en"] 
-                : pageArray[parentPage].img[i]["caption-ar"]
+        var caption = (lang === 'en') ? images[i]["caption-en"] 
+                : images[i]["caption-ar"]
 
         $displayCaption = $('<div/>', {
         	id: imageID + 'Caption',

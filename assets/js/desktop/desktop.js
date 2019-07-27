@@ -206,11 +206,20 @@ function openEvent(title) {
     }).html(eventContents)
     .appendTo( $('#'+title) )
 
-    $('<div/>', {
+    $imgCol = $('<div/>', {
+        id: 'img',
         class: 'imgCol',
         lang: lang,
-    }).html(eventContents)
-    .appendTo( $('#'+title) )
+        click: ( function(){ showImage(this.id, imgArray, eventsData) } ),
+    })
+
+    imgArray = eventsData[title].img;
+
+    for(i=0; i<imgArray.length; i++) {
+        $imgCol.append(`<img class='sideImage' src=${imgArray[i].location}/>`);
+    }
+
+    $imgCol.appendTo( $('#'+title) );
 
     if( lang === 'ar'){
         $(`.eventBackButton`).css({'float': 'left'})  
