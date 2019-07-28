@@ -249,6 +249,15 @@ p:lang(en) {
   grid-gap: 1em 1em;
 }
 
+.eventPage:lang(en) {
+  float: left;
+}
+
+.eventPage:lang(ar) {
+  float: right;
+}
+
+
 .textCol {
   padding: 20px;
   grid-area: 2 / 1 / 3 / 2;

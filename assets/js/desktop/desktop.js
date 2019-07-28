@@ -222,6 +222,7 @@ function openEvent(title) {
     $imgCol.appendTo( $('#'+title) );
 
     if( lang === 'ar'){
+        $(`.eventPage`).attr({lang: 'ar'}).css({'float': 'right'})  
         $(`.eventBackButton`).css({'float': 'left'})  
         $('#'+title+'Contents').css({direction: 'rtl'}).attr({lang: 'ar'})
     }
@@ -229,8 +230,8 @@ function openEvent(title) {
 }
 
 async function closeEvent(title) {
+    $('#' + title + 'Title').prependTo('#' + title)
     $('eventPageDate').addClass('eventBoxDate').removeClass('eventPageDate')
-    $('#' + title + 'Title').appendTo('#' + title)
     $('#'+title).addClass('eventBox').removeClass('eventPage')
     .animate({
         'height': '250px',
