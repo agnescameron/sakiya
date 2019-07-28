@@ -83,6 +83,7 @@ async function returnToMain () {
 
 function toggleSideMenu(title) {
     $('.pageContainer').remove();
+    $('#imageContainer').remove();
     $('.eventPageContainer-'+lang).remove();
 
     parentFrame = $('#'+title).parent().attr('id').charAt(5);
