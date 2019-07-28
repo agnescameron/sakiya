@@ -216,7 +216,7 @@ function openEvent(title) {
     imgArray = eventsData[title].img;
 
     for(i=0; i<imgArray.length; i++) {
-        $imgCol.append(`<img class='sideImage' src=${imgArray[i].location}/>`);
+        $imgCol.append(`<img class='eventImage' src=${imgArray[i].location}/>`);
     }
 
     $imgCol.appendTo( $('#'+title) );

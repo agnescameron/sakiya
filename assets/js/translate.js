@@ -94,6 +94,7 @@ function translateText() {
 
 		if(lang === 'ar'){
 			$('.backButton').css({'float': 'left'});
+			$(`.eventPage`).attr({lang: 'ar'}).css({'float': 'right'});
 			$('.sideImage').css({'margin-left': '30px'});
 			$('#mainMenuContainer').addClass('mainMenuContainer-ar').removeClass('mainMenuContainer-en');
 			$('#subMenuContainer').addClass('subMenuContainer-ar').removeClass('subMenuContainer-en');
@@ -103,6 +104,7 @@ function translateText() {
 
 		else{
 			$('.backButton').css({'float': 'right'});
+			$(`.eventPage`).attr({lang: 'en'}).css({'float': 'left'})  
 			$('.sideImage').css({'margin-left': '30px'});
 			$('#mainMenuContainer').addClass('mainMenuContainer-en').removeClass('mainMenuContainer-ar');
 			$('#subMenuContainer').addClass('subMenuContainer-en').removeClass('subMenuContainer-ar');
