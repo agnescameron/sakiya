@@ -141,6 +141,11 @@ function toggleSideMenu(title) {
 
     $('.textbox').remove();
 
+    if((dictionary[title + 'Page'])){
+        //add top level page description
+        addTextPage(dictionary, title)
+    }
+
     //else
     $(`:not(*[id^=frame${parentFrame}]).subframe`).hide()
 }
