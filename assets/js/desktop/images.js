@@ -26,17 +26,18 @@ function showImage(imageID, images, pageArray) {
             click: (function(){ closeImage() } ),
         }).appendTo( $gallery );
 
-    console.log('images length is', images.length)
     for (i=0; i<images.length; i++){
 
         $imageBox = $(`<div/>`, {
             class: 'imageBox'
-        }).prepend(`<img class='galleryImage' src=${images[i].location} />`)
+        }).prepend(`<img id=img${i} class='galleryImage' src=${images[i].location} />`)
 
         $imageBox.appendTo( $gallery );
 
         var caption = (lang === 'en') ? images[i]["caption-en"] 
                 : images[i]["caption-ar"]
+
+        console.log('width is ', $imageBox.width())
 
         $displayCaption = $('<div/>', {
         	id: imageID + 'Caption',

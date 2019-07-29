@@ -81,6 +81,12 @@ async function returnToMain () {
 
 }
 
+function showSpecificEvent(title) {
+    //show event page
+
+    //open event
+}
+
 function toggleSideMenu(title) {
     $('.pageContainer').remove();
     $('#imageContainer').remove();
@@ -465,8 +471,8 @@ function addResidencyPage(title) {
         $pageContainer.appendTo( '#mainContainer' );
 
         if(lang === 'ar') {
-            $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'})
-            $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'})
+            $('#'+key+'Title').css({direction: 'rtl'}).attr({lang: 'ar'});
+            $('#'+key+'Date').css({direction: 'rtl'}).attr({lang: 'ar'});
         }
 
     }
@@ -487,6 +493,8 @@ function addResidencyPage(title) {
 
         $pageContainer.appendTo( '#mainContainer' );
     }
+
+    if(lang === 'ar') $('.backButton').css({'float': 'left'});
 
     $imageContainer.appendTo( '#mainContainer' ); 
 
