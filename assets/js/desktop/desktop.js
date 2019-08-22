@@ -81,10 +81,10 @@ async function returnToMain () {
 
 }
 
-function showSpecificEvent(title) {
+async function showSpecificEvent(title) {
     //show event page
-
-    //open event
+    showPage(dictionary, "upcomingevents");
+    openEvent(title);
 }
 
 function toggleSideMenu(title) {
@@ -190,7 +190,7 @@ function openEvent(title) {
     $('#'+title).addClass('eventPage').removeClass('eventBox')
     .unbind("click")
     .animate({
-        'height': '400px',
+        'height': '500px',
         'width': eventWidth})
 
     $header = $('<div/>', {

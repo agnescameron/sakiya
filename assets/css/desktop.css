@@ -238,7 +238,7 @@ p:lang(en) {
 
 .eventPage {
   width: 250px;
-  height: 250px;
+  height: 350px;
   border: 3px solid white;
   margin: 10px;
   background-size: 0 0;
@@ -324,6 +324,7 @@ p:lang(en) {
 .marquee span {
   display: inline-block;
   position: relative;
+  margin-right: 50px;
   animation: marquee 15s linear infinite;
 }
 

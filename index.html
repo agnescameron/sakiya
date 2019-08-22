@@ -36,7 +36,7 @@ else {
 
 <div id="mainContainer" class="container">
   <div id="translate" class="translate" onclick="translateText()" dir=rtl lang="ar">اﻟﻌﺮﺑﻴﺔ</div>
-  <div id="marqueeContainer" class="marqueeContainer">    <div id="marquee" class="marquee">  <span id="marqueeText" lang="en">!!! exhibition august 2nd !!!</span> </div> </div>
+  <div id="marqueeContainer" class="marqueeContainer">    <div id="marquee" class="marquee">  <span id="marqueeText" lang="en" onclick="showSpecificEvent('exhibitionEvent')">!!! exhibition august 2nd !!!</span> <span id="marqueeText" lang="en" onclick="showSpecificEvent('symposiumEvent')">!!! symposium august 3rd !!!</span> </div> </div>
   <div class="teapot" onclick = "returnToMain()"><div id="logo" ></div></div>
   <div id="treeFrameContainer" class="treeContainer"></div>
   <div id="treeCanvasContainer" class="treeContainer">  <canvas id="mainCanvas" resize></canvas></div>
