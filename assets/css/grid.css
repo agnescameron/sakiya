@@ -1,6 +1,6 @@
 .container {
 	display: grid;
-	grid-template-columns: 150px 150px minmax(300px, 1fr) 150px 150px;
+	grid-template-columns: 160px 150px minmax(300px, 1fr) 150px 150px;
 	grid-template-rows: 80px minmax(300px, 1fr) 50px;
 	grid-gap: 2em 2em;
 	height: 100vh;

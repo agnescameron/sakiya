@@ -15,7 +15,7 @@ p:lang(ar) {
 }
 
 p:lang(en) {
-    font-size: 2vh;
+    font-size: 2.1vh;
     direction: 'ltr';
 }
 
@@ -23,13 +23,14 @@ p:lang(en) {
 /*MAIN PAGE ELEMENTS*/
 
 .heading {
-	font-size:30px;
+	font-size:35px;
 	position:absolute;
 }
 
 .subheading {
-	font-size:20px;
+	font-size:2.2vh;
 	position:relative;
+  line-height: 1.05em;
 }
 
 #treeFrameContianer {
@@ -80,12 +81,12 @@ p:lang(en) {
 
 .pageTitle {
   margin-top: 10px;
-  font-size: 3vh;
+  font-size: 4vh;
 }
 
 .pageSubTitle {
   margin-top: 10px;
-  font-size: 2vh;
+  font-size: 3vh;
 }
 
 .backButton {
@@ -110,7 +111,10 @@ p:lang(en) {
 }
 
 .textbox {
-  max-width: 600px;
+  max-width: auto;
+  padding-right: 30px;
+  line-height: 1.2em;
+  text-align: left;
 }
 
 .textbox:lang(en) {
@@ -131,12 +135,14 @@ p:lang(en) {
 
 .social {
   height: 100%;
+  margin-right: 10px;
+
 }
 
 .sponsor {
   margin-bottom: 20px;
   margin-top: -20px;
-  margin-left: 10px;
+  margin-left: 20px;
   position: relative;
   height: 100%;
 }
