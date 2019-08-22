@@ -112,9 +112,7 @@ p:lang(en) {
 
 .textbox {
   max-width: auto;
-  padding-right: 30px;
   line-height: 1.2em;
-  text-align: left;
 }
 
 .textbox:lang(en) {
@@ -135,8 +133,6 @@ p:lang(en) {
 
 .social {
   height: 100%;
-  margin-right: 10px;
-
 }
 
 .sponsor {
