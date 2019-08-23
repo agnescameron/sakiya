@@ -479,7 +479,7 @@ function addResidencyPage(title) {
 
     if (Object.keys(residencies).length === 0){
 
-        var noResidents = dictionary["noResidents"]["heading-"+lang]
+        var noResidents = dictionary["noResidents"]["contents-"+lang]
         var direction = (lang === 'ar') ? 'rtl' : 'ltr' 
 
         $('<p/>', {
