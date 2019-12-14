@@ -10,6 +10,8 @@ var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/pub
 var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
 var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/4/public/values?alt=json';
+var newsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/5/public/values?alt=json';
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -165,5 +167,24 @@ var getTeam = new Promise( function(resolve, reject) {
 	        
         });
         resolve('Success, team!'); 
+    })  
+})
+
+var getNews = new Promise( function(resolve, reject) {
+    $.getJSON(newsUrl, function(data){
+        var entry = data.feed.entry;
+        $(entry).each(function(){
+	       var key = this["gsx$id"]["$t"];
+	       newsData[key] = {
+	        	"type": this["gsx$type"]["$t"],	
+	        	"heading-ar": this["gsx$heading-ar"]["$t"],
+	        	"heading-en": this["gsx$heading-en"]["$t"],
+	        	"date": this["gsx$date"]["$t"],
+	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',	        	
+	        }
+	        
+        });
+        resolve('Success, news!'); 
     })  
 })

@@ -2,7 +2,7 @@ var menus = {
     "main":{
         "level":0,
         "type":"menu",
-        "contents": ["SAKIYA", "About", "Program", "Residencies", "Curriculum", "Heritage", "Visit Us"],
+        "contents": ["SAKIYA", "About", "Program", "Residencies", "Curriculum", "Heritage", "Visit Us", "News"],
     },
     "SAKIYA": {
         "level": 1,
@@ -39,4 +39,9 @@ var menus = {
         "type":"text",     
         "contents":[''],
     },    
+    "News": {
+        "level": 1,
+        "type":"text",     
+        "contents":[''],
+    }, 
 }

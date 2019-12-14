@@ -3,6 +3,7 @@
 	width: 150px;
 	position: absolute;
   	z-index: 5;
+  	/*background-color: lightgreen;*/
 }
 
 .subframe {
@@ -10,6 +11,7 @@
 	width: 100px;
 	position: absolute;
   	z-index: 5;
+  	/*background-color: lightblue;*/
 }
 
 #frame0 {
@@ -23,12 +25,12 @@
 }
 
 #frame10 {
-	top: 80vh;
- 	left: 16vw;
+	top: 85vh;
+ 	left: 12vw;
 }
 
 #frame11 {
-	top: 75vh;
+	top: 73vh;
  	left: 16vw;
 }
 
@@ -140,4 +142,9 @@
 #frame62 {
 	top: 85vh;
  	left: 70vw;
+}
+
+#frame7 {
+	top: 60vh;
+	left: 75vw;
 }
