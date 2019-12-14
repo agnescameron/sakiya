@@ -333,6 +333,80 @@ function addArenaPage (title) {
     $pageContainer.appendTo( '#mainContainer' );
 }
 
+
+
+function addNewsPage (title) {
+    var news = newsData;
+
+    //make textbox
+    $pageContainer = $('<div/>', {
+        id: title + 'PageContainer',
+        class: 'pageContainer',
+    });
+
+    $backButton = $('<div/>', {
+        class: 'backButton',
+        click: (function(){ returnToMain() } ),
+    });
+
+    $textbox = $('<div/>', {
+        class: 'textbox',
+        lang: lang,
+    })
+
+    $pageHeader = $(`<div>`, {
+        class: 'pageHeader',
+    })
+
+    $mainTitle = $(`<div>`, {
+        id: title,
+        class: 'pageTitle',
+    }).html(dictionary[title]['heading-'+lang])
+
+    $pageHeader.append($backButton);
+    $pageHeader.append($mainTitle);    
+    $pageContainer.append($pageHeader);
+    $pageContainer.append($textbox);
+
+    for (i=0; i<Object.keys(news).length; i++){    
+        var key = Object.keys(news)[i]
+
+        $heading = $('<div/>', {
+            id: key + 'Name',
+            class: 'pageTitle',
+            lang: lang,
+        })
+        .html(news[key]["heading-"+lang]);
+
+        $date = $('<div/>', {
+            id: key + 'Title',
+            class: 'pageSubTitle',
+        })
+        .html(news[key]["date"]);
+
+        $contents = $('<p/>', {
+            id: key + 'Bio',
+            class: 'textbox',
+            lang: lang,
+        })
+        .css({'margin-bottom': '30px'})
+        .html(news[key]["contents-"+lang]);
+
+        $textbox.append([$heading, $date, $contents])
+        //for each person in team, add to page
+    }
+
+    $pageContainer.appendTo( '#mainContainer' );
+
+    if(lang === 'ar') {
+        $('.pageTitle').css({direction: 'rtl'}).attr({lang: 'ar'});
+        $('.pageSubTitle').css({direction: 'rtl'}).attr({lang: 'ar'});
+        $('.backButton').css({'float': 'left'});
+    }
+
+}
+
+
 function addTeamPage (title) {
     var team = getEntries(teamData, "type", title);
 
@@ -726,6 +800,10 @@ function showPage(pageArray, title) {
         addTeamPage(title);
     }
 
+    if (pageArray[title + 'Page'].type === 'newsPage') {
+        addNewsPage(title);
+    }
+
     if (pageArray[title + 'Page'].type === 'residencyPage') {
         addResidencyPage(title);
     }
@@ -847,6 +925,7 @@ window.onload = function() {
     getEvents;
     getResidencies;
     getTeam;
+    getNews;
 
     //get readings
     httpGetAsync("https://api.are.na/v2/channels/week-2-readings/contents"); 

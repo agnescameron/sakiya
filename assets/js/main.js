@@ -1,6 +1,7 @@
 //this file gets all of the site data and parses it as json
 var dictionary = {};
 var eventsData = {};
+var newsData = {};
 var residenciesData = {};
 var teamData = {};
 var curriculum = {};
@@ -185,6 +186,7 @@ var getNews = new Promise( function(resolve, reject) {
 	        }
 	        
         });
-        resolve('Success, news!'); 
+        resolve('Success, news!');
+        console.log(newsData);
     })  
 })
