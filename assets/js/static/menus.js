@@ -12,7 +12,7 @@ var menus = {
     "About": {
         "level": 1,
         "type":"menu",        
-        "contents": ["about Sakiya", "team", "Sakiya Internship Program"],
+        "contents": ["about Sakiya", "team", "volunteer", "Sakiya Internship Program", ],
     },
     "Program": {
         "level": 1,
@@ -36,7 +36,7 @@ var menus = {
     },
     "VisitUs": {
         "level": 1,
-        "type":"text",        
+        "type":"text",     
         "contents":[''],
     },    
 }

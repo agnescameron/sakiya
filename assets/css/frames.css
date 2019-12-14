@@ -28,13 +28,18 @@
 }
 
 #frame11 {
-	top: 65vh;
+	top: 75vh;
  	left: 16vw;
 }
 
 #frame12 {
-	top: 70vh;
+	top: 75vh;
  	left: 7vw;
+}
+
+#frame13 {
+	top: 60vh;
+ 	left: 4vw;
 }
 
 #frame2 {
