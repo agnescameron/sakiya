@@ -377,16 +377,17 @@ function addNewsPage (title) {
         })
 
         $heading = $('<div/>', {
-            id: key + 'Name',
+            id: key + 'Heading',
             class: 'pageSubTitle',
             lang: lang,
         })
         .html(news[key]["heading-"+lang]);
 
         $date = $('<div/>', {
-            id: key + 'Title',
+            id: key + 'Date',
             class: 'pageSubTitle',
         })
+        // .css({"width": "100%"})
         .html(news[key]["date"]);
 
         $contents = $('<p/>', {

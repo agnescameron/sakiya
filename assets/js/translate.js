@@ -199,6 +199,24 @@ function translateText() {
 	}
 
 
+	for(i = 0; i< Object.keys(newsData).length; i++){
+		key = Object.keys(newsData)[i];
+
+		if(lang === 'ar'){
+			$('#'+key+'Heading').html(newsData[key]["heading-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})
+			$('#'+key+'News').html(newsData[key]["contents-ar"]).css({direction: 'rtl'}).attr({lang: 'ar'})	
+		    $('#'+key+'Date').css({'float': 'right'}) 
+		    $(`.backButton`).css({'float': 'left'}) 
+		}
+		else{
+			$('#'+key+'Heading').html(newsData[key]["heading-en"]).css({direction: 'ltr'}).attr({lang: 'en'})
+			$('#'+key+'News').html(newsData[key]["contents-en"]).css({direction: 'ltr'}).attr({lang: 'en'})	
+		    $('#'+key+'Date').css({'float': 'left'}) 
+		    $(`.backButton`).css({'float': 'right'}) 
+		}
+	}
+
+
 	$('#translate').attr("lang") === 'en' ? $('#translate').attr({lang: 'ar'}) : $('#translate').attr({lang: 'en'}) 
 
 	window.lang = lang;
