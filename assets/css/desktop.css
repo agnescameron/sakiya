@@ -82,6 +82,7 @@ p:lang(en) {
 .pageTitle {
   margin-top: 10px;
   font-size: 4vh;
+  line-height: 4vh;
 }
 
 .pageSubTitle {
@@ -310,6 +311,12 @@ p:lang(en) {
 .eventImage {
   width: 85%;
   /*border: 3px solid white;  */
+}
+
+/*NEWS*/
+
+.newsItem {
+  margin-top: 30px;
 }
 
 /*MARQUEE*/

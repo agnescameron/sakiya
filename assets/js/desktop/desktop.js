@@ -361,7 +361,7 @@ function addNewsPage (title) {
     $mainTitle = $(`<div>`, {
         id: title,
         class: 'pageTitle',
-    }).html(dictionary[title]['heading-'+lang])
+    }).html(dictionary[title]['heading-'+lang]+"<br/>")
 
     $pageHeader.append($backButton);
     $pageHeader.append($mainTitle);    
@@ -371,9 +371,14 @@ function addNewsPage (title) {
     for (i=0; i<Object.keys(news).length; i++){    
         var key = Object.keys(news)[i]
 
+        $newsItem = $('<div/>', {
+            lang: lang,
+            class: 'newsItem',
+        })
+
         $heading = $('<div/>', {
             id: key + 'Name',
-            class: 'pageTitle',
+            class: 'pageSubTitle',
             lang: lang,
         })
         .html(news[key]["heading-"+lang]);
@@ -385,14 +390,16 @@ function addNewsPage (title) {
         .html(news[key]["date"]);
 
         $contents = $('<p/>', {
-            id: key + 'Bio',
-            class: 'textbox',
+            id: key + 'News',
+            // class: 'textbox',
             lang: lang,
         })
         .css({'margin-bottom': '30px'})
         .html(news[key]["contents-"+lang]);
 
-        $textbox.append([$heading, $date, $contents])
+        $newsItem.append([$heading, $date, $contents])
+
+        $textbox.append($newsItem)
         //for each person in team, add to page
     }
 
