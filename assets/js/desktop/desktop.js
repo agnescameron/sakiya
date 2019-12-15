@@ -397,7 +397,13 @@ function addNewsPage (title) {
         .css({'margin-bottom': '30px'})
         .html(news[key]["contents-"+lang]);
 
-        $newsItem.append([$heading, $date, $contents])
+        $image = $('<div/>', {
+            id: key + 'Image',
+            class: 'sideImage',
+        })
+        .prepend(`<img src= ${news[key].img} style="width: 100%"/>`)
+
+        $newsItem.append([$heading, $date, $contents, $image])
 
         $textbox.append($newsItem)
         //for each person in team, add to page

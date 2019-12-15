@@ -182,9 +182,10 @@ var getNews = new Promise( function(resolve, reject) {
 	        	"heading-en": this["gsx$heading-en"]["$t"],
 	        	"date": this["gsx$date"]["$t"],
 	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',	        	
+	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',       	
 	        }
-	        
+	       
+	        newsData[key].img = this[`gsx$image`]["$t"] ? this[`gsx$image`]["$t"] : '';
         });
         resolve('Success, news!');
         console.log(newsData);
