@@ -89,7 +89,7 @@ var getEvents = new Promise( function(resolve, reject) {
 	       var key = this["gsx$id"]["$t"];
 	       eventsData[key] = {
 	        	"type": this["gsx$type"]["$t"],
-	        	"date": Date(this["gsx$date"]["$t"]),
+	        	"date": this["gsx$date"]["$t"],
 	        	"organisers-ar": this["gsx$organisers-ar"]["$t"],
 	        	"organisers-en": this["gsx$organisers-en"]["$t"],        	
 	        	"heading-ar": this["gsx$heading-ar"]["$t"],
