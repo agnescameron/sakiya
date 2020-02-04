@@ -209,6 +209,8 @@ function openEvent(title) {
 
     $header.appendTo( $('#'+title) )
 
+    console.log(eventsData, title)
+
     var eventContents = (lang === 'en') ? eventsData[title]["contents-en"] : eventsData[title]["contents-ar"];
 
     $('<div/>', {
@@ -872,7 +874,7 @@ function populateMarquee() {
     $marquee = $('#marqueeText');
     var events = getEntries(eventsData, "type", "upcomingevents");
     if($.isEmptyObject(events)){
-        console.log('no friends')
+        console.log('no upcoming events')
     }
     else {
         console.log(events)
@@ -881,12 +883,14 @@ function populateMarquee() {
             key = Object.keys(events)[i];
             dates[i] = {date: events[key].date, 
                         heading: events[key]["heading-en"],
-                        id: events[key]["id"]};
+                        id: key};
         }
         dates.sort((a, b) => (a.date > b.date) ? 1 : -1)
         console.log(dates[0].heading);
         $marquee.text(dates[0].heading);
-        $marquee.click( function(){showSpecificEvent(dates[0].id)} )
+        var title = dates[0].id
+        console.log('creating marquee, title is ', dates)
+        $marquee.click( function(){showSpecificEvent(title)} )
     }
 }
 
