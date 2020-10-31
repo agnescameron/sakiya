@@ -8,10 +8,18 @@ var curriculum = {};
 
 var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
 var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
-var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
-var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
-var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/4/public/values?alt=json';
+var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
+var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/4/public/values?alt=json';
+var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
 var newsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/5/public/values?alt=json';
+
+
+// var pagesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/1?alt=json';
+// var eventsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/2?alt=json';
+// var residenciesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/3?alt=json';
+// var teamUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/4?alt=json';
+// var newsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/5?alt=json';
+
 
 
 function sleep(ms) {
@@ -84,6 +92,7 @@ var getDictionary = new Promise( function(resolve, reject) {
 var getEvents = new Promise( function(resolve, reject) {
     $.getJSON(eventsUrl, function(data){
         var entry = data.feed.entry
+        console.log('entry is', entry)
 
         $(entry).each(function(){
 	       var key = this["gsx$id"]["$t"];
@@ -121,6 +130,7 @@ var getEvents = new Promise( function(resolve, reject) {
 var getResidencies = new Promise( function(resolve, reject) {
     $.getJSON(residenciesUrl, function(data){
         var entry = data.feed.entry
+        console.log('in residencies, entry is', entry)
 
         $(entry).each(function(){
 	       var key = this["gsx$id"]["$t"];
