@@ -210,7 +210,8 @@ function addEvents(page, title) {
 
     for (i=0; i<Object.keys(events).length; i++){
         var key = Object.keys(events)[i];
-        var eventDate = new Date(events[key]["date"]);
+        // var eventDate = new Date(events[key]["date"]);
+        var eventDate = events[key]["date"];
         var eventTitle = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
 
         $eventBox = $('<div/>', {
@@ -229,7 +230,7 @@ function addEvents(page, title) {
         $('<div/>', {
             id: key+'Date',
             class: 'eventBoxDate',
-        }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
+        }).html(eventDate.replace('/', '.'))
         .appendTo( $eventBox );
     
     }

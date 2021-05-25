@@ -14,14 +14,6 @@ var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/publ
 var newsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/5/public/values?alt=json';
 
 
-// var pagesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/1?alt=json';
-// var eventsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/2?alt=json';
-// var residenciesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/3?alt=json';
-// var teamUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/4?alt=json';
-// var newsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/5?alt=json';
-
-
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -173,7 +165,7 @@ var getTeam = new Promise( function(resolve, reject) {
 	        	"title-ar": this["gsx$title-ar"]["$t"],
 	        	"title-en": this["gsx$title-en"]["$t"],
 	        	"bio-ar": this["gsx$bio-ar"]["$t"] ? this["gsx$bio-ar"]["$t"] : '',
-	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : '',	        	
+	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : '',
 	        }
 	        
         });

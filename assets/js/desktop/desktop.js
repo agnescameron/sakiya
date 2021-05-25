@@ -606,7 +606,8 @@ function addEventsPage(title) {
 
     for (i=0; i<Object.keys(events).length; i++){
         var key = Object.keys(events)[i];
-        var eventDate = new Date(events[key]["date"]);
+        // var eventDate = new Date(events[key]["date"]); // commenting out b/c of zero-indexing bug
+        var eventDate = events[key]["date"]
         var eventTitle = (lang === 'en') ? events[key]["heading-en"] : events[key]["heading-ar"];
         var randImage = illustrationArray[ i%(illustrationArray.length-1) ];
 
@@ -628,7 +629,7 @@ function addEventsPage(title) {
         $('<div/>', {
             id: key+'Date',
             class: 'eventBoxDate',
-        }).html(eventDate.getDate() + '.' + eventDate.getMonth() + '.' + eventDate.getFullYear())
+        }).html(eventDate.replace('/', '.'))
         .appendTo( $eventBox );
 
         $pageContainer.appendTo( '#mainContainer' );
