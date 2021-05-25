@@ -629,7 +629,7 @@ function addEventsPage(title) {
         $('<div/>', {
             id: key+'Date',
             class: 'eventBoxDate',
-        }).html(eventDate.replace('/', '.'))
+        }).html(eventDate.replaceAll('/', '.'))
         .appendTo( $eventBox );
 
         $pageContainer.appendTo( '#mainContainer' );
