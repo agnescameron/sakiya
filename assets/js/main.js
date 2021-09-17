@@ -81,8 +81,8 @@ var getDictionary = new Promise( function(resolve, reject) {
 	        	if(value[`image${i}`]){
 		        	var image = {
 		        	"location": value[`image${i}`],
-		        	"caption-en": value[`imagecaption${i}-en`],
-		        	"caption-ar": value[`imagecaption${i}-ar`],
+		        	"caption-en": value[`imageCaption${i}-en`] ? value[`imageCaption${i}-en`] : '',
+		        	"caption-ar": value[`imageCaption${i}-ar`] ? value[`imageCaption${i}-ar`] : '',
 		        	}
 	        	img[i] = image;
 	        	}
@@ -107,8 +107,8 @@ var getEvents = new Promise( function(resolve, reject) {
 	        	if(value[`image${i}`]){
 		        	var image = {
 		        	"location": value[`image${i}`],
-		        	"caption-en": value[`imagecaption${i}-en`],
-		        	"caption-ar": value[`imagecaption${i}-ar`],
+		        	"caption-en": value[`imageCaption${i}-en`] ? value[`imageCaption${i}-en`] : '',
+		        	"caption-ar": value[`imageCaption${i}-ar`] ? value[`imageCaption${i}-ar`] : '',
 		        	}
 	        	img[i] = image;
 	        	}
@@ -134,8 +134,8 @@ var getResidencies = new Promise( function(resolve, reject) {
 	        	if(value[`image${i}`]){
 		        	var image = {
 		        	"location": value[`image${i}`],
-		        	"caption-en": value[`imagecaption${i}-en`],
-		        	"caption-ar": value[`imagecaption${i}-ar`],
+		        	"caption-en": value[`imageCaption${i}-en`] ? value[`imageCaption${i}-en`] : '',
+		        	"caption-ar": value[`imageCaption${i}-ar`] ? value[`imageCaption${i}-ar`] : '',
 		        	}
 	        	img[i] = image;
 	        	}
