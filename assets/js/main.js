@@ -5,13 +5,16 @@ var newsData = {};
 var residenciesData = {};
 var teamData = {};
 var curriculum = {};
+const apiKey = 'AIzaSyBuxNiPrjQ2IjNxBdXHLSNbjla2WWgYeSc';
+
+//https://docs.google.com/spreadsheets/d/e/2PACX-1vS6WcCYyeMZGpRHogRLTwnL8xKYtsX5ti578ZRilDX2ZPiEipk8BPaUgG4d3Gxd3JaKUwA0T0A7sbOy/pubhtml
 
 var sheetID = '1C6J5D7rLWc7Q7SRr_Lc1bM34nE28EvYKUJko3cb8JdI';
-var pagesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/1/public/values?alt=json';
-var eventsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/3/public/values?alt=json';
-var residenciesUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/4/public/values?alt=json';
-var teamUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/2/public/values?alt=json';
-var newsUrl = 'https://spreadsheets.google.com/feeds/list/' + sheetID + '/5/public/values?alt=json';
+var pagesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/pages?alt=json&key=' + apiKey;
+var eventsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/events?alt=json&key=' + apiKey;
+var residenciesUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/residencies?alt=json&key=' + apiKey;
+var teamUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/people?alt=json&key=' + apiKey;
+var newsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetID + '/values/news?alt=json&key=' + apiKey;
 
 
 function sleep(ms) {
@@ -48,34 +51,43 @@ function httpGetAsync(theUrl)
     xmlHttp.send(null);
 }
 
+function toJSON(data)
+// convert array of arrays to JSON
+
+{
+	const headers = data[0]
+	const rows = data.slice(1, data.length)
+	let jsonArr = []
+
+	rows.forEach(row => {
+		let obj = {}
+		row.map( function(val, index){ obj[headers[index]] = val } )
+		jsonArr.push(obj)
+	})
+
+	return jsonArr;
+}
 
 var getDictionary = new Promise( function(resolve, reject) {
     $.getJSON(pagesUrl, function(data){
-        var entry = data.feed.entry
+    	console.log(data)
+        // var entry = data.values
+        var entry = toJSON(data.values)
 
-        $(entry).each(function(){
-	       var key = this["gsx$id"]["$t"];
-	       dictionary[key] = {
-	        	"type": this["gsx$type"]["$t"],
-	        	"heading-ar": this["gsx$heading-ar"]["$t"],
-	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
-	        	"link": this["gsx$link"]["$t"] ? this["gsx$link"]["$t"] : '',        	
-	        }
-
+        $(entry).each(function(index, value){
+			dictionary[value.id] = value;
 	        var img = [];
 	        for(var i=0; i<6; i++){
-	        	if(this[`gsx$image${i}`]["$t"]){
+	        	if(value[`image${i}`]){
 		        	var image = {
-		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
+		        	"location": value[`image${i}`],
+		        	"caption-en": value[`imagecaption${i}-en`],
+		        	"caption-ar": value[`imagecaption${i}-ar`],
 		        	}
 	        	img[i] = image;
 	        	}
 	        }
-	        dictionary[key].img = img;
+	        dictionary[value.id].img = img;
         });
         resolve('Success, dictionary!');
     })
@@ -83,36 +95,25 @@ var getDictionary = new Promise( function(resolve, reject) {
 
 var getEvents = new Promise( function(resolve, reject) {
     $.getJSON(eventsUrl, function(data){
-        var entry = data.feed.entry
+        // var entry = data.values
+        var entry = toJSON(data.values)
         console.log('entry is', entry)
 
-        $(entry).each(function(){
-	       var key = this["gsx$id"]["$t"];
-	       eventsData[key] = {
-	        	"type": this["gsx$type"]["$t"],
-	        	"date": this["gsx$date"]["$t"],
-	        	"organisers-ar": this["gsx$organisers-ar"]["$t"],
-	        	"organisers-en": this["gsx$organisers-en"]["$t"],        	
-	        	"heading-ar": this["gsx$heading-ar"]["$t"],
-	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
-	        	"poster": this["gsx$poster"]["$t"] ? this["gsx$poster"]["$t"] : '',  
-	        }
+        $(entry).each(function(index, value){
+        	eventsData[value.id] = value;
 	        
 	        var img = [];
 	        for(var i=0; i<6; i++){
-	        	
-	        	if(this[`gsx$image${i}`]["$t"]){
+	        	if(value[`image${i}`]){
 		        	var image = {
-		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
+		        	"location": value[`image${i}`],
+		        	"caption-en": value[`imagecaption${i}-en`],
+		        	"caption-ar": value[`imagecaption${i}-ar`],
 		        	}
 	        	img[i] = image;
 	        	}
 	        }
-	        eventsData[key].img = img;
+	        eventsData[value.id].img = img;
         });
         resolve('Success, events!'); 
     })  
@@ -121,33 +122,25 @@ var getEvents = new Promise( function(resolve, reject) {
 
 var getResidencies = new Promise( function(resolve, reject) {
     $.getJSON(residenciesUrl, function(data){
-        var entry = data.feed.entry
+        // var entry = data.values
+        var entry = toJSON(data.values)
         console.log('in residencies, entry is', entry)
 
-        $(entry).each(function(){
-	       var key = this["gsx$id"]["$t"];
-	       residenciesData[key] = {
-	        	"type": this["gsx$type"]["$t"],	
-	        	"group": this["gsx$group"]["$t"],
-	        	"heading-ar": this["gsx$heading-ar"]["$t"],
-	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',
-	        	"video": this["gsx$video"]["$t"] ? this["gsx$video"]["$t"] : '',
-	        }
+        $(entry).each(function(index, value){
+        	residenciesData[value.id] = value
 	        
 	        var img = [];
 	        for(var i=0; i<6; i++){
-	        	if(this[`gsx$image${i}`]["$t"]){
+	        	if(value[`image${i}`]){
 		        	var image = {
-		        	"location": this[`gsx$image${i}`]["$t"],
-		        	"caption-en": this[`gsx$imagecaption${i}-en`]["$t"] ? this[`gsx$imagecaption${i}-en`]["$t"] : '',
-		        	"caption-ar": this[`gsx$imagecaption${i}-ar`]["$t"] ? this[`gsx$imagecaption${i}-ar`]["$t"] : '',
+		        	"location": value[`image${i}`],
+		        	"caption-en": value[`imagecaption${i}-en`],
+		        	"caption-ar": value[`imagecaption${i}-ar`],
 		        	}
 	        	img[i] = image;
 	        	}
 	        }
-	        residenciesData[key].img = img;
+	        residenciesData[value.id].img = img;
         });
         resolve('Success, residencies!'); 
     })  
@@ -155,19 +148,11 @@ var getResidencies = new Promise( function(resolve, reject) {
 
 var getTeam = new Promise( function(resolve, reject) {
     $.getJSON(teamUrl, function(data){
-        var entry = data.feed.entry;
-        $(entry).each(function(){
-	       var key = this["gsx$id"]["$t"];
-	       teamData[key] = {
-	        	"type": this["gsx$type"]["$t"],	
-	        	"name-ar": this["gsx$name-ar"]["$t"],
-	        	"name-en": this["gsx$name-en"]["$t"],
-	        	"title-ar": this["gsx$title-ar"]["$t"],
-	        	"title-en": this["gsx$title-en"]["$t"],
-	        	"bio-ar": this["gsx$bio-ar"]["$t"] ? this["gsx$bio-ar"]["$t"] : '',
-	        	"bio-en": this["gsx$bio-en"]["$t"] ? this["gsx$bio-en"]["$t"] : '',
-	        }
-	        
+        // var entry = data.values;
+        var entry = toJSON(data.values)
+
+        $(entry).each(function(index, value){
+        	teamData[value.id] = value
         });
         resolve('Success, team!'); 
     })  
@@ -175,19 +160,11 @@ var getTeam = new Promise( function(resolve, reject) {
 
 var getNews = new Promise( function(resolve, reject) {
     $.getJSON(newsUrl, function(data){
-        var entry = data.feed.entry;
-        $(entry).each(function(){
-	       var key = this["gsx$id"]["$t"];
-	       newsData[key] = {
-	        	"type": this["gsx$type"]["$t"],	
-	        	"heading-ar": this["gsx$heading-ar"]["$t"],
-	        	"heading-en": this["gsx$heading-en"]["$t"],
-	        	"date": this["gsx$date"]["$t"],
-	        	"contents-ar": this["gsx$contents-ar"]["$t"] ? this["gsx$contents-ar"]["$t"] : '',
-	        	"contents-en": this["gsx$contents-en"]["$t"] ? this["gsx$contents-en"]["$t"] : '',       	
-	        }
-	       
-	        newsData[key].img = this[`gsx$image`]["$t"] ? this[`gsx$image`]["$t"] : '';
+        // var entry = data.values;
+        var entry = toJSON(data.values)
+
+        $(entry).each(function(index, value){
+        	newsData[value.id] = value
         });
         resolve('Success, news!');
         console.log(newsData);
